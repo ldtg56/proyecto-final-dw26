@@ -1,3 +1,6 @@
+/* ==========================================================================
+   Estilos Base y Tipografía
+   ========================================================================== */
 .fuente-titulos {
     font-family: "Yu Gothic", "Yu Gothic UI", sans-serif;
 }
@@ -24,20 +27,204 @@
     transform: translateY(-2px);
 }
 
-.tarjeta-producto-plana {
-    border: 1px solid #7F7F7F !important;
-    background-color: #FFFFFF;
-    border-radius: 0 !important;
-}
-
-.precio-producto-etiqueta {
-    background-color: #B26666;
-    font-size: 0.85rem;
-    max-width: 100px;
-}
-
 .linea-divisoria-fina {
     border: 0;
     border-top: 1px solid #7F7F7F;
     opacity: 0.4;
+}
+
+.barra-titulo-bienvenida {
+    background-color: #BF8484;
+    color: #FFFFFF;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.bloque-cuerpo-bienvenida {
+    background-color: #F2F2F2;
+}
+
+.texto-justificado {
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+/* ==========================================================================
+   Tarjetas de Producto (Mockups)
+   ========================================================================== */
+.tarjeta-producto-mockup {
+    border: 1px solid #000000 !important;
+    background-color: #FFFFFF;
+    border-radius: 0 !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.contenedor-foto-producto {
+    width: 100%;
+    height: 220px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+.contenedor-foto-producto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.info-producto-mockup {
+    background-color: #E6E6E6;
+    border-top: 1px solid #A0A0A0;
+    padding: 12px;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+/* Ajustes Navbar para evitar colapsos visuales extraños */
+.header-dmela .dropdown-menu {
+    border-radius: 0;
+}
+
+/* ==========================================================================
+   Media Queries: Optimización Monitores Pequeños / Tablets (md a lg)
+   ========================================================================== */
+@media (max-width: 991px) {
+    /* Ajustes para el menú central de navegación de Bootstrap */
+    .menu-central {
+        width: 100%;
+    }
+    .menu-central .nav-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .menu-central .dropdown-menu {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+
+/* ==========================================================================
+   Media Queries: Celulares y Pantallas Medianas (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Sección Banner Principal: Forzar bloques a ancho completo */
+    #banner-principal .row {
+        flex-direction: column !important;
+        align-items: center;
+    }
+    
+    #banner-principal .col-4 {
+        width: 100% !important;
+        max-width: 400px; /* Evita que en pantallas medianas se estire demasiado horizontalmente */
+        margin-bottom: 15px;
+    }
+    
+    #banner-principal .cuadro-enlace-directo img {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    #banner-principal .fuente-titulos {
+        font-size: 1.3rem !important;
+    }
+
+    /* 2. Sección Lo más nuevo (Carrusel / Catálogo) */
+    .contenedor-foto-producto {
+        height: 180px;
+    }
+
+    /* Forzar que las tarjetas activas del carrusel ocupen el 100% en móvil */
+    #lo-mas-nuevo .carousel-item.active .row,
+    #lo-mas-nuevo .carousel-item .row {
+        justify-content: center !important;
+    }
+
+    #lo-mas-nuevo .col-4 {
+        width: 100% !important;
+        max-width: 320px; /* Tamaño óptimo para la tarjeta en móvil */
+        margin: 0 auto;
+    }
+
+    /* Reubicar las flechas de navegación del carrusel abajo para que no rompan el diseño lateral */
+    #lo-mas-nuevo .row.align-items-center {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* El contenedor del carrusel toma prioridad central */
+    #lo-mas-nuevo .col {
+        flex: 0 0 100% !important;
+        order: 1;
+    }
+
+    /* Posicionamiento de botones inferiores */
+    #lo-mas-nuevo .col-auto {
+        flex: 0 0 auto !important;
+        order: 2;
+        margin: 15px 10px 0 10px;
+    }
+
+    /* 3. Sección "Por qué elegirnos" */
+    #por-que-elegirnos .row {
+        flex-direction: column !important;
+    }
+
+    #por-que-elegirnos .col-7, 
+    #por-que-elegirnos .col-5,
+    #por-que-elegirnos .col-11,
+    #por-que-elegirnos .col-12 {
+        width: 100% !important;
+        max-width: 500px;
+        text-align: center !important;
+        margin: 0 auto;
+    }
+
+    #por-que-elegirnos p {
+        margin-bottom: 20px !important;
+        text-align: justify !important;
+    }
+
+    #por-que-elegirnos img {
+        margin-top: 10px;
+        max-height: 300px;
+        object-fit: cover;
+    }
+}
+
+/* ==========================================================================
+   Media Queries: Pantallas muy pequeñas (Móviles max-width: 576px)
+   ========================================================================== */
+@media (max-width: 576px) {
+    #banner-principal .fuente-titulos {
+        font-size: 1.2rem !important;
+    }
+
+    .barra-titulo-bienvenida h2 {
+        font-size: 1.3rem !important;
+        text-align: center;
+    }
+
+    /* Ajuste fino de textos en bienvenida */
+    #bienvenida p {
+        font-size: 1.05rem !important;
+        padding: 0 5px !important;
+    }
+
+    /* Ajustes del Footer para pantallas pequeñas */
+    footer .d-flex {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+    
+    footer .small {
+        text-align: center !important;
+    }
 }
