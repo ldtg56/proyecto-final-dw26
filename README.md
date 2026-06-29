@@ -9,7 +9,8 @@ agregar aca
 
 
 PIERO
-agregar aca
+copiar y pegar el header de cualquir archivo (pedidosPersonalizados.html) y verificar que al final esté conectado con main.js de Requejo
+
 
 EDUARDO
 agregar aca
