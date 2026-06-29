@@ -1,0 +1,43 @@
+.fuente-titulos {
+    font-family: "Yu Gothic", "Yu Gothic UI", sans-serif;
+}
+
+.fuente-textos {
+    font-family: "Leelawadee", "Leelawadee UI", sans-serif;
+}
+
+#banner-principal {
+    background-color: #B26666;
+}
+
+.contenedor-logo-principal {
+    margin-bottom: -100px;
+}
+
+.cuadro-enlace-directo {
+    border: 1px solid #D3D3D3;
+    background-color: #FFFFFF;
+    transition: transform 0.2s ease;
+}
+
+.cuadro-enlace-directo:hover {
+    transform: translateY(-2px);
+}
+
+.tarjeta-producto-plana {
+    border: 1px solid #7F7F7F !important;
+    background-color: #FFFFFF;
+    border-radius: 0 !important;
+}
+
+.precio-producto-etiqueta {
+    background-color: #B26666;
+    font-size: 0.85rem;
+    max-width: 100px;
+}
+
+.linea-divisoria-fina {
+    border: 0;
+    border-top: 1px solid #7F7F7F;
+    opacity: 0.4;
+}

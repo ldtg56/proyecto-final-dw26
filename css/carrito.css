@@ -1,0 +1,30 @@
+.rounded-circle {
+    width: 32px;
+    height: 32px;
+    background-color: #BF8484;
+    color: #F2F2F2;
+    border: 2px solid #F2F2F2;
+    font-size: 0.95rem;
+}
+
+.container {
+    @media (min-width: 992px) {
+        .flecha-fuera-izq {
+            left: -55px !important;
+        }
+
+        .flecha-fuera-der {
+            right: -55px !important;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .flecha-fuera-izq {
+            left: -5px !important;
+        }
+
+        .flecha-fuera-der {
+            right: -5px !important;
+        }
+    }
+}
