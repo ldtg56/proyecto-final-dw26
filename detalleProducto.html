@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/detalleProducto.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+
+    <link rel="icon" href="img/logoD'Mela.jpg">
+    <title>Pedidos Personalizados - D'Mela</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
+            <div class="container-fluid px-3 px-md-4 px-lg-5">
+
+                <!-- Logo principal -->
+                <a class="navbar-brand me-2 me-lg-4" href="index.html">
+                    <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería" class="logo-header">
+                </a>
+
+                <!-- Botón Hamburguesa (SOLO saldrá en celulares menores a 768px) -->
+                <button class="navbar-toggler border-white p-1 p-sm-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false"
+                    aria-label="Abrir navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Contenedor del Menú -->
+                <div class="collapse navbar-collapse" id="menuNavegacion">
+
+                    <ul class="navbar-nav mx-auto menu-central my-3 my-md-0 align-items-center">
+
+                        <!-- 1. NOSOTROS -->
+                        <li class="nav-item dropdown w-100 text-center">
+                            <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                NOSOTROS <span class="triangulo-opciones">&#9660;</span>
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 text-center text-md-start">
+                                <li><a class="dropdown-item" href="#">Acerca de nosotros</a></li>
+                                <li><a class="dropdown-item" href="#">Historia</a></li>
+                                <li><a class="dropdown-item" href="#">Equipo</a></li>
+                                <li><a class="dropdown-item" href="#">Normas de empresa</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- 2. CATÁLOGO -->
+                        <li class="nav-item dropdown w-100 text-center">
+                            <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CATALOGO <span class="triangulo-opciones">&#9660;</span>
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 text-center text-md-start">
+                                <li><a class="dropdown-item" href="producto.html">Productos</a></li>
+                                <li><a class="dropdown-item" href="detalleProducto.html">Detalle del Producto</a></li>
+                                <li><a class="dropdown-item" href="combos.html">Combos</a></li>
+                                <li><a class="dropdown-item fw-bold text-danger bg-light"
+                                        href="ofertas.html">Ofertas</a></li>
+                                <li><a class="dropdown-item" href="pedidosPersonalizados.html">Pedidos
+                                        Personalizados</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- 3. SOPORTE -->
+                        <li class="nav-item dropdown w-100 text-center">
+                            <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                SOPORTE <span class="triangulo-opciones">&#9660;</span>
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 text-center text-md-start">
+                                <li><a class="dropdown-item" href="#">Inicio Dashboard</a></li>
+                                <li><a class="dropdown-item" href="#">Historial Compras</a></li>
+                                <li><a class="dropdown-item" href="#">Mis Cupones</a></li>
+                                <li><a class="dropdown-item" href="#">Perfil de Usuario</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- 4. CONTACTO -->
+                        <li class="nav-item dropdown w-100 text-center">
+                            <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CONTACTO <span class="triangulo-opciones">&#9660;</span>
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 text-center text-md-start">
+                                <li><a class="dropdown-item" href="#">Contacto y Ubicación</a></li>
+                                <li><a class="dropdown-item" href="#">Contacto FAC</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <!-- ÍCONOS VECTORIALES PUROS (Cero dependencias externas, 100% visibles) -->
+                    <div
+                        class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
+
+                        <!-- Carrito Desplegable -->
+                        <!-- Carrito con Medalla Numérica Flotante (Enlace directo a carrito.html) -->
+                        <a class="text-white text-decoration-none d-flex align-items-center p-1 position-relative"
+                            href="carrito.html" title="Ver mi carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <!-- Medalla roja flotante (badge) -->
+                            <span id="badgeCarritoHeader"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light d-none"
+                                style="font-size: 0.68rem; padding: 0.25em 0.45em;">
+                                0
+                            </span>
+                        </a>
+
+                        <!-- Usuario Desplegable -->
+                        <div class="dropdown">
+                            <a class="text-white text-decoration-none d-flex align-items-center p-1" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <!-- SVG Perfil en círculo exacto a tu referencia -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z" />
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <body>
+
+        <main class="container my-5">
+            <!-- ZONA SUPERIOR: Producto -->
+            <div class="row">
+                <!-- Galería de imágenes -->
+                <div class="col-md-5 d-flex gap-2">
+                    <div class="d-flex flex-column gap-2">
+                        <img src="img/Tor1.jpg" class="border border-dark"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                    </div>
+                    <div class="flex-grow-1">
+                        <img src="img/Tor1.jpg" class="img-fluid border" alt="Torta Principal">
+                    </div>
+                </div>
+
+                <!-- Detalles y botones de compra -->
+                <div class="col-md-3">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="fw-bold">Tortas:</span>
+                        <button class="btn btn-guinda btn-sm px-3">Pequeña</button>
+                        <button
+                            class="btn btn-outline-dark btn-sm px-3 border-guinda text-guinda fw-bold">Mediana</button>
+                    </div>
+
+                    <h5 class="text-secondary mb-4">Torta pequeña de cereza</h5>
+
+                    <div class="d-flex justify-content-between text-muted small mb-2">
+                        <span>Precio Regular</span>
+                        <span>S/ 8.50 x Por</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-muted small mb-3">
+                        <span>Precio por Torta</span>
+                        <span>S/ 8.13 x Por</span>
+                    </div>
+                    <div class="d-flex justify-content-between fw-bold mb-4">
+                        <span>Precio Total</span>
+                        <span>S/ 65.00</span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <button class="btn btn-guinda px-4"
+                            onclick="agregarItemCarrito('201', 'Torta pequeña cereza', 65.00, 'img/Tor1.jpg')">Agregar</button>
+                        <span class="small text-muted">10+ unidades disponibles</span>
+                    </div>
+                </div>
+
+                <!-- Caja derecha de especificaciones -->
+                <div class="col-md-4">
+                    <div class="caja-info-derecha h-100">
+                        <p class="fw-bold mb-1">Vendido en tienda:</p>
+                        <p class="mb-3">D'Mela</p>
+                        <hr>
+
+                        <div class="d-flex justify-content-between fw-bold mb-3">
+                            <span>Cant. Porciones:</span>
+                            <span>8</span>
+                        </div>
+                        <hr>
+
+                        <div class="d-flex justify-content-between fw-bold mb-3">
+                            <span>Peso:</span>
+                            <span>800 gr</span>
+                        </div>
+                        <hr>
+
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="fw-bold">Estilo:</span>
+                            <span class="text-end">Personalizada -<br>San Valentin</span>
+                        </div>
+
+                        <p class="fw-bold mb-2">Método de pago:</p>
+                        <p class="small mb-2">Pago por tarjeta</p>
+                        <div class="iconos-pago">
+                            <img src="img/bcp.png" alt="BCP">
+                            <img src="img/visa.png" alt="Visa">
+                            <img src="img/maste.png" alt="Mastercard">
+                            <img src="img/oh.png" alt="Tarjeta Oh">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZONA INFERIOR: También ofrecemos -->
+            <div class="seccion-tambien-ofrecemos shadow">
+                <h5 class="fw-bold mb-4">También ofrecemos:</h5>
+                <div class="row row-cols-2 row-cols-md-5 g-3">
+
+                    <div class="col">
+                        <div class="card-complemento">
+                            <input type="checkbox" class="form-check-input check-complemento border-dark">
+                            <img src="img/Comb6.jpg" class="img-fluid w-100" alt="Queques">
+                            <p class="small m-0 fw-bold">Queques</p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card-complemento">
+                            <input type="checkbox" class="form-check-input check-complemento border-dark">
+                            <img src="img/Comb4.jpg" class="img-fluid w-100" alt="Macarrones">
+                            <p class="small m-0 fw-bold">Macarrones</p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card-complemento">
+                            <input type="checkbox" class="form-check-input check-complemento border-dark">
+                            <img src="img/Arre1.jpg" class="img-fluid w-100" alt="Paletas">
+                            <p class="small m-0 fw-bold">Paletas</p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card-complemento">
+                            <input type="checkbox" class="form-check-input check-complemento border-dark">
+                            <img src="img/Beb1.jpg" class="img-fluid w-100" alt="Matcha">
+                            <p class="small m-0 fw-bold">Matcha</p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card-complemento">
+                            <input type="checkbox" class="form-check-input check-complemento border-dark">
+                            <img src="img/Comb7.jpg" class="img-fluid w-100" alt="Trufas">
+                            <p class="small m-0 fw-bold">Trufas</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <footer class="pt-5 pb-4 shadow-lg"
+            style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
+
+            <div class="container" style="max-width: 1150px;">
+
+                <div class="row g-4 justify-content-between text-center text-lg-start">
+
+                    <div class="col-12 col-lg-4">
+
+                        <div class="mb-3">
+                            <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería"
+                                class="img-fluid mx-auto mx-lg-0"
+                                style="max-width: 260px; width: 100%; object-fit: contain;">
+                        </div>
+
+                        <div
+                            class="d-flex flex-column flex-sm-row gap-3 align-items-center align-items-lg-start justify-content-center justify-content-lg-start mt-3">
+
+                            <div class="d-flex gap-2">
+                                <a href="#"
+                                    class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
+                                    style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                                <a href="#"
+                                    class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
+                                    style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </div>
+
+                            <div class="small" style="line-height: 1.6;">
+                                <div class="fw-bold mb-1 text-white">
+                                    <i class="fa-solid fa-location-dot me-1"></i> Visítanos en:
+                                </div>
+                                <div class="opacity-90">• Manuel María Izaga 612</div>
+                                <div class="opacity-90">• Los Pinos 438 (Sta. Victoria)</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center align-items-lg-start">
+                        <h6 class="fw-bold mb-3 fs-6 pb-1"
+                            style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                            Nuestros productos
+                        </h6>
+                        <ul
+                            class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta tres leches</a>
+                            </li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Chantilly con durazno</a>
+                            </li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Carrot cake</a></li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta helada</a></li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Selva negra</a></li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Cabeza de indio</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-2 d-flex flex-column align-items-center align-items-lg-start">
+                        <h6 class="fw-bold mb-3 fs-6 pb-1"
+                            style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                            Enlaces de Interés
+                        </h6>
+                        <ul
+                            class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Catálogo</a></li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Combos</a></li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Promociones</a></li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">FAQ</a></li>
+                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Contáctanos</a></li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="col-12 col-md-4 col-lg-3 text-center text-lg-end d-flex flex-column align-items-center align-items-lg-end">
+
+                        <h6 class="fw-bold mb-2 fs-6 text-white">Libro de reclamaciones</h6>
+                        <div class="mb-4">
+                            <a href="#">
+                                <img src="img/libroReclamos.jpg" alt="Libro de Reclamaciones"
+                                    class="img-fluid rounded shadow-sm"
+                                    style="max-width: 145px; background-color: #ffffff; padding: 4px;">
+                            </a>
+                        </div>
+
+                        <h6 class="fw-bold mb-2 fs-6 text-white">Métodos de pago</h6>
+                        <div class="d-flex gap-1 justify-content-center justify-content-lg-end align-items-center">
+                            <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                                style="height: 30px; width: 48px;">
+                                <i class="fa-brands fa-cc-visa fs-5 text-primary"></i>
+                            </div>
+                            <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                                style="height: 30px; width: 48px;">
+                                <i class="fa-brands fa-cc-mastercard fs-5 text-danger"></i>
+                            </div>
+                            <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                                style="height: 30px; width: 48px;">
+                                <i class="fa-brands fa-cc-amex fs-5 text-info"></i>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr class="my-4 opacity-25" style="border-color: #F2F2F2;">
+
+                <div class="text-center small opacity-75" style="font-size: 0.8rem;">
+                    &copy; 2026 D'Mela Dulcería & Cafetería. Todos los derechos reservados.
+                </div>
+
+            </div>
+        </footer>
+
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+
+</html>
