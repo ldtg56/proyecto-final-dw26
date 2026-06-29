@@ -28,3 +28,54 @@
         }
     }
 }
+
+/* ======================================================== */
+/* ANIMACIONES PROFESIONALES DE CARRITO                     */
+/* ======================================================== */
+
+/* 1. Rebote de atención para el ícono del Header */
+@keyframes reboteAlerta {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.35) rotate(-10deg); color: #BF8484; }
+    50%  { transform: scale(0.9) rotate(10deg); }
+    70%  { transform: scale(1.15) rotate(-5deg); }
+    100% { transform: scale(1); }
+}
+
+.animar-rebote {
+    animation: reboteAlerta 0.45s ease-in-out;
+}
+
+/* 2. Aparición suave de las tarjetas al abrir el carrito */
+@keyframes entradaSuave {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tarjeta-animada {
+    animation: entradaSuave 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 3. Efecto de desvanecimiento al eliminar un producto */
+.tarjeta-saliendo {
+    opacity: 0 !important;
+    transform: scale(0.85) translateX(40px) !important;
+    transition: all 0.28s ease-in !important;
+}
+
+/* 4. Respiración sutil en el ícono del carrito vacío */
+@keyframes flotarIdle {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+.icono-respirando {
+    animation: flotarIdle 3s ease-in-out infinite;
+    display: inline-block;
+}

@@ -1,3 +1,13 @@
+/* css/detalleProducto.css */
+:root {
+    --guinda: #8C1616;
+    --fondo-claro: #f4f4f4;
+}
+
+body {
+    background-color: var(--fondo-claro);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .header-dmela {
     background-color: #8C1616;
     border-bottom: 4px solid #A65353;
@@ -87,4 +97,67 @@
     .logo-header { max-height: 62px; }
     .menu-central { margin-right: 0.5rem; }
     .iconos-derecha { gap: 0.8rem !important; }
+}
+/* --- BOTÓN GENERAL --- */
+.btn-guinda {
+    background-color: var(--guinda);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 8px 20px;
+    border: none;
+}
+
+.btn-guinda:hover {
+    background-color: #5c0e0e;
+    color: white;
+}
+
+/* --- CAJA DERECHA (ESPECIFICACIONES) --- */
+.caja-info-derecha {
+    background-color: var(--guinda);
+    color: white;
+    padding: 20px;
+}
+
+.caja-info-derecha hr {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.iconos-pago img {
+    height: 25px;
+    margin-right: 5px;
+    background-color: white;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+/* --- ZONA "TAMBIÉN OFRECEMOS" --- */
+.seccion-tambien-ofrecemos {
+    background-color: var(--guinda);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.card-complemento {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.card-complemento img {
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.check-complemento {
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }
