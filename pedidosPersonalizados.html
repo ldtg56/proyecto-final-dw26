@@ -119,28 +119,20 @@
 
                         <!-- Usuario Desplegable -->
                         <div class="dropdown">
-                            <a class="text-white text-decoration-none d-flex align-items-center p-1 position-relative"
-                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            <a class="text-white text-decoration-none d-flex align-items-center p-1" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <!-- SVG Perfil en círculo exacto a tu referencia -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z" />
                                 </svg>
-
-                                <span id="badgeCarritoHeader"
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light d-none"
-                                    style="font-size: 0.68rem; padding: 0.25em 0.45em;">
-                                    0
-                                </span>
-
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-                                <li><a class="dropdown-item" href="carrito.html">Carrito de Compras</a></li>
-                                <li><a class="dropdown-item" href="finalizarCompra.html">Finalizar Compra</a></li>
-                                <li><a class="dropdown-item" href="#">Confirmación</a></li>
+                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
                             </ul>
                         </div>
 
@@ -151,6 +143,161 @@
         </nav>
     </header>
 
+    <section class="banner-personalizados position-relative shadow-sm">
+
+        <div class="position-absolute top-50 start-50 translate-middle text-center w-100 px-2">
+            <h1 class="cartel-hero-pill d-inline-block shadow-lg m-0 user-select-none">
+                PEDIDOS PERSONALIZADOS
+            </h1>
+        </div>
+
+    </section>
+
+    <main class="container mb-5">
+        <!-- ======================================================== -->
+        <!-- FORMULARIO GOURMET DE PEDIDOS PERSONALIZADOS             -->
+        <!-- ======================================================== -->
+        <div class="card shadow border-0 rounded-4 p-3 p-md-4 p-lg-5 bg-white mx-auto"
+            style="max-width: 950px; border-top: 5px solid #8C1616 !important;">
+
+            <form id="formPersonalizado" onsubmit="procesarPedidoPersonalizado(event)">
+
+                <div class="mb-4">
+                    <h6 class="fw-bold mb-3" style="color: #8C1616;">PASO 1: ¿QUÉ DESEAS CREAR?</h6>
+                    <div class="row align-items-center">
+                        <label class="col-12 col-sm-4 col-form-label fw-bold text-dark small">Tipo de producto:</label>
+                        <div class="col-12 col-sm-6 col-md-5">
+                            <select id="tipoProd" onchange="actualizarOpciones()"
+                                class="form-select form-select-sm border-secondary border-opacity-50 fw-semibold text-dark">
+                                <option value="Pastel" selected>Pastel Clásico</option>
+                                <option value="Cupcakes">Cupcakes</option>
+                                <option value="Bocaditos">Bocaditos (Salados/Dulces)</option>
+                                <option value="Tarta">Tarta / Pie</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="opacity-25 my-4">
+
+                <div class="mb-4">
+                    <h6 class="fw-bold mb-3" style="color: #8C1616;">PASO 2: ESPECIFICACIONES TÉCNICAS</h6>
+
+                    <div class="row g-3 align-items-center mb-2">
+                        <label class="col-12 col-sm-4 col-form-label fw-bold text-dark small">Tamaño /
+                            Porciones:</label>
+                        <div class="col-12 col-sm-8 col-md-7">
+                            <select id="specTamano" onchange="recalcularCotizacion()"
+                                class="form-select form-select-sm border-secondary border-opacity-50">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-center mb-2">
+                        <label class="col-12 col-sm-4 col-form-label fw-bold text-dark small">Tipo de Masa /
+                            Base:</label>
+                        <div class="col-12 col-sm-6 col-md-5">
+                            <select id="specMasa" onchange="recalcularCotizacion()"
+                                class="form-select form-select-sm border-secondary border-opacity-50">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-center">
+                        <label class="col-12 col-sm-4 col-form-label fw-bold text-dark small">Sabor / Relleno
+                            principal:</label>
+                        <div class="col-12 col-sm-6 col-md-5">
+                            <select id="specRelleno" onchange="recalcularCotizacion()"
+                                class="form-select form-select-sm border-secondary border-opacity-50">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="opacity-25 my-4">
+
+                <div class="mb-4">
+                    <h6 class="fw-bold mb-3" style="color: #8C1616;">PASO 3: DISEÑO Y DECORACIÓN</h6>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark small">Temática o colores principales: <span
+                                class="text-danger">*</span></label>
+                        <input type="text" id="tematicaText"
+                            class="form-control form-control-sm border-secondary border-opacity-50"
+                            placeholder="Ej: Spiderman, Tonos pasteles...">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-dark small">Mensaje especial en el producto
+                            (Opcional):</label>
+                        <input type="text" id="mensajeText"
+                            class="form-control form-control-sm border-secondary border-opacity-50"
+                            placeholder="Ej: ¡Feliz Cumpleaños Mamá!">
+                    </div>
+
+                    <label class="form-label fw-bold text-dark small mb-2"><i class="fa-solid fa-camera me-1"></i> Subir
+                        imagen de referencia (Opcional pero recomendado):</label>
+
+                    <div id="dropZone" onclick="document.getElementById('inputArchivoRef').click()"
+                        class="border border-2 border-secondary border-opacity-50 rounded-3 p-4 text-center user-select-none"
+                        style="border-style: dashed !important; cursor: pointer; background-color: #FAFAFA; transition: all 0.3s;">
+
+                        <input type="file" id="inputArchivoRef" class="d-none" accept=".jpg,.jpeg,.png"
+                            onchange="capturarNombreArchivo(this)">
+
+                        <span class="badge text-white px-3 py-2 rounded-pill mb-2 shadow-sm"
+                            style="background-color: #8C1616;">
+                            <i class="fa-solid fa-paperclip me-1"></i> Seleccionar archivo...
+                        </span>
+                        <p class="mb-1 text-dark fw-bold small">Haz clic aquí para buscar en tu equipo</p>
+                        <span class="text-muted d-block" style="font-size: 0.75rem;">(Formatos: JPG, PNG. Máximo:
+                            5MB)</span>
+
+                        <div id="avisoArchivoSubido" class="mt-3 text-success fw-bold small d-none p-2 rounded"
+                            style="background-color: #e8f5e9; border: 1.5px solid #a5d6a7; word-break: break-all;">
+                        </div>
+
+                    </div>
+                </div>
+
+                <hr class="opacity-25 my-4">
+
+                <div class="mb-4">
+                    <h6 class="fw-bold mb-3" style="color: #8C1616;">PASO 4: FECHA DE ENTREGA</h6>
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6">
+                            <label class="form-label fw-bold text-dark small">Fecha requerida: <span
+                                    class="text-danger">*</span></label>
+                            <input type="date" id="fechaReq"
+                                class="form-control form-control-sm border-secondary border-opacity-50 text-secondary"
+                                required>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <label class="form-label fw-bold text-dark small">Hora estimada: <span
+                                    class="text-danger">*</span></label>
+                            <input type="time" id="horaReq"
+                                class="form-control form-control-sm border-secondary border-opacity-50 text-secondary"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-5 pt-3 border-top d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+                    <div class="text-center text-sm-start">
+                        <span class="text-muted d-block small fw-bold">COTIZACIÓN DINÁMICA:</span>
+                        <span id="precioCotizadoText" class="fw-bolder fs-2" style="color: #8C1616;">S/ 0.00</span>
+                    </div>
+                    <button type="submit"
+                        class="btn text-white fw-bold py-3 px-5 rounded-pill shadow fs-5 w-100 w-sm-auto"
+                        style="background-color: #8C1616; letter-spacing: 1px;">
+                        AÑADIR AL CARRITO
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </main>
 
     <footer class="pt-5 pb-4 shadow-lg"
         style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
@@ -268,6 +415,8 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pedidosPersonalizados.js"></script>
 </body>
 
 </html>
