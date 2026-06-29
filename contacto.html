@@ -132,125 +132,149 @@
         </nav>
     </header>
 
-    <main class="position-relative py-5" style="background-color: #f7f7f7; min-height: 65vh; overflow: hidden;">
+    <!-- ==========================================
+         SECCIÓN PRINCIPAL: CONTACTO Y UBICACIÓN
+         ========================================== -->
+    <main>
+        <!-- SECCIÓN 1: FORMULARIO DE CONTACTO (Fondo Blanco) -->
+        <section class="bg-white py-5">
+            <div class="container py-lg-4">
+                <div class="row g-5 align-items-start">
 
-        <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image: url('img/Designer__3_-removebg-preview\ \(1\).png'); 
-                    background-repeat: repeat; 
-                    opacity: 0.06; 
-                    filter: invert(1); 
-                    z-index: 0;">
-        </div>
+                    <!-- Lado Izquierdo: Formulario -->
+                    <div class="col-12 col-lg-6 pe-lg-5">
+                        <!-- Le agregamos un max-width de 450px para que no se estire tanto -->
+                        <form style="max-width: 450px;" class="mx-auto mx-lg-0">
+                            <div class="mb-3">
+                                <label for="nombres" class="form-label text-muted small mb-1">Nombres:</label>
+                                <!-- form-control-sm para hacerlo más sutil -->
+                                <input type="text" class="form-control form-control-sm border-secondary shadow-none"
+                                    id="nombres">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label text-muted small mb-1">Email:</label>
+                                <input type="email" class="form-control form-control-sm border-secondary shadow-none"
+                                    id="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="asunto" class="form-label text-muted small mb-1">Asunto:</label>
+                                <input type="text" class="form-control form-control-sm border-secondary shadow-none"
+                                    id="asunto">
+                            </div>
+                            <div class="mb-4">
+                                <label for="texto" class="form-label text-muted small mb-1">Texto:</label>
+                                <!-- Aquí no usamos -sm para que tengas buen espacio para escribir -->
+                                <textarea class="form-control border-secondary shadow-none" id="texto"
+                                    rows="4"></textarea>
+                            </div>
 
-        <div class="container position-relative" style="z-index: 2;">
-            <div class="text-center mb-5">
-                <i class="fa-solid fa-cake-candles fs-2 mb-3" style="color: #555;"></i>
-                <h2 class="fw-bold text-dark mb-2">Preguntas Frecuentes</h2>
-                <p class="text-muted">Todo lo que necesitas saber sobre nuestros postres, pedidos y envíos.</p>
+                            <!-- Simulador de reCAPTCHA -->
+                            <div class="d-flex align-items-center justify-content-between border rounded p-2 mb-4"
+                                style="max-width: 280px; background-color: #f9f9f9; border-color: #ccc !important;">
+                                <div class="form-check mb-0 d-flex align-items-center gap-2 ms-2">
+                                    <input class="form-check-input mt-0 border-secondary" type="checkbox" value=""
+                                        id="recaptcha" style="width: 20px; height: 20px; border-radius: 2px;">
+                                    <label class="form-check-label pt-1 ms-1 text-dark" for="recaptcha"
+                                        style="font-size: 0.8rem;">
+                                        No soy un robot
+                                    </label>
+                                </div>
+                                <div class="text-center me-2" style="font-size: 0.6rem; color: #555;">
+                                    <i class="fa-solid fa-arrows-rotate fs-5 text-primary mb-1"></i><br>
+                                    reCAPTCHA
+                                </div>
+                            </div>
+
+                            <!-- Botón Enviar -->
+                            <button type="submit" class="btn text-white px-5 py-2 fw-semibold shadow-sm"
+                                style="background-color: #8C1616; border-radius: 4px;">Enviar</button>
+                        </form>
+                    </div>
+
+                    <!-- Lado Derecho: Info de Contacto -->
+                    <div class="col-12 col-lg-6 ps-lg-4 mt-lg-0 mt-5">
+                        <h3 class="fw-bold mb-4 text-dark text-center text-lg-start" style="font-size: 2rem;">
+                            Contáctanos</h3>
+                        <p class="text-muted mb-5" style="line-height: 1.8; font-size: 0.95rem;">
+                            Queremos estar en tus mejores momentos. Por eso, te facilitamos todas nuestras vías de
+                            contacto para que pedir esa torta o dulce que tanto te gusta sea rápido y sencillo.
+                        </p>
+
+                        <div class="d-flex flex-column gap-4 mb-5 ps-lg-2">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-phone fs-4" style="color: #333;"></i>
+                                <span class="text-muted fw-medium fs-5">908567234</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="fa-brands fa-whatsapp fs-3" style="color: #333;"></i>
+                                <span class="text-muted fw-medium fs-5">945126778</span>
+                            </div>
+                        </div>
+
+                        <!-- Contenedor temporal elegante mientras pones tu foto real -->
+                        <div class="mt-4">
+                            <img src="img/dmelaa.jpg" alt="Interior Local D'Mela"
+                                class="img-fluid rounded shadow-sm w-100 object-fit-cover" style="max-height: 270px;">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- SECCIÓN 2: UBICACIÓN Y HORARIOS (Fondo con Patrón) -->
+        <section class="position-relative py-5" style="background-color: #f7f7f7; overflow: hidden;">
+
+            <!-- Capa de fondo con tu imagen invertida y semi-transparente -->
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image: url('img/Designer__3_-removebg-preview\ \(1\).png'); 
+                        background-repeat: repeat; 
+                        opacity: 0.06; 
+                        filter: invert(1); 
+                        z-index: 0;">
             </div>
 
-            <div class="accordion mx-auto" id="acordeonFAQ" style="max-width: 800px;">
-                <div class="accordion-item mb-4 border-0 bg-transparent">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed shadow-sm text-dark" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#faq1"
-                            style="background-color: #e2e2e2; border: 1px solid #333; border-radius: 6px !important;">
-                            <div class="w-100 text-center fw-semibold">¿Con cuánto tiempo de anticipación debo pedir una
-                                torta?</div>
-                        </button>
-                    </h2>
-                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#acordeonFAQ">
-                        <div
-                            class="accordion-body text-center text-muted px-md-5 pt-3 bg-white border border-top-0 rounded-bottom">
-                            Para tortas personalizadas, te recomendamos realizar tu reserva con al menos 48 horas de
-                            anticipación. Para postres clásicos, porciones de vitrina o bocaditos, puedes acercarte
-                            directamente o pedirlos el mismo día, sujeto a la disponibilidad de nuestros locales.
+            <div class="container position-relative" style="z-index: 2;">
+
+                <h3 class="text-muted fs-4 mb-5 text-center text-lg-start">Ubicación y horarios</h3>
+
+                <!-- Sede 1 -->
+                <div class="mb-5 pb-3">
+                    <p class="text-muted small mb-2">Manuel María Izaga 612, Chiclayo 14001</p>
+                    <div class="row align-items-center g-4">
+                        <div class="col-12 col-md-6">
+                            <!-- Imagen del Mapa 1 -->
+                            <img src="img/local1.png" alt="Mapa Sede Principal"
+                                class="img-fluid rounded shadow-sm w-100 border border-secondary border-opacity-25"
+                                style="max-height: 220px; object-fit: cover;">
+                        </div>
+                        <div class="col-12 col-md-6 ps-md-4 text-muted">
+                            <p class="mb-2 fs-5">Lunes a Viernes: 8:00 AM - 10:00 PM</p>
+                            <p class="mb-0 fs-5">Sábados y Domingos: 9:00 AM - 11:00 PM</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="accordion-item mb-4 border-0 bg-transparent">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed shadow-sm text-dark" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#faq2"
-                            style="background-color: #e2e2e2; border: 1px solid #333; border-radius: 6px !important;">
-                            <div class="w-100 text-center fw-semibold">¿Tienen servicio de delivery a todo Chiclayo o
-                                solo recojo en tienda?</div>
-                        </button>
-                    </h2>
-                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#acordeonFAQ">
-                        <div
-                            class="accordion-body text-center text-muted px-md-5 pt-3 bg-white border border-top-0 rounded-bottom">
-                            Sí, contamos con servicio de delivery a todo Chiclayo con un costo adicional dependiendo de
-                            la zona. También puedes optar por el recojo gratuito en cualquiera de nuestras tiendas.
+                <!-- Sede 2 -->
+                <div class="mb-3">
+                    <p class="text-muted small mb-2">Ca. los pinos 438, Chiclayo 14008</p>
+                    <div class="row align-items-center g-4">
+                        <div class="col-12 col-md-6">
+                            <!-- Imagen del Mapa 2 -->
+                            <img src="img/local2.png" alt="Mapa Sucursal Los Pinos"
+                                class="img-fluid rounded shadow-sm w-100 border border-secondary border-opacity-25"
+                                style="max-height: 220px; object-fit: cover;">
                         </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item mb-4 border-0 bg-transparent">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed shadow-sm text-dark" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#faq3"
-                            style="background-color: #e2e2e2; border: 1px solid #333; border-radius: 6px !important;">
-                            <div class="w-100 text-center fw-semibold">¿Cuáles son los métodos de pago que aceptan para
-                                los pedidos online?</div>
-                        </button>
-                    </h2>
-                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#acordeonFAQ">
-                        <div
-                            class="accordion-body text-center text-muted px-md-5 pt-3 bg-white border border-top-0 rounded-bottom">
-                            Aceptamos transferencias bancarias, Yape, Plin y tarjetas de crédito/débito a través de
-                            nuestra pasarela de pagos segura.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item mb-4 border-0 bg-transparent">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed shadow-sm text-dark" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#faq4"
-                            style="background-color: #e2e2e2; border: 1px solid #333; border-radius: 6px !important;">
-                            <div class="w-100 text-center fw-semibold">¿Realizan tortas con diseños temáticos para
-                                cumpleaños o bodas?</div>
-                        </button>
-                    </h2>
-                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#acordeonFAQ">
-                        <div
-                            class="accordion-body text-center text-muted px-md-5 pt-3 bg-white border border-top-0 rounded-bottom">
-                            ¡Claro que sí! Contamos con un equipo especializado en fondant y buttercream para hacer
-                            realidad el diseño que tengas en mente. Escríbenos para cotizar.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item mb-5 border-0 bg-transparent">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed shadow-sm text-dark" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#faq5"
-                            style="background-color: #e2e2e2; border: 1px solid #333; border-radius: 6px !important;">
-                            <div class="w-100 text-center fw-semibold">¿Cuentan con opciones de postres sin azúcar o
-                                para personas alérgicas?</div>
-                        </button>
-                    </h2>
-                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#acordeonFAQ">
-                        <div
-                            class="accordion-body text-center text-muted px-md-5 pt-3 bg-white border border-top-0 rounded-bottom">
-                            Sí, tenemos una línea especial de postres endulzados con stevia y opciones sin gluten.
-                            Consulta con nuestro equipo sobre la disponibilidad del día.
+                        <div class="col-12 col-md-6 ps-md-4 text-muted">
+                            <p class="mb-3 fs-5">Horario Sucursal:</p>
+                            <p class="mb-2 fs-5">Lunes a Sábado: 9:00 AM - 9:00 PM</p>
+                            <p class="mb-2 fs-5">Domingos: 10:00 AM - 5:00 PM</p>
+                            <p class="mb-0 fs-5">Tel: (074) 505152</p>
                         </div>
                     </div>
                 </div>
 
             </div>
+        </section>
 
-            <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3 mt-2">
-                <span class="text-muted fw-semibold">¿No encontraste lo que buscabas?</span>
-                <a href="contacto.html" class="btn text-white px-4 py-2 fw-semibold shadow-sm"
-                    style="background-color: #8C1616; border-radius: 4px;">
-                    Contáctanos
-                </a>
-            </div>
-
-        </div>
     </main>
 
 
