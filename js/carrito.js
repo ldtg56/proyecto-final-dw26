@@ -55,31 +55,30 @@ function renderizarPantalla() {
         sumaSubtotal += subtotalProd;
         conteoUnidades += prod.cantidad;
 
+        // ============================================================
+        // LÓGICA DIFERENCIADA PARA PEDIDOS PERSONALIZADOS Y CATÁLOGO
+        // ============================================================
         let filasDetalle = '';
-
-        if (prod.tipo === 'torta' || !prod.tipo) {
-            // Dibuja estructura de Torta
-            const tam = prod.detalles?.Tamaño || 'Mediano (Estándar)';
-            const masa = prod.detalles?.Masa || 'Clásica de la casa';
-            const rel = prod.detalles?.Relleno || 'Manjar o Fudge artesanal';
-            const msj = prod.detalles?.Mensaje || 'Sin mensaje';
-
-            filasDetalle = `
-                <strong class="fw-bold">Tamaño:</strong> <span>${tam}</span>
-                <strong class="fw-bold">Masa:</strong> <span>${masa}</span>
-                <strong class="fw-bold">Relleno:</strong> <span>${rel}</span>
-                <strong class="fw-bold">Mensaje:</strong> <span class="fst-italic">"${msj}"</span>
-            `;
-        } else if (prod.tipo === 'combo') {
-            // Dibuja estructura de Combo
-            const incluye = prod.detalles?.Incluye || 'Productos seleccionados del combo';
-            filasDetalle = `
-                <strong class="fw-bold">Incluye:</strong> <span>${incluye}</span>
-                <strong class="fw-bold">Presentación:</strong> <span>Caja Especial D'Mela</span>
-            `;
-        } else {
-            // Dibuja estructura de Velas/Globos
-            filasDetalle = `<strong class="fw-bold">Categoría:</strong> <span>Adicionales de fiesta</span>`;
+        if (prod.detalles) {
+            if (prod.tipo === 'personalizado') {
+                // EXCLUSIVO PERSONALIZADOS: Grilla 2 columnas fluida y limpia
+                const itemsGrid = Object.entries(prod.detalles).map(([clave, valor]) => 
+                    `<div class="col-12 col-md-6 mb-2 d-flex flex-wrap align-items-baseline gap-1">
+                        <strong class="fw-bold text-dark text-nowrap" style="font-size: 0.9rem;">${clave}:</strong> 
+                        <span class="text-secondary" style="word-break: break-word; font-size: 0.88rem;">${valor}</span>
+                    </div>`
+                ).join('');
+                
+                filasDetalle = `<div class="row gx-3 gy-1 w-100 m-0 pt-2 pb-1">${itemsGrid}</div>`;
+            } else {
+                // TODOS LOS DEMÁS PRODUCTOS: Formato clásico vertical de siempre
+                filasDetalle = Object.entries(prod.detalles).map(([clave, valor]) =>
+                    `<div class="mb-1">
+                        <strong class="fw-bold text-dark">${clave}:</strong> 
+                        <span class="text-secondary">${valor}</span>
+                    </div>`
+                ).join('');
+            }
         }
 
         const plantillaTarjeta = `
@@ -87,7 +86,7 @@ function renderizarPantalla() {
                 <div class="row g-3 align-items-center">
                     
                     <div class="col-12 col-sm-4 text-center">
-                        <img src="${prod.imagen}" alt="${prod.nombre}" class="img-fluid rounded" style="max-height: 140px; object-fit: contain;">
+                        <img src="${prod.imagen}" class="img-fluid rounded shadow-sm border" style="max-height: 140px; width: 100%; object-fit: contain; background-color: #f8f9fa;">
                     </div>
                     
                     <div class="col-12 col-sm-8">
@@ -100,7 +99,7 @@ function renderizarPantalla() {
                             </div>
                         </div>
                         
-                        <div class="d-grid text-dark mb-3" style="grid-template-columns: 85px 1fr; row-gap: 6px; font-size: 0.9rem;">
+                        <div class="text-dark mb-3" style="font-size: 0.9rem;">
                             ${filasDetalle}
                         </div>
                         

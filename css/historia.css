@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Estilos Base y Escala de Contención para la página de Historia
+   ========================================================================== */
+body {
+    background-color: #F4F4F4; /* fondo gris casi blanco del mockup */
+}
+
+.fuente-titulos {
+    font-family: "Yu Gothic", "Yu Gothic UI", sans-serif;
+}
+
+.fuente-textos {
+    font-family: "Leelawadee", "Leelawadee UI", sans-serif;
+}
+
+/* restricción de escala global para mantener el tamaño elegante */
+#contenido-historia .container {
+    max-width: 950px; 
+}
+
+.texto-justificado {
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+/* ==========================================================================
+   Sección: Banner Hero
+   ========================================================================== */
+.banner-seccion {
+    height: 260px; 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.2); 
+}
+
+.titulo-banner {
+    background-color: #A65353;
+    color: white;
+    padding: 12px 60px;
+    border-radius: 50px; 
+    font-weight: bold;
+    font-size: 1.8rem; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+/* ==========================================================================
+   Textos e Imágenes de las secciones de Historia
+   ========================================================================== */
+.titulo-seccion-historia {
+    color: #4A4A4A; 
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.parrafo-historia {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.imagen-historia {
+    object-fit: cover;
+    height: 280px; /* altura uniforme para todas las fotos descriptivas */
+    border-radius: 2px;
+}
+
+.pie-de-foto {
+    font-size: 0.85rem;
+    color: #777777;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   Sección Intermedia: Fondo Rojo Colonial
+   ========================================================================== */
+.fondo-rojo-historia {
+    background-color: #A65353;
+    width: 100%;
+}
+
+.fondo-rojo-historia .imagen-historia {
+    border: 3px solid rgba(255, 255, 255, 0.15); /* un marco sutil claro para la torta sobre fondo rojo */
+}
+
+/* ==========================================================================
+   Media Queries: Responsividad para móviles
+   ========================================================================== */
+@media (max-width: 768px) {
+    .banner-seccion {
+        height: 200px;
+    }
+    
+    .titulo-banner {
+        font-size: 1.5rem;
+        padding: 10px 40px;
+    }
+
+    .titulo-seccion-historia {
+        font-size: 1.35rem;
+        text-align: center;
+    }
+
+    .pie-de-foto {
+        text-align: center !important;
+    }
+
+    .imagen-historia {
+        height: auto;
+        max-height: 280px;
+    }
+}

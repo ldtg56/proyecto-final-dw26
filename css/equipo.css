@@ -1,0 +1,144 @@
+.fuente-titulos {
+    font-family: "Yu Gothic", "Yu Gothic UI", sans-serif;
+}
+
+.fuente-textos {
+    font-family: "Leelawadee", "Leelawadee UI", sans-serif;
+}
+
+#contenido-equipo .container {
+    max-width: 950px; 
+}
+
+.texto-justificado {
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+.banner-seccion {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    position: relative;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.2); 
+}
+
+.titulo-banner {
+    background-color: #A65353;
+    color: white;
+    padding: 12px 60px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.imagen-dona-mela {
+    max-height: 320px; 
+    object-fit: contain;
+}
+
+.titulo-biografia {
+    color: #6c757d; 
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.titulo-biografia strong {
+    color: #4A4A4A; 
+}
+
+.parrafo-biografia {
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.fondo-rosado-personal {
+    background-color:  #BF8484;
+    width: 100%;
+}
+
+.imagen-empleado {
+    object-fit: cover;
+    height: 320px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.texto-nombre-empleado {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.texto-cargo-empleado {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.imagen-recuerdo {
+    object-fit: cover;
+    height: 220px;
+    border-radius: 2px;
+}
+
+.texto-recuerdo {
+    font-size: 0.8rem;
+    color: #333333;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .banner-seccion {
+        height: 200px;
+    }
+    
+    .titulo-banner {
+        font-size: 1.5rem;
+        padding: 10px 40px;
+    }
+
+    .imagen-dona-mela {
+        max-height: 250px;
+    }
+    
+    .titulo-biografia {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .imagen-empleado {
+        height: auto;
+        max-height: 400px;
+    }
+
+    .imagen-recuerdo {
+        height: auto;
+    }
+    
+    .texto-recuerdo {
+        text-align: center;
+    }
+
+    .carrusel-fila {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .columna-contenido {
+        flex: 0 0 100% !important;
+        order: 1;
+    }
+
+    .columna-flecha {
+        flex: 0 0 auto !important;
+        order: 2;
+        margin: 15px 20px 0 20px;
+    }
+}

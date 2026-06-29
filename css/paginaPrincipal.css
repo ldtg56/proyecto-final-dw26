@@ -1,3 +1,8 @@
+
+body {
+    background-color: #F8F9FA; 
+}
+
 .fuente-titulos {
     font-family: "Yu Gothic", "Yu Gothic UI", sans-serif;
 }
@@ -6,38 +11,266 @@
     font-family: "Leelawadee", "Leelawadee UI", sans-serif;
 }
 
+
+#contenido-principal .container {
+    max-width: 950px; 
+}
+
+
 #banner-principal {
-    background-color: #B26666;
+    background-color:#A65353;
+    padding-top: 2rem !important;
+    padding-bottom: 3.5rem !important;
 }
 
 .contenedor-logo-principal {
     margin-bottom: -100px;
 }
 
+.contenedor-logo-principal img {
+    max-width: 480px !important; 
+}
+
 .cuadro-enlace-directo {
     border: 1px solid #D3D3D3;
     background-color: #FFFFFF;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .cuadro-enlace-directo:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
-.tarjeta-producto-plana {
-    border: 1px solid #7F7F7F !important;
-    background-color: #FFFFFF;
-    border-radius: 0 !important;
+.cuadro-enlace-directo img {
+    height: 160px; 
+    object-fit: cover;
 }
 
-.precio-producto-etiqueta {
-    background-color: #B26666;
-    font-size: 0.85rem;
-    max-width: 100px;
+.cuadro-enlace-directo a {
+    font-size: 1.15rem !important; 
+    letter-spacing: 0.5px;
 }
 
 .linea-divisoria-fina {
     border: 0;
     border-top: 1px solid #7F7F7F;
-    opacity: 0.4;
+    opacity: 0.2;
+}
+
+.barra-titulo-bienvenida {
+    background-color:  #BF8484;
+    color: #FFFFFF;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.barra-titulo-bienvenida h2 {
+    font-size: 1.35rem !important; 
+}
+
+.bloque-cuerpo-bienvenida {
+    background-color: #F2F2F2;
+}
+
+.bloque-cuerpo-bienvenida p {
+    font-size: 1rem !important;
+    line-height: 1.6;
+}
+
+.bloque-cuerpo-bienvenida img {
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.texto-justificado {
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+
+#lo-mas-nuevo {
+    background-color: #F2F2F2;
+}
+
+#lo-mas-nuevo h2 {
+    font-size: 1.35rem !important; /* consistencia de títulos de sección */
+}
+
+.tarjeta-producto-mockup {
+    border: 1px solid #A0A0A0 !important;
+    background-color: #FFFFFF;
+    border-radius: 0 !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.contenedor-foto-producto {
+    width: 100%;
+    height: 180px; /* proporción exacta de tarjeta de catálogo */
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+.contenedor-foto-producto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.info-producto-mockup {
+    background-color: #E6E6E6;
+    border-top: 1px solid #A0A0A0;
+    padding: 10px;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.precio-recuadro-mockup {
+    font-size: 0.9rem;
+    color: #000000;
+}
+
+
+#por-que-elegirnos {
+    background-color:  #BF8484;
+}
+
+#por-que-elegirnos h3 {
+    font-size: 1.4rem !important;
+}
+
+#por-que-elegirnos p {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+}
+
+#por-que-elegirnos img {
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* ajustes generales de la barra de navegación superior */
+.header-dmela .dropdown-menu {
+    border-radius: 0;
+}
+
+
+@media (max-width: 991px) {
+    .menu-central {
+        width: 100%;
+    }
+    .menu-central .nav-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .menu-central .dropdown-menu {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+
+@media (max-width: 768px) {
+    
+    /*banner principal responsivo */
+    #banner-principal .row {
+        flex-direction: column !important;
+        align-items: center;
+    }
+    
+    #banner-principal .col-4 {
+        width: 100% !important;
+        max-width: 380px;
+        margin-bottom: 15px;
+    }
+    
+    #banner-principal .cuadro-enlace-directo img {
+        height: 180px;
+    }
+
+    #banner-principal .contenedor-logo-principal {
+        margin-bottom: -50px;
+    }
+
+    /*carrusel en móviles */
+    .contenedor-foto-producto {
+        height: 180px;
+    }
+
+    #lo-mas-nuevo .carousel-item.active .row,
+    #lo-mas-nuevo .carousel-item .row {
+        justify-content: center !important;
+    }
+
+    #lo-mas-nuevo .col-4 {
+        width: 100% !important;
+        max-width: 290px;
+        margin: 0 auto;
+    }
+
+    #lo-mas-nuevo .row.align-items-center {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #lo-mas-nuevo .col {
+        flex: 0 0 100% !important;
+        order: 1;
+    }
+
+    #lo-mas-nuevo .col-auto {
+        flex: 0 0 auto !important;
+        order: 2;
+        margin: 15px 10px 0 10px;
+    }
+
+    /* 3. por qué elegirnos apilado en móvil */
+    #por-que-elegirnos .row {
+        flex-direction: column !important;
+    }
+
+    #por-que-elegirnos .col-7, 
+    #por-que-elegirnos .col-5,
+    #por-que-elegirnos .col-11,
+    #por-que-elegirnos .col-12 {
+        width: 100% !important;
+        max-width: 480px;
+        text-align: center !important;
+        margin: 0 auto;
+    }
+
+    #por-que-elegirnos p {
+        margin-bottom: 15px !important;
+    }
+
+    #por-que-elegirnos img {
+        margin-top: 10px;
+        max-height: 220px;
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 576px) {
+    #banner-principal .contenedor-logo-principal img {
+        max-width: 280px !important;
+    }
+
+    .barra-titulo-bienvenida h2 {
+        font-size: 1.15rem !important;
+        text-align: center;
+    }
+
+    #bienvenida p {
+        font-size: 0.95rem !important;
+        padding: 0px !important;
+    }
 }

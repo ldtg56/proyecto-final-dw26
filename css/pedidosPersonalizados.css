@@ -88,3 +88,81 @@
     .menu-central { margin-right: 0.5rem; }
     .iconos-derecha { gap: 0.8rem !important; }
 }
+
+/* ======================================================== */
+/* BANNER HERO FONDO ÚNICO - D'MELA                          */
+/* ======================================================== */
+
+.banner-personalizados {
+    /* Llamamos a tu imagen única local */
+    background-image: url('../img/fondoTortas.png'); 
+    
+    /* Propiedades maestras de centrado de imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Altura fija imponente en PC */
+    width: 100%;
+    height: 380px;
+    margin-bottom: 3rem;
+}
+
+/* El cartel central granate estilo Pill de tu referencia */
+.cartel-hero-pill {
+    background-color: rgba(158, 71, 71, 0.92); /* Color granate exacto de tu ventana */
+    color: #FFFFFF;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    padding: 1.2rem 3.8rem;
+    border-radius: 60px;
+    border: 2px solid #7A3333;
+    backdrop-filter: blur(4px); /* Efecto difuminado moderno tras el cartel */
+    max-width: 95%;
+    white-space: nowrap;
+}
+
+
+/* ======================================================== */
+/* RESPONSIVIDAD EN LAS 3 PANTALLAS                         */
+/* ======================================================== */
+
+/* 1. PANTALLA TABLET (De 768px hasta 991px) */
+@media (max-width: 991px) {
+    .banner-personalizados {
+        height: 280px; /* Reducimos la altura proporcionalmente */
+    }
+    .cartel-hero-pill {
+        font-size: 1.45rem;
+        padding: 0.95rem 2.2rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+/* 2. PANTALLA CELULAR (Menor a 768px) */
+@media (max-width: 767px) {
+    .banner-personalizados {
+        height: 180px; /* Altura compacta ideal para móviles */
+        margin-bottom: 2rem;
+    }
+    .cartel-hero-pill {
+        font-size: 1rem;
+        padding: 0.75rem 1.3rem;
+        letter-spacing: 1px;
+        border-width: 1.5px;
+        white-space: normal; /* Permite dividir el texto si el celular es muy angosto */
+        line-height: 1.25;
+    }
+}
+
+/* Aviso de carga de imagen exitosa */
+#avisoArchivoSubido {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border: 1.5px solid #a5d6a7;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    word-break: break-all; /* Evita que nombres de archivos muy largos deformen la caja en móviles */
+}
