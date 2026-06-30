@@ -56,43 +56,57 @@ function renderizarResumenCheckout() {
     btnPagar.style.opacity = '1';
 
     let sumaSubtotal = 0;
+    let sumaPuntos = 0; // NUEVA VARIABLE PARA LOS PUNTOS
 
     carrito.forEach(prod => {
         const subtotalProd = prod.precio * prod.cantidad;
         sumaSubtotal += subtotalProd;
 
+        // Calculamos los puntos
+        const puntosProd = Math.floor(prod.precio) * prod.cantidad;
+        sumaPuntos += puntosProd;
+
+        // =========================================================
+        // 1. NUEVA LÓGICA DE DETALLES (Dinámica y sin saltos de línea)
+        // =========================================================
         let filasDetalle = '';
 
-        if (prod.tipo === 'torta' || !prod.tipo) {
-            const tam = prod.detalles?.Tamaño || 'Mediano';
-            const masa = prod.detalles?.Masa || 'Clásica';
-            const rel = prod.detalles?.Relleno || 'Fudge';
-            const msj = prod.detalles?.Mensaje || 'Sin mensaje';
-            filasDetalle = `
-                <div><strong class="fw-bold">Tamaño:</strong> ${tam}</div>
-                <div><strong class="fw-bold">Masa:</strong> ${masa}</div>
-                <div><strong class="fw-bold">Relleno:</strong> ${rel}</div>
-                <div><strong class="fw-bold">Mensaje:</strong> "${msj}"</div>
-            `;
+        if (prod.detalles && Object.keys(prod.detalles).length > 0) {
+            // Convierte los detalles en texto continuo separado por barras (|)
+            filasDetalle = Object.entries(prod.detalles)
+                .map(([clave, valor]) => `<span class="d-inline-block"><strong class="fw-bold">${clave}:</strong> ${valor}</span>`)
+                .join('<span class="mx-1 opacity-50">|</span>');
         } else if (prod.tipo === 'combo') {
-            filasDetalle = `<div><strong class="fw-bold">Incluye:</strong> ${prod.detalles?.Incluye}</div>`;
+            filasDetalle = `<span class="d-inline-block"><strong class="fw-bold">Categoría:</strong> Combo Especial</span>`;
         } else {
-            filasDetalle = `<div><strong class="fw-bold">Categoría:</strong> Adicionales</div>`;
+            filasDetalle = `<span class="d-inline-block"><strong class="fw-bold">Categoría:</strong> Adicionales</span>`;
         }
 
+        // =========================================================
+        // 2. NUEVO DISEÑO DE TARJETA (Estructura más compacta)
+        // =========================================================
         const tarjetaMini = `
             <div class="d-flex gap-3 align-items-start mb-3 pb-3 border-bottom border-light">
-                <img src="${prod.imagen}" alt="${prod.nombre}" class="img-fluid rounded border shadow-sm" style="width: 75px; height: 75px; object-fit: cover; background-color: #fff;">
-                <div class="flex-grow-1">
-                    <p class="mb-1 fw-bold text-dark lh-sm" style="font-size: 0.9rem;">${prod.nombre}</p>
-                    <div class="text-secondary mb-2" style="font-size: 0.78rem; line-height: 1.35;">
+                
+                <div style="flex-shrink: 0;">
+                    <img src="${prod.imagen}" alt="${prod.nombre}" class="img-fluid rounded border shadow-sm" style="width: 65px; height: 65px; object-fit: cover; background-color: #f8f9fa;">
+                </div>
+                
+                <div class="flex-grow-1 min-vw-0">
+                    <div class="d-flex justify-content-between align-items-start mb-1 gap-2">
+                        <h6 class="mb-0 fw-bold text-dark lh-sm" style="font-size: 0.95rem;">${prod.nombre}</h6>
+                        <span class="fw-bold text-nowrap" style="color: #8C1616; font-size: 0.95rem;">S/ ${subtotalProd.toFixed(2)}</span>
+                    </div>
+                    
+                    <div class="text-secondary mb-2 text-wrap" style="font-size: 0.78rem; line-height: 1.5;">
                         ${filasDetalle}
                     </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <span class="fw-bold text-dark px-2 py-1 rounded bg-light border" style="font-size: 0.75rem;">Cant: ${prod.cantidad}</span>
-                        <span class="fw-bold" style="color: #8C1616; font-size: 0.9rem;">S/ ${subtotalProd.toFixed(2)}</span>
+                    
+                    <div class="d-flex align-items-center">
+                        <span class="fw-bold text-dark px-2 py-1 rounded bg-light border shadow-sm" style="font-size: 0.75rem;">Cant: ${prod.cantidad}</span>
                     </div>
                 </div>
+                
             </div>
         `;
         contenedor.insertAdjacentHTML('beforeend', tarjetaMini);
@@ -106,7 +120,14 @@ function renderizarResumenCheckout() {
     document.getElementById('checkoutEtiquetaEnvio').innerText = esDelivery ? 'Costo de envío (Delivery)' : 'Recojo en tienda';
     document.getElementById('checkoutCostoEnvioText').innerText = esDelivery ? `S/ ${costoFinalEnvio.toFixed(2)}` : 'Gratis';
     document.getElementById('checkoutTotalFinalText').innerText = `S/ ${totalPagar.toFixed(2)}`;
+
+    const elemPuntos = document.getElementById('checkoutPuntosText');
+    if (elemPuntos) {
+        elemPuntos.innerText = `+ ${sumaPuntos} pts`;
+    }
+    localStorage.setItem('dmela_puntos_pendientes', sumaPuntos);
 }
+
 
 function procesarPago() {
 
@@ -166,7 +187,7 @@ function procesarPago() {
 
     // Generar y guardar número de orden al momento de pagar
     const fecha2 = new Date();
-    const numOrden = `${fecha2.getFullYear().toString().slice(2)}${(fecha2.getMonth()+1).toString().padStart(2,'0')}-${Math.floor(Math.random() * 90000) + 10000}`;
+    const numOrden = `${fecha2.getFullYear().toString().slice(2)}${(fecha2.getMonth() + 1).toString().padStart(2, '0')}-${Math.floor(Math.random() * 90000) + 10000}`;
     localStorage.setItem('numeroOrden', numOrden);
 
     // Copiar carrito al puente
@@ -177,6 +198,15 @@ function procesarPago() {
 
     // Guardar costo de envío real
     localStorage.setItem('costoEnvio', esDelivery ? '15.00' : '0.00');
+
+    const puntosPendientes = parseInt(localStorage.getItem('dmela_puntos_pendientes')) || 0;
+    const puntosActuales = parseInt(localStorage.getItem('dmela_puntos_totales')) || 0;
+
+    // Sumamos los puntos actuales con los que acaba de ganar
+    localStorage.setItem('dmela_puntos_totales', puntosActuales + puntosPendientes);
+
+    // Limpiamos los puntos en tránsito para que no se dupliquen
+    localStorage.removeItem('dmela_puntos_pendientes');
 
     window.location.href = 'confirmacion.html';
 }
