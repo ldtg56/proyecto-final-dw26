@@ -1,4 +1,3 @@
-// js/productosData.js
 const catalogoDela = {
     '101': { 
         nombre: 'Torta Amor y Chispas', 

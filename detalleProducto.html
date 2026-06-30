@@ -18,24 +18,20 @@
         <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
             <div class="container-fluid px-3 px-md-4 px-lg-5">
 
-                <!-- Logo principal -->
                 <a class="navbar-brand me-2 me-lg-4" href="index.html">
                     <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería" class="logo-header">
                 </a>
 
-                <!-- Botón Hamburguesa (SOLO saldrá en celulares menores a 768px) -->
                 <button class="navbar-toggler border-white p-1 p-sm-2" type="button" data-bs-toggle="collapse"
                     data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false"
                     aria-label="Abrir navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Contenedor del Menú -->
                 <div class="collapse navbar-collapse" id="menuNavegacion">
 
                     <ul class="navbar-nav mx-auto menu-central my-3 my-md-0 align-items-center">
 
-                        <!-- 1. NOSOTROS -->
                         <li class="nav-item dropdown w-100 text-center">
                             <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,7 +45,6 @@
                             </ul>
                         </li>
 
-                        <!-- 2. CATÁLOGO -->
                         <li class="nav-item dropdown w-100 text-center">
                             <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,7 +61,6 @@
                             </ul>
                         </li>
 
-                        <!-- 3. SOPORTE -->
                         <li class="nav-item dropdown w-100 text-center">
                             <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,7 +74,6 @@
                             </ul>
                         </li>
 
-                        <!-- 4. CONTACTO -->
                         <li class="nav-item dropdown w-100 text-center">
                             <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -94,12 +87,9 @@
 
                     </ul>
 
-                    <!-- ÍCONOS VECTORIALES PUROS (Cero dependencias externas, 100% visibles) -->
                     <div
                         class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
 
-                        <!-- Carrito Desplegable -->
-                        <!-- Carrito con Medalla Numérica Flotante (Enlace directo a carrito.html) -->
                         <a class="text-white text-decoration-none d-flex align-items-center p-1 position-relative"
                             href="carrito.html" title="Ver mi carrito">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
@@ -109,7 +99,6 @@
                                 <circle cx="20" cy="21" r="1"></circle>
                                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                             </svg>
-                            <!-- Medalla roja flotante (badge) -->
                             <span id="badgeCarritoHeader"
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light d-none"
                                 style="font-size: 0.68rem; padding: 0.25em 0.45em;">
@@ -117,11 +106,9 @@
                             </span>
                         </a>
 
-                        <!-- Usuario Desplegable -->
                         <div class="dropdown">
                             <a class="text-white text-decoration-none d-flex align-items-center p-1" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <!-- SVG Perfil en círculo exacto a tu referencia -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24"
                                     fill="currentColor">
                                     <path
@@ -146,9 +133,7 @@
     <body>
 
         <main class="container my-5">
-            <!-- ZONA SUPERIOR: Producto -->
             <div class="row">
-                <!-- Galería de imágenes -->
                 <div class="col-md-5 d-flex gap-2">
                     <div class="d-flex flex-column gap-2">
                         <img id="foto-miniatura" src="" class="border border-dark"
@@ -159,7 +144,6 @@
                     </div>
                 </div>
 
-                <!-- Detalles y botones de compra -->
                 <div class="col-md-3">
                     <div>
                         <div class="d-flex align-items-center gap-2 mb-3">
@@ -186,7 +170,6 @@
                     </div>
                 </div>
 
-                <!-- Caja derecha de especificaciones -->
                 <div class="col-md-4">
                     <div class="caja-info-derecha h-80">
                         <p class="fw-bold mb-1">Vendido en tienda:</p>
@@ -224,7 +207,6 @@
                 </div>
             </div>
 
-            <!-- ZONA INFERIOR: También ofrecemos -->
             <div class="seccion-tambien-ofrecemos shadow">
                 <h5 class="fw-bold mb-4">También ofrecemos:</h5>
                 <div class="row row-cols-2 row-cols-md-5 g-3">
@@ -396,14 +378,12 @@
             document.addEventListener('DOMContentLoaded', () => {
                 const id = localStorage.getItem('prod_id');
                 const prod = catalogoDela[id];
-                // Lógica para cambiar peso dinámicamente
                 const btnPequena = document.getElementById('btn-pequena');
                 const btnMediana = document.getElementById('btn-mediana');
                 const displayPeso = document.getElementById('info-peso');
 
                 btnPequena.addEventListener('click', () => {
                     displayPeso.innerText = '700 gr';
-                    // Cambiamos los estilos para que se vea cuál está seleccionado
                     btnPequena.classList.replace('btn-outline-dark', 'btn-guinda');
                     btnPequena.classList.add('text-white');
                     btnMediana.classList.replace('btn-guinda', 'btn-outline-dark');
@@ -411,7 +391,6 @@
 
                 btnMediana.addEventListener('click', () => {
                     displayPeso.innerText = '1 kg';
-                    // Cambiamos los estilos
                     btnMediana.classList.replace('btn-outline-dark', 'btn-guinda');
                     btnMediana.classList.add('text-white');
                     btnPequena.classList.replace('btn-guinda', 'btn-outline-dark');
@@ -423,7 +402,6 @@
                     document.getElementById('foto-principal').src = prod.img;
                     document.getElementById('foto-miniatura').src = prod.img;
 
-                    // Rellenar las nuevas categorías
                     document.getElementById('info-masa').innerText = prod.masa;
                     document.getElementById('info-peso').innerText = prod.peso;
                     document.getElementById('info-tiempo').innerText = prod.tiempo;

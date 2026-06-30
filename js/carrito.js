@@ -1,7 +1,6 @@
 const STORAGE_KEY = 'dmela_carrito_compras';
 const COSTO_SERVICIO = 15.00;
 
-// Memoria temporal del cupón activo
 let descuentoPorcentaje = 0;
 let descuentoFijo = 0;
 let cuponNombreActivo = '';

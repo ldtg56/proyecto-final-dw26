@@ -1,14 +1,9 @@
-// =================================================================
-// MOTOR CATÁLOGO Y HEADER - D'MELA
-// =================================================================
 const STORAGE_KEY = 'dmela_carrito_compras';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Aquí inicializamos todos nuestros módulos al cargar
     actualizarBadgeCarritoHeader();
     inicializarFiltrosNavegacion();
 });
-// 1. Función clásica para Tortas
 function agregarItemCarrito(id, nombre, precio, imagenUrl) {
     let carritoGuardado = localStorage.getItem(STORAGE_KEY);
     let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
@@ -38,7 +33,6 @@ function agregarItemCarrito(id, nombre, precio, imagenUrl) {
     alert(`¡${nombre} se agregó correctamente al carrito!`);
 }
 
-// 2. NUEVA Función exclusiva para Combos
 function agregarComboCarrito(id, nombre, precio, imagenUrl, descripcionCombo) {
     let carritoGuardado = localStorage.getItem(STORAGE_KEY);
     let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
@@ -54,7 +48,7 @@ function agregarComboCarrito(id, nombre, precio, imagenUrl, descripcionCombo) {
             imagen: imagenUrl,
             cantidad: 1,
             favorito: false,
-            tipo: 'combo', // Identificador clave
+            tipo: 'combo',
             detalles: {
                 'Incluye': descripcionCombo
             }
@@ -65,7 +59,6 @@ function agregarComboCarrito(id, nombre, precio, imagenUrl, descripcionCombo) {
     alert(`¡${nombre} se agregó correctamente al carrito!`);
 }
 
-// 3. Actualizador del circulito rojo
 function actualizarBadgeCarritoHeader() {
     const memoria = localStorage.getItem(STORAGE_KEY);
     const carrito = memoria ? JSON.parse(memoria) : [];
@@ -78,7 +71,6 @@ function actualizarBadgeCarritoHeader() {
         if (totalUnidades > 0) {
             badge.innerText = totalUnidades;
             badge.classList.remove('d-none');
-            // Animación de rebote al agregar
             badge.parentElement.classList.add('animar-rebote');
             setTimeout(() => badge.parentElement.classList.remove('animar-rebote'), 450);
         } else {
@@ -94,13 +86,11 @@ function inicializarFiltrosNavegacion() {
         'ofertas.html': 'chk-ofertas', 'ofertas2.html': 'chk-ofertas'
     };
 
-    // Marcamos el checkbox activo
     const idActivo = mapaPaginas[paginaActual] || 'chk-tortas';
     document.querySelectorAll('.chk-categoria').forEach(chk => chk.checked = false);
     const checkActivo = document.getElementById(idActivo);
     if (checkActivo) checkActivo.checked = true;
 
-    // Lógica de redirección
     document.querySelectorAll('.chk-categoria').forEach(chk => {
         chk.addEventListener('change', function() {
             if (this.checked) {
