@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="fontawesome/css/all.css">
 
     <link rel="icon" href="img/logoD'Mela.jpg">
-    <title>Productos - D'Mela</title>
+    <title>Combos - D'Mela</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
             <div class="container-fluid px-3 px-md-4 px-lg-5">
 
-                <a class="navbar-brand me-2 me-lg-4" href="index.html">
+                <a class="navbar-brand me-2 me-lg-4" href="paginaPrincipal.html">
                     <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería" class="logo-header">
                 </a>
 
@@ -29,7 +29,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="menuNavegacion">
-
                     <ul class="navbar-nav mx-auto menu-central my-3 my-md-0 align-items-center">
 
                         <li class="nav-item dropdown w-100 text-center">
@@ -67,10 +66,11 @@
                                 SOPORTE <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="#">Inicio Dashboard</a></li>
+                                <li><a class="dropdown-item" href="usuario_dashboard_inicio.html">Inicio Dashboard</a>
+                                </li>
+                                <li><a class="dropdown-item" href="preguntas.html">Preguntas Frecuentes</a></li>
                                 <li><a class="dropdown-item" href="#">Historial Compras</a></li>
                                 <li><a class="dropdown-item" href="#">Mis Cupones</a></li>
-                                <li><a class="dropdown-item" href="#">Perfil de Usuario</a></li>
                             </ul>
                         </li>
 
@@ -80,11 +80,9 @@
                                 CONTACTO <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="#">Contacto y Ubicación</a></li>
-                                <li><a class="dropdown-item" href="#">Contacto FAC</a></li>
+                                <li><a class="dropdown-item" href="contacto.html">Contacto y Ubicación</a></li>
                             </ul>
                         </li>
-
                     </ul>
 
                     <div
@@ -116,26 +114,26 @@
                                 </svg>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="usuario_dashboard_inicio.html">Iniciar Sesión</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
                                 <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
                                 <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
                             </ul>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="banner-seccion" style="background-image: url('img/fondo1.png');">
-        <h1 class="titulo-banner">NUESTROS PRODUCTOS</h1>
+    <div class="banner-seccion" style="background-image: url('img/fondo2.png');">
+        <h1 class="titulo-banner">COMBOS</h1>
     </div>
 
     <main class="container mb-5">
         <div class="row">
+
             <div class="col-md-3">
                 <div class="sidebar-filtros accordion" id="filtrosAccordion">
 
@@ -242,78 +240,15 @@
 
                     <div class="col">
                         <div class="card card-producto h-100 shadow-sm">
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '101')">
-                                <img src="img/Tor1.jpg" class="card-img-top" alt="Torta">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '207')">
+                                <img src="img/Comb6.jpg" class="card-img-top" alt="Combo 1">
                             </a>
                             <div class="card-body p-2">
-                                <p class="small mb-1">Torta Amor y Chispas</p>
+                                <p class="small mb-1">2 porciones de torta + Porcion de pie</p>
                                 <p class="precio-producto mb-2">S/ 39.00</p>
                                 <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('101', 'Torta Amor', 39.00, 'img/Tor1.jpg')">Añadir
-                                    al
-                                    carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '102')">
-                                <img src="img/HB1.jpg" class="card-img-top" alt="Torta 2">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Fiesta Premium</p>
-                                <p class="precio-producto mb-2">S/ 49.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('102', 'Torta Fiesta', 49.00, 'img/HB1.jpg')">Añadir
-                                    al
-                                    carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '103')">
-                                <img src="img/Tor3.jpg" class="card-img-top" alt="Torta 3">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Suprema Chocolate</p>
-                                <p class="precio-producto mb-2">S/ 45.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('103', 'Suprema Choc', 45.00, 'img/Tor3.jpg')">Añadir
-                                    al
-                                    carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '104')">
-                                <img src="img/Tor4.jpg" class="card-img-top" alt="Torta 4">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Helada de la Casa</p>
-                                <p class="precio-producto mb-2">S/ 35.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('104', 'Helada Casa', 35.00, 'img/Tor4.jpg')">Añadir
-                                    al
-                                    carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '105')">
-                                <img src="img/Tor7.jpg" class="card-img-top" alt="Torta 5">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Chantilly Durazno</p>
-                                <p class="precio-producto mb-2">S/ 59.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('105', 'Chantilly Durazno', 59.00, 'img/Tor7.jpg')">Añadir
+                                    onclick="agregarComboCarrito('207', 'Combo 1', 39.00, 'img/Comb6.jpg', 'Porciones clásicas')">Añadir
                                     al carrito</button>
                             </div>
                         </div>
@@ -321,14 +256,79 @@
 
                     <div class="col">
                         <div class="card card-producto h-100 shadow-sm">
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '106')">
-                                <img src="img/Tor8.jpg" class="card-img-top" alt="Torta 6">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '208')">
+                                <img src="img/Comb5.jpg" class="card-img-top" alt="Combo 2">
                             </a>
                             <div class="card-body p-2">
-                                <p class="small mb-1">Vintage Vainilla</p>
-                                <p class="precio-producto mb-2">S/ 39.00</p>
+                                <p class="small mb-1">1 plato + Porcion de Torta</p>
+                                <p class="precio-producto mb-2">S/ 25.00</p>
                                 <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('106', 'Vintage Vainilla', 39.00, 'img/Tor8.jpg')">Añadir
+                                    onclick="agregarComboCarrito('208', 'Combo 2', 25.00, 'img/Comb5.jpg', 'Almuerzo dulce')">Añadir
+                                    al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-producto h-100 shadow-sm">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '209')">
+                                <img src="img/Comb8.jpg" class="card-img-top" alt="Combo 3">
+                            </a>
+                            <div class="card-body p-2">
+                                <p class="small mb-1">Combo de Macarrones</p>
+                                <p class="precio-producto mb-2">S/ 25.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('209', 'Combo 3', 25.00, 'img/Comb8.jpg', 'Caja de 6 macarrones')">Añadir
+                                    al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-producto h-100 shadow-sm">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '210')">
+                                <img src="img/Comb4.jpg" class="card-img-top" alt="Combo 4">
+                            </a>
+                            <div class="card-body p-2">
+                                <p class="small mb-1">Box de Macarrones</p>
+                                <p class="precio-producto mb-2">S/ 30.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('210', 'Combo 4', 30.00, 'img/Comb4.jpg', 'Caja de 12 macarrones')">Añadir
+                                    al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-producto h-100 shadow-sm">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '211')">
+                                <img src="img/Comb7.jpg" class="card-img-top" alt="Combo 5">
+                            </a>
+                            <div class="card-body p-2">
+                                <p class="small mb-1">Pack Trufas</p>
+                                <p class="precio-producto mb-2">S/ 12.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('211', 'Combo 5', 12.00, 'img/Comb7.jpg', '10 trufas chocolate')">Añadir
+                                    al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-producto h-100 shadow-sm">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '212')">
+                                <img src="img/Comb9.jpg" class="card-img-top" alt="Combo 6">
+                            </a>
+                            <div class="card-body p-2">
+                                <p class="small mb-1">Pack Galletas</p>
+                                <p class="precio-producto mb-2">S/ 15.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('212', 'Combo 6', 15.00, 'img/Comb9.jpg', 'Galletas artesanales')">Añadir
                                     al carrito</button>
                             </div>
                         </div>
@@ -336,13 +336,12 @@
 
                 </div>
 
-                <!-- Paginación Peticionada en Wireframe -->
                 <div class="d-flex justify-content-center mt-5 align-items-center gap-3">
-                    <span class="border border-dark px-3 py-1 fw-bold bg-light">1</span>
+                    <a href="combos.html" class="text-dark text-decoration-none">1</a>
 
-                    <a href="productos2.html" class="text-dark text-decoration-none">2</a>
+                    <span class="border border-dark px-3 py-1 fw-bold bg-light">2</span>
 
-                    <a href="productos2.html" class="text-dark"><i class="fas fa-play-circle fs-4"></i></a>
+                    <a href="combos.html" class="text-dark"><i class="fas fa-play-circle fs-4"></i></a>
                 </div>
 
             </div>
@@ -466,7 +465,7 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
-      <script src="js/sesion.js"></script>
+
 </body>
 
 </html>

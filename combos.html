@@ -134,11 +134,11 @@
     <main class="container mb-5">
         <div class="row">
 
-            <!-- MENÚ LATERAL (FILTROS) -->
             <div class="col-md-3">
                 <div class="sidebar-filtros accordion" id="filtrosAccordion">
 
-                    <div class="accordion-item border-0 bg-transparent">
+                    <div class="accordion-item border-0 bg-transparent"
+                        style="border-bottom: 1px solid rgba(255,255,255,0.3) !important;">
                         <h2 class="accordion-header" id="headCat">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseCat">
@@ -147,59 +147,87 @@
                         </h2>
                         <div id="collapseCat" class="accordion-collapse collapse show">
                             <div class="accordion-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cat1">
-                                    <label class="form-check-label" style="color: white;" for="cat1">Tortas</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-tortas"
+                                        data-url="producto.html">
+                                    <label class="form-check-label text-white" for="chk-tortas">Tortas</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-pedido"
+                                        data-url="#">
+                                    <label class="form-check-label text-white" for="chk-pedido">Tortas a Pedido</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-bocaditos"
+                                        data-url="#">
+                                    <label class="form-check-label text-white" for="chk-bocaditos">Bocaditos</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-combos"
+                                        data-url="combos.html">
+                                    <label class="form-check-label text-white" for="chk-combos">Combos</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cat2">
-                                    <label class="form-check-label" style="color: white;" for="cat2">Tortas a
-                                        Pedido</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cat3">
-                                    <label class="form-check-label" style="color: white;" for="cat3">Bocaditos</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" checked id="cat4">
-                                    <label class="form-check-label" style="color: white;" for="cat4">Combos</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cat5">
-                                    <label class="form-check-label" style="color: white;" for="cat5">Ofertas</label>
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-ofertas"
+                                        data-url="ofertas.html">
+                                    <label class="form-check-label text-white" for="chk-ofertas">Ofertas</label>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="accordion-item border-0 bg-transparent border-top">
-                        <h2 class="accordion-header">
+                    <div class="accordion-item border-0 bg-transparent"
+                        style="border-bottom: 1px solid rgba(255,255,255,0.3) !important;">
+                        <h2 class="accordion-header" id="headSabor">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseSabor">
                                 Sabor
                             </button>
                         </h2>
                         <div id="collapseSabor" class="accordion-collapse collapse">
-                            <div class="accordion-body small">Opciones de sabor...</div>
+                            <div class="accordion-body">
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="sabor-choco">
+                                    <label class="form-check-label text-white small" for="sabor-choco">Chocolate</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="sabor-vainilla">
+                                    <label class="form-check-label text-white small"
+                                        for="sabor-vainilla">Vainilla</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="sabor-fresa">
+                                    <label class="form-check-label text-white small" for="sabor-fresa">Fresa</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="accordion-item border-0 bg-transparent border-top">
-                        <h2 class="accordion-header">
+                    <div class="accordion-item border-0 bg-transparent">
+                        <h2 class="accordion-header" id="headCol">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseCol">
                                 Colección
                             </button>
                         </h2>
                         <div id="collapseCol" class="accordion-collapse collapse">
-                            <div class="accordion-body small">Opciones de colección...</div>
+                            <div class="accordion-body">
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="col-valentin">
+                                    <label class="form-check-label text-white small" for="col-valentin">San
+                                        Valentín</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="col-cumple">
+                                    <label class="form-check-label text-white small" for="col-cumple">Cumpleaños</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- GRILLA DE PRODUCTOS -->
             <div class="col-md-9">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <span class="small">Se muestran los resultados de las categorias</span>
@@ -210,62 +238,110 @@
 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
 
-                    <!-- Producto 1 (Ejemplo con etiqueta de Oferta) -->
                     <div class="col">
                         <div class="card card-producto h-100 shadow-sm">
                             <div class="tag-combo">¡OFERTA!</div>
-
-                            <a href="detalle.html"><img src="img/Combo1.png" class="card-img-top" alt="Combo"></a>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '201')">
+                                <img src="img/Combo1.png" class="card-img-top" alt="Combo 1">
+                            </a>
                             <div class="card-body p-2">
                                 <p class="small mb-1">2 porciones de torta + Porcion de pie</p>
                                 <p class="precio-producto mb-2">S/ 39.00</p>
-                                <button class="btn btn-guinda w-100 mt-2"
-                                    onclick="agregarComboCarrito('combo_porciones_1', 'Combo 2 Porciones + Pie', 39.00, 'img/Combo1.png', '2 porciones de torta + Porción de pie')">
-                                    Añadir al carrito
-                                </button>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('201', 'Combo 1', 39.00, 'img/Comb1.jpg', 'Porciones clásicas')">Añadir
+                                    al carrito</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Producto 2 (Normal sin oferta) -->
                     <div class="col">
-                        <div class="card card-producto h-100">
+                        <div class="card card-producto h-100 shadow-sm">
                             <div class="tag-combo">¡OFERTA!</div>
-                            <a href="detalle.html"><img src="img/HB1.jpg" class="card-img-top" alt="Torta Fiesta"></a>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '202')">
+                                <img src="img/Comb2.jpg" class="card-img-top" alt="Combo 2">
+                            </a>
                             <div class="card-body p-2">
-                                <p class="small mb-1">Torta Fiesta Premium<br>"Happy Birthday"</p>
-                                <p class="precio-producto mb-2">S/ 49.00</p>
-                                <button class="btn btn-guinda w-100 mt-2"
-                                    onclick="agregarItemCarrito('prod_fiesta_premium_combo', 'Torta Fiesta Premium', 49.00, 'img/HB1.jpg')">
-                                    Añadir al carrito
-                                </button>
+                                <p class="small mb-1">1 plato + Porcion de Torta</p>
+                                <p class="precio-producto mb-2">S/ 25.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('202', 'Combo 2', 25.00, 'img/Comb2.jpg', 'Almuerzo dulce')">Añadir
+                                    al carrito</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Producto 3 -->
                     <div class="col">
-                        <div class="card card-producto h-100">
+                        <div class="card card-producto h-100 shadow-sm">
                             <div class="tag-combo">¡OFERTA!</div>
-                            <a href="detalle.html"><img src="img/Tor3.jpg" class="card-img-top" alt="Torta Suprema"></a>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '203')">
+                                <img src="img/Comb3.jpg" class="card-img-top" alt="Combo 3">
+                            </a>
                             <div class="card-body p-2">
-                                <p class="small mb-1">Torta Suprema de<br>Chocolate & Fudge</p>
-                                <p class="precio-producto mb-2">S/ 45.00</p>
-                                <button class="btn btn-guinda w-100 mt-2"
-                                    onclick="agregarItemCarrito('prod_suprema_fudge_combo', 'Torta Suprema de Chocolate', 45.00, 'img/Tor3.jpg')">
-                                    Añadir al carrito
-                                </button>
+                                <p class="small mb-1">Combo de Macarrones</p>
+                                <p class="precio-producto mb-2">S/ 25.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('203', 'Combo 3', 25.00, 'img/Comb3.jpg', 'Caja de 6 macarrones')">Añadir
+                                    al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-producto h-100 shadow-sm">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '204')">
+                                <img src="img/Comb4.jpg" class="card-img-top" alt="Combo 4">
+                            </a>
+                            <div class="card-body p-2">
+                                <p class="small mb-1">Box de Macarrones</p>
+                                <p class="precio-producto mb-2">S/ 30.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('204', 'Combo 4', 30.00, 'img/Comb4.jpg', 'Caja de 12 macarrones')">Añadir
+                                    al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-producto h-100 shadow-sm">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '205')">
+                                <img src="img/Comb7.jpg" class="card-img-top" alt="Combo 5">
+                            </a>
+                            <div class="card-body p-2">
+                                <p class="small mb-1">Pack Trufas</p>
+                                <p class="precio-producto mb-2">S/ 12.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('205', 'Combo 5', 12.00, 'img/Comb7.jpg', '10 trufas chocolate')">Añadir
+                                    al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card card-producto h-100 shadow-sm">
+                            <div class="tag-combo">¡OFERTA!</div>
+                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '206')">
+                                <img src="img/Comb9.jpg" class="card-img-top" alt="Combo 6">
+                            </a>
+                            <div class="card-body p-2">
+                                <p class="small mb-1">Pack Galletas</p>
+                                <p class="precio-producto mb-2">S/ 15.00</p>
+                                <button class="btn btn-guinda"
+                                    onclick="agregarComboCarrito('206', 'Combo 6', 15.00, 'img/Comb9.jpg', 'Galletas artesanales')">Añadir
+                                    al carrito</button>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Paginación Peticionada en Wireframe -->
                 <div class="d-flex justify-content-center mt-5 align-items-center gap-3">
-                    <span class="border border-dark px-3 py-1 fw-bold">1</span>
-                    <span class="text-muted">2 ...</span>
-                    <i class="fas fa-play-circle fs-4"></i>
+                    <span class="border border-dark px-3 py-1 fw-bold bg-light">1</span>
+
+                    <a href="combos2.html" class="text-dark text-decoration-none">2</a>
+
+                    <a href="combos2.html" class="text-dark"><i class="fas fa-play-circle fs-4"></i></a>
                 </div>
 
             </div>
