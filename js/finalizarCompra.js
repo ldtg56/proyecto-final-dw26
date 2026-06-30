@@ -1,6 +1,3 @@
-// =================================================================
-// MOTOR DE CHECKOUT Y VALIDACIONES - D'MELA
-// =================================================================
 const STORAGE_KEY = 'dmela_carrito_compras';
 const TARIFA_DELIVERY = 15.00;
 
@@ -14,7 +11,6 @@ function alternarPago() {
     document.getElementById('cajaEfectivo').classList.toggle('d-none', !esEfectivo);
 }
 
-// Oculta las cajas de dirección si eligen Recojo en Tienda y recalcula totales
 function alternarDelivery() {
     const esDelivery = document.getElementById('delivery').checked;
     const camposDir = document.getElementById('camposDelivery');
@@ -25,11 +21,9 @@ function alternarDelivery() {
         camposDir.classList.add('d-none');
     }
 
-    // Al cambiar la opción de entrega, se debe volver a calcular la matemática
     renderizarResumenCheckout();
 }
 
-// Lee el carrito y pinta la columna derecha
 function renderizarResumenCheckout() {
     const memoria = localStorage.getItem(STORAGE_KEY);
     const carrito = memoria ? JSON.parse(memoria) : [];
@@ -39,7 +33,6 @@ function renderizarResumenCheckout() {
 
     contenedor.innerHTML = '';
 
-    // 1. SI ESTÁ VACÍO
     if (carrito.length === 0) {
         contenedor.innerHTML = `
             <div class="text-center py-4">
@@ -58,7 +51,6 @@ function renderizarResumenCheckout() {
         return;
     }
 
-    // 2. SI HAY PRODUCTOS
     btnPagar.classList.remove('disabled');
     btnPagar.style.pointerEvents = 'auto';
     btnPagar.style.opacity = '1';
@@ -88,7 +80,6 @@ function renderizarResumenCheckout() {
             filasDetalle = `<div><strong class="fw-bold">Categoría:</strong> Adicionales</div>`;
         }
 
-        // Maquetación idéntica a tu captura (Imagen pequeña, textos limpios, sin botones de + y -)
         const tarjetaMini = `
             <div class="d-flex gap-3 align-items-start mb-3 pb-3 border-bottom border-light">
                 <img src="${prod.imagen}" alt="${prod.nombre}" class="img-fluid rounded border shadow-sm" style="width: 75px; height: 75px; object-fit: cover; background-color: #fff;">
@@ -107,24 +98,18 @@ function renderizarResumenCheckout() {
         contenedor.insertAdjacentHTML('beforeend', tarjetaMini);
     });
 
-    // 3. MATEMÁTICA FINAL (Evaluando si el delivery está activo)
     const esDelivery = document.getElementById('delivery').checked;
     const costoFinalEnvio = esDelivery ? TARIFA_DELIVERY : 0.00;
     const totalPagar = sumaSubtotal + costoFinalEnvio;
 
     document.getElementById('checkoutSubtotalText').innerText = `S/ ${sumaSubtotal.toFixed(2)}`;
-
-    // Cambia la palabra y el monto según el método
     document.getElementById('checkoutEtiquetaEnvio').innerText = esDelivery ? 'Costo de envío (Delivery)' : 'Recojo en tienda';
     document.getElementById('checkoutCostoEnvioText').innerText = esDelivery ? `S/ ${costoFinalEnvio.toFixed(2)}` : 'Gratis';
-
     document.getElementById('checkoutTotalFinalText').innerText = `S/ ${totalPagar.toFixed(2)}`;
 }
 
-// Simulación de pasarela con validación estricta
 function procesarPago() {
 
-    // 1. Validar Datos de Contacto (Siempre obligatorios)
     const email = document.getElementById('contactoEmail');
     const telefono = document.getElementById('contactoTelefono');
 
@@ -132,10 +117,9 @@ function procesarPago() {
         alert("⚠️ Por favor, ingresa tu correo electrónico y teléfono de contacto.");
         if (!email.value.trim()) email.focus();
         else telefono.focus();
-        return; // Detiene el código aquí
+        return;
     }
 
-    // 2. Validar Datos de Dirección (Solo si es Delivery)
     const esDelivery = document.getElementById('delivery').checked;
     if (esDelivery) {
         const envio = document.getElementById('dirEnvio');
@@ -151,7 +135,6 @@ function procesarPago() {
         }
     }
 
-    // 3. Validar Fecha de Entrega/Recojo (Siempre obligatoria)
     const fecha = document.getElementById('fechaEntrega');
     if (!fecha.value) {
         alert("⚠️ Por favor, selecciona la fecha para la entrega o recojo de tu pedido.");
@@ -159,7 +142,6 @@ function procesarPago() {
         return;
     }
 
-    // 4. Validar Método de Pago (Solo si eligen Tarjeta)
     const esTarjeta = document.getElementById('tarjeta').checked;
     if (esTarjeta) {
         const numTarjeta = document.getElementById('tarjetaNum');
@@ -175,16 +157,30 @@ function procesarPago() {
         }
     }
 
-    // Si llega hasta aquí, significa que pasó todas las pruebas con éxito
     alert("✅ Todos los datos son correctos. Procesando pago seguro... ¡Redirigiendo a la confirmación!");
 
-    // Aquí podemos vaciar el carrito automáticamente tras una compra exitosa
-    // localStorage.removeItem(STORAGE_KEY);
+    // Guardar nombre desde el email
+    const emailValue = document.getElementById('contactoEmail').value;
+    const nombreFormateado = emailValue.split('@')[0].charAt(0).toUpperCase() + emailValue.split('@')[0].slice(1);
+    localStorage.setItem('nombreComprador', nombreFormateado);
+
+    // Generar y guardar número de orden al momento de pagar
+    const fecha2 = new Date();
+    const numOrden = `${fecha2.getFullYear().toString().slice(2)}${(fecha2.getMonth()+1).toString().padStart(2,'0')}-${Math.floor(Math.random() * 90000) + 10000}`;
+    localStorage.setItem('numeroOrden', numOrden);
+
+    // Copiar carrito al puente
+    const carritoActual = localStorage.getItem(STORAGE_KEY);
+    if (carritoActual) {
+        localStorage.setItem('carritoBoleta', carritoActual);
+    }
+
+    // Guardar costo de envío real
+    localStorage.setItem('costoEnvio', esDelivery ? '15.00' : '0.00');
 
     window.location.href = 'confirmacion.html';
 }
 
-// Al cargar la página, ejecuta los motores de render
 document.addEventListener('DOMContentLoaded', () => {
     renderizarResumenCheckout();
 });
