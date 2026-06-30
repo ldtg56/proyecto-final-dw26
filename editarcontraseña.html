@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/editarcontraseña.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="icon" href="img/logoD'Mela.jpg">
-    <title>Iniciar Sesión - D'Mela</title>
+    <title>Editar Contraseña - D'Mela</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-<header>
+
+    <!-- ==========================================
+    HEADER (idéntico al login)
+    ========================================== -->
+    <header>
         <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
             <div class="container-fluid px-3 px-md-4 px-lg-5">
 
@@ -49,10 +53,10 @@
                                 CATALOGO <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="#">Productos</a></li>
-                                <li><a class="dropdown-item" href="#">Detalle del Producto</a></li>
-                                <li><a class="dropdown-item" href="#">Combos</a></li>
-                                <li><a class="dropdown-item" href="#">Ofertas</a></li>
+                                <li><a class="dropdown-item" href="producto.html">Productos</a></li>
+                                <li><a class="dropdown-item" href="detalleProducto.html">Detalle del Producto</a></li>
+                                <li><a class="dropdown-item" href="combos.html">Combos</a></li>
+                                <li><a class="dropdown-item fw-bold text-danger bg-light" href="ofertas.html">Ofertas</a></li>
                                 <li><a class="dropdown-item" href="pedidosPersonalizados.html">Pedidos Personalizados</a></li>
                             </ul>
                         </li>
@@ -127,70 +131,61 @@
         </nav>
     </header>
 
-
+    <!-- ==========================================
+    MAIN - EDICIÓN DE CONTRASEÑA
+    (misma estructura que login)
+    ========================================== -->
     <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
         <div class="container px-3">
-            <div class="card-login mx-auto shadow border overflow-hidden">
+            <div class="card-editar mx-auto shadow border overflow-hidden">
                 <div class="row g-0">
 
                     <!-- Columna formulario -->
                     <div class="col-12 col-md-6 p-4 p-md-5">
 
                         <div class="d-flex align-items-center gap-3 mb-4">
-                            <i class="fa-solid fa-cake-candles icono-login"></i>
-                            <h3 class="fw-bold mb-0 titulo-login">INICIAR SESIÓN</h3>
+                            <i class="fa-solid fa-key icono-editar"></i>
+                            <h3 class="fw-bold mb-0 titulo-editar">EDITAR CONTRASEÑA</h3>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="loginEmail" class="form-label label-login">Correo electrónico</label>
-                            <input type="email" class="form-control input-login" id="loginEmail"
-                                placeholder="cliente@correo.com">
-                        </div>
+                        <p class="texto-editar mb-3">
+                            Cambia tu acceso aquí. Ingresa tu clave anterior y la nueva clave que quieres usar.
+                        </p>
+                        <p class="texto-editar mb-4">
+                            Una vez que confirmes el cambio, se actualizará automáticamente tu cuenta.
+                        </p>
 
                         <div class="mb-3">
-                            <label for="loginPassword" class="form-label label-login">Contraseña</label>
+                            <label for="passActual" class="form-label label-editar">Contraseña Actual</label>
                             <div class="position-relative">
-                                <input type="password" class="form-control input-login pe-5" id="loginPassword"
-                                    placeholder="••••••••">
-                                <span class="ojo-password" onclick="togglePassword()">
-                                    <i class="fa-regular fa-eye" id="iconoOjo"></i>
+                                <input type="password" class="form-control input-editar pe-5" id="passActual"
+                                    placeholder="••••••••••••••••••••••••••••••••••••••••••">
+                                <span class="ojo-password" onclick="togglePassword('passActual', 'iconoOjoActual')">
+                                    <i class="fa-regular fa-eye" id="iconoOjoActual"></i>
                                 </span>
                             </div>
                         </div>
 
                         <div class="mb-4">
-                            <a href="#" class="link-rojo" style="font-size: 0.85rem;">Olvidé mi contraseña</a>
-                        </div>
-
-                        <!-- reCAPTCHA simulado -->
-                        <div
-                            class="d-flex align-items-center justify-content-between border rounded p-2 mb-4 recaptcha-box">
-                            <div class="form-check mb-0 d-flex align-items-center gap-2 ms-2">
-                                <input class="form-check-input mt-0 border-secondary" type="checkbox" id="recaptcha"
-                                    style="width: 20px; height: 20px; border-radius: 2px;">
-                                <label class="form-check-label pt-1 ms-1 text-dark" for="recaptcha"
-                                    style="font-size: 0.8rem;">No soy un robot</label>
-                            </div>
-                            <div class="text-center me-2" style="font-size: 0.6rem; color: #555;">
-                                <i class="fa-solid fa-arrows-rotate fs-5 text-primary mb-1"></i><br>
-                                reCAPTCHA
+                            <label for="passNueva" class="form-label label-editar">Contraseña Nueva</label>
+                            <div class="position-relative">
+                                <input type="password" class="form-control input-editar pe-5" id="passNueva"
+                                    placeholder="••••••••••••••••••••••••••••••••••">
+                                <span class="ojo-password" onclick="togglePassword('passNueva', 'iconoOjoNueva')">
+                                    <i class="fa-regular fa-eye" id="iconoOjoNueva"></i>
+                                </span>
                             </div>
                         </div>
 
-                        <button onclick="iniciarSesion()" class="btn btn-login w-100 py-2 fw-bold mb-4">
-                            Iniciar Sesión
+                        <button onclick="realizarCambioContrasena()" class="btn btn-editar w-100 py-2 fw-bold">
+                            Realizar cambio
                         </button>
-
-                        <p class="text-center mb-0" style="font-size: 0.88rem;">
-                            ¿No tienes cuenta?
-                            <a href="registro.html" class="link-rojo fw-semibold ms-1">Crear cuenta</a>
-                        </p>
 
                     </div>
 
                     <!-- Columna imagen -->
                     <div class="col-12 col-md-6 d-none d-md-block">
-                        <img src="img/tortaa.jpg" alt="Tortas D'Mela" class="foto-login">
+                        <img src="img/tortaaaaaa.jpg" alt="Tortas D'Mela" class="foto-editar">
                     </div>
 
                 </div>
@@ -200,17 +195,22 @@
 
     <footer class="pt-5 pb-4 shadow-lg"
         style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
+
         <div class="container" style="max-width: 1150px;">
+
             <div class="row g-4 justify-content-between text-center text-lg-start">
 
                 <div class="col-12 col-lg-4">
+
                     <div class="mb-3">
                         <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería"
                             class="img-fluid mx-auto mx-lg-0"
                             style="max-width: 260px; width: 100%; object-fit: contain;">
                     </div>
+
                     <div
                         class="d-flex flex-column flex-sm-row gap-3 align-items-center align-items-lg-start justify-content-center justify-content-lg-start mt-3">
+
                         <div class="d-flex gap-2">
                             <a href="#"
                                 class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
@@ -223,19 +223,23 @@
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </div>
+
                         <div class="small" style="line-height: 1.6;">
-                            <div class="fw-bold mb-1 text-white"><i class="fa-solid fa-location-dot me-1"></i> Visítanos
-                                en:</div>
+                            <div class="fw-bold mb-1 text-white">
+                                <i class="fa-solid fa-location-dot me-1"></i> Visítanos en:
+                            </div>
                             <div class="opacity-90">• Manuel María Izaga 612</div>
                             <div class="opacity-90">• Los Pinos 438 (Sta. Victoria)</div>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center align-items-lg-start">
                     <h6 class="fw-bold mb-3 fs-6 pb-1"
-                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">Nuestros
-                        productos</h6>
+                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                        Nuestros productos
+                    </h6>
                     <ul
                         class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
                         <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta tres leches</a></li>
@@ -250,8 +254,9 @@
 
                 <div class="col-12 col-md-4 col-lg-2 d-flex flex-column align-items-center align-items-lg-start">
                     <h6 class="fw-bold mb-3 fs-6 pb-1"
-                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">Enlaces de
-                        Interés</h6>
+                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                        Enlaces de Interés
+                    </h6>
                     <ul
                         class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
                         <li><a href="#" class="text-decoration-none opacity-75 text-white">Catálogo</a></li>
@@ -264,6 +269,7 @@
 
                 <div
                     class="col-12 col-md-4 col-lg-3 text-center text-lg-end d-flex flex-column align-items-center align-items-lg-end">
+
                     <h6 class="fw-bold mb-2 fs-6 text-white">Libro de reclamaciones</h6>
                     <div class="mb-4">
                         <a href="#">
@@ -272,6 +278,7 @@
                                 style="max-width: 145px; background-color: #ffffff; padding: 4px;">
                         </a>
                     </div>
+
                     <h6 class="fw-bold mb-2 fs-6 text-white">Métodos de pago</h6>
                     <div class="d-flex gap-1 justify-content-center justify-content-lg-end align-items-center">
                         <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
@@ -287,18 +294,21 @@
                             <i class="fa-brands fa-cc-amex fs-5 text-info"></i>
                         </div>
                     </div>
+
                 </div>
 
             </div>
+
             <hr class="my-4 opacity-25" style="border-color: #F2F2F2;">
+
             <div class="text-center small opacity-75" style="font-size: 0.8rem;">
                 &copy; 2026 D'Mela Dulcería & Cafetería. Todos los derechos reservados.
             </div>
+
         </div>
     </footer>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/login.js"></script>
+ <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/sesion.js"></script>
 </body>
 
 </html>

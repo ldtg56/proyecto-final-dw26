@@ -1,3 +1,6 @@
+/* ============================================
+   ESTILOS GENERALES (heredados de login)
+   ============================================ */
 body {
     background-color: #f5f5f5;
 }
@@ -86,46 +89,70 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .menu-central .nav-link { font-size: 0.85rem; }
-    .menu-central .nav-item { padding-left: 0.45rem; padding-right: 0.45rem; }
-    .logo-header { max-height: 62px; }
-    .menu-central { margin-right: 0.5rem; }
-    .iconos-derecha { gap: 0.8rem !important; }
+    .menu-central .nav-link {
+        font-size: 0.85rem;
+    }
+    .menu-central .nav-item {
+        padding-left: 0.45rem;
+        padding-right: 0.45rem;
+    }
+    .logo-header {
+        max-height: 62px;
+    }
+    .menu-central {
+        margin-right: 0.5rem;
+    }
+    .iconos-derecha {
+        gap: 0.8rem !important;
+    }
 }
 
-/* ── Card login ── */
-.card-login {
+/* ============================================
+   ESTILOS DE EDICIÓN DE CONTRASEÑA
+   (alineados con login.css)
+   ============================================ */
+
+/* ── Card Editar Contraseña ── */
+.card-editar {
     border: 2px solid #BF8484 !important;
     border-radius: 10px;
     max-width: 780px;
     width: 100%;
 }
 
-.titulo-login {
+.titulo-editar {
     color: #8C1616;
     font-size: 1.5rem;
     letter-spacing: 1px;
 }
 
-.icono-login {
+.icono-editar {
     font-size: 2rem;
     color: #8C1616;
 }
 
+/* ── Texto descriptivo ── */
+.texto-editar {
+    color: #555;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    max-width: 420px;
+}
+
 /* ── Inputs ── */
-.label-login {
+.label-editar {
     font-size: 0.88rem;
     font-weight: 600;
     color: #333;
 }
 
-.input-login {
+.input-editar {
     border-color: #ccc;
     border-radius: 4px;
     font-size: 0.9rem;
 }
 
-.input-login:focus {
+.input-editar:focus {
     border-color: #8C1616;
     box-shadow: 0 0 0 0.2rem rgba(140, 22, 22, 0.15);
 }
@@ -145,15 +172,8 @@ body {
     color: #8C1616;
 }
 
-/* ── reCAPTCHA simulado ── */
-.recaptcha-box {
-    max-width: 300px;
-    background-color: #f9f9f9;
-    border-color: #ccc !important;
-}
-
 /* ── Botón ── */
-.btn-login {
+.btn-editar {
     background-color: #8C1616;
     color: white;
     border-radius: 6px;
@@ -163,7 +183,7 @@ body {
     transition: background-color 0.2s ease;
 }
 
-.btn-login:hover {
+.btn-editar:hover {
     background-color: #6e1010;
     color: white;
 }
@@ -179,7 +199,7 @@ body {
 }
 
 /* ── Imagen lateral ── */
-.foto-login {
+.foto-editar {
     width: 100%;
     height: 100%;
     object-fit: cover;

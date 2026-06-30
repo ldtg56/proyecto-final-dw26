@@ -20,14 +20,15 @@ function actualizarHeaderSegunSesion() {
         const datos = JSON.parse(sesion);
 
         menuUsuario.innerHTML = `
-            <li class="dropdown-header text-muted small px-3">Hola, ${datos.nombre}</li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="usuario_dashboard_inicio.html">Mi Cuenta</a></li>
-            <li><a class="dropdown-item" href="#">Historial de Compras</a></li>
-            <li><a class="dropdown-item" href="#">Mis Cupones</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger fw-semibold" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
-        `;
+    <li class="dropdown-header text-muted small px-3">Hola, ${datos.nombre}</li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="usuario_dashboard_inicio.html">Mi Cuenta</a></li>
+    <li><a class="dropdown-item" href="#">Historial de Compras</a></li>
+    <li><a class="dropdown-item" href="#">Mis Cupones</a></li>
+    <li><a class="dropdown-item" href="editarcontraseña.html">Editar Contraseña</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item text-danger fw-semibold" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+`;
     } else {
         menuUsuario.innerHTML = `
             <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>

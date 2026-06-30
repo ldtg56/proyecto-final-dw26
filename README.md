@@ -21,4 +21,4 @@ copiar y pegar el header de cualquir archivo (pedidosPersonalizados.html) y veri
 
 
 EDUARDO
-agregar aca
+Mejorar la resolución de fondo y arreglar el olvidé mi contraseña
