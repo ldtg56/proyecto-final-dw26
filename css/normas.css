@@ -1,0 +1,99 @@
+body {
+}
+
+.fuente-titulos {
+    font-family: "Yu Gothic", "Yu Gothic UI", sans-serif;
+}
+
+.fuente-textos {
+    font-family: "Leelawadee", "Leelawadee UI", sans-serif;
+}
+
+#contenido-normas .container {
+    max-width: 950px; 
+}
+
+.texto-justificado {
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+.banner-seccion {
+    height: 260px; 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.2); 
+}
+
+.titulo-banner {
+    background-color: #A65353; 
+    color: white;
+    padding: 12px 60px;
+    border-radius: 50px; 
+    font-weight: bold;
+    font-size: 1.8rem; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+.titulo-seccion-norma {
+    color: #000000; 
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.parrafo-norma {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.imagen-norma {
+    object-fit: cover;
+    height: 300px;
+    border-radius: 2px;
+}
+
+.fondo-rosado-norma {
+    background-color: #BF8484;
+    width: 100%;
+}
+
+.fondo-rosado-norma .parrafo-norma {
+    opacity: 0.95;
+}
+
+.fondo-rosado-norma .imagen-norma {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .banner-seccion {
+        height: 200px;
+    }
+    
+    .titulo-banner {
+        font-size: 1.5rem;
+        padding: 10px 40px;
+    }
+
+    .titulo-seccion-norma {
+        font-size: 1.3rem;
+        text-align: center !important;
+    }
+
+    .imagen-norma {
+        height: auto;
+        max-height: 280px;
+    }
+    
+    .parrafo-norma {
+        text-align: center !important;
+    }
+}
