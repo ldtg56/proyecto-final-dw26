@@ -151,75 +151,73 @@
                 <!-- Galería de imágenes -->
                 <div class="col-md-5 d-flex gap-2">
                     <div class="d-flex flex-column gap-2">
-                        <img src="img/Tor1.jpg" class="border border-dark"
+                        <img id="foto-miniatura" src="" class="border border-dark"
                             style="width: 80px; height: 80px; object-fit: cover;">
                     </div>
                     <div class="flex-grow-1">
-                        <img src="img/Tor1.jpg" class="img-fluid border" alt="Torta Principal">
+                        <img id="foto-principal" src="" class="img-fluid border" alt="Torta Principal">
                     </div>
                 </div>
 
                 <!-- Detalles y botones de compra -->
                 <div class="col-md-3">
-                    <div class="d-flex align-items-center gap-2 mb-3">
-                        <span class="fw-bold">Tortas:</span>
-                        <button class="btn btn-guinda btn-sm px-3">Pequeña</button>
-                        <button
-                            class="btn btn-outline-dark btn-sm px-3 border-guinda text-guinda fw-bold">Mediana</button>
+                    <div>
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <span class="fw-bold">Tortas:</span>
+                            <button id="btn-pequena" class="btn btn-guinda btn-sm px-3">Pequeña</button>
+                            <button id="btn-mediana"
+                                class="btn btn-outline-dark btn-sm px-3 border-guinda text-guinda fw-bold">Mediana</button>
+                        </div>
                     </div>
 
-                    <h5 class="text-secondary mb-4">Torta pequeña de cereza</h5>
 
-                    <div class="d-flex justify-content-between text-muted small mb-2">
-                        <span>Precio Regular</span>
-                        <span>S/ 8.50 x Por</span>
-                    </div>
-                    <div class="d-flex justify-content-between text-muted small mb-3">
-                        <span>Precio por Torta</span>
-                        <span>S/ 8.13 x Por</span>
-                    </div>
-                    <div class="d-flex justify-content-between fw-bold mb-4">
-                        <span>Precio Total</span>
-                        <span>S/ 65.00</span>
+                    <div class="col-md-3">
+                        <h5 id="titulo-producto" class="text-secondary mb-4" style="white-space: nowrap;">Cargando...
+                        </h5>
+                        <div class="d-flex justify-content-between fw-bold mb-4 gap-3">
+                            <span style="white-space: nowrap;">Precio Total:</span>
+                            <span id="precio-total" style="white-space: nowrap;">S/ 0.00</span>
+                        </div>
                     </div>
 
-                    <div class="d-flex align-items-center gap-3">
-                        <button class="btn btn-guinda px-4"
+                    <div class="d-flex align-items-center justify-content-center gap-3">
+                        <button class="btn btn-guinda align-items-center px-4"
                             onclick="agregarItemCarrito('201', 'Torta pequeña cereza', 65.00, 'img/Tor1.jpg')">Agregar</button>
-                        <span class="small text-muted">10+ unidades disponibles</span>
                     </div>
                 </div>
 
                 <!-- Caja derecha de especificaciones -->
                 <div class="col-md-4">
-                    <div class="caja-info-derecha h-100">
+                    <div class="caja-info-derecha h-80">
                         <p class="fw-bold mb-1">Vendido en tienda:</p>
                         <p class="mb-3">D'Mela</p>
                         <hr>
-
-                        <div class="d-flex justify-content-between fw-bold mb-3">
-                            <span>Cant. Porciones:</span>
-                            <span>8</span>
+                        <div class="d-flex justify-content-between text-white mb-2">
+                            <span>Masa:</span>
+                            <span id="info-masa">---</span>
                         </div>
                         <hr>
-
-                        <div class="d-flex justify-content-between fw-bold mb-3">
+                        <div class="d-flex justify-content-between text-white mb-2">
                             <span>Peso:</span>
-                            <span>800 gr</span>
+                            <span id="info-peso">---</span>
                         </div>
                         <hr>
-
-                        <div class="d-flex justify-content-between mb-4">
-                            <span class="fw-bold">Estilo:</span>
-                            <span class="text-end">Personalizada -<br>San Valentin</span>
+                        <div class="d-flex justify-content-between text-white mb-2">
+                            <span>Preparación:</span>
+                            <span id="info-tiempo">---</span>
                         </div>
-
+                        <hr>
+                        <div class="d-flex justify-content-between text-white mb-2">
+                            <span>Estilo:</span>
+                            <span id="info-estilo">---</span>
+                        </div>
+                        <hr>
                         <p class="fw-bold mb-2">Método de pago:</p>
                         <p class="small mb-2">Pago por tarjeta</p>
                         <div class="iconos-pago">
                             <img src="img/bcp.png" alt="BCP">
                             <img src="img/visa.png" alt="Visa">
-                            <img src="img/maste.png" alt="Mastercard">
+                            <img src="img/amex.png" alt="Mastercard">
                             <img src="img/oh.png" alt="Tarjeta Oh">
                         </div>
                     </div>
@@ -393,6 +391,46 @@
 
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/productosData.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const id = localStorage.getItem('prod_id');
+                const prod = catalogoDela[id];
+                // Lógica para cambiar peso dinámicamente
+                const btnPequena = document.getElementById('btn-pequena');
+                const btnMediana = document.getElementById('btn-mediana');
+                const displayPeso = document.getElementById('info-peso');
+
+                btnPequena.addEventListener('click', () => {
+                    displayPeso.innerText = '700 gr';
+                    // Cambiamos los estilos para que se vea cuál está seleccionado
+                    btnPequena.classList.replace('btn-outline-dark', 'btn-guinda');
+                    btnPequena.classList.add('text-white');
+                    btnMediana.classList.replace('btn-guinda', 'btn-outline-dark');
+                });
+
+                btnMediana.addEventListener('click', () => {
+                    displayPeso.innerText = '1 kg';
+                    // Cambiamos los estilos
+                    btnMediana.classList.replace('btn-outline-dark', 'btn-guinda');
+                    btnMediana.classList.add('text-white');
+                    btnPequena.classList.replace('btn-guinda', 'btn-outline-dark');
+                });
+
+                if (prod) {
+                    document.getElementById('titulo-producto').innerText = prod.nombre;
+                    document.getElementById('precio-total').innerText = prod.precio;
+                    document.getElementById('foto-principal').src = prod.img;
+                    document.getElementById('foto-miniatura').src = prod.img;
+
+                    // Rellenar las nuevas categorías
+                    document.getElementById('info-masa').innerText = prod.masa;
+                    document.getElementById('info-peso').innerText = prod.peso;
+                    document.getElementById('info-tiempo').innerText = prod.tiempo;
+                    document.getElementById('info-estilo').innerText = prod.estilo;
+                }
+            });
+        </script>
     </body>
 
 </html>

@@ -3,6 +3,11 @@
 // =================================================================
 const STORAGE_KEY = 'dmela_carrito_compras';
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Aquí inicializamos todos nuestros módulos al cargar
+    actualizarBadgeCarritoHeader();
+    inicializarFiltrosNavegacion();
+});
 // 1. Función clásica para Tortas
 function agregarItemCarrito(id, nombre, precio, imagenUrl) {
     let carritoGuardado = localStorage.getItem(STORAGE_KEY);
@@ -81,5 +86,29 @@ function actualizarBadgeCarritoHeader() {
         }
     }
 }
+function inicializarFiltrosNavegacion() {
+    const paginaActual = window.location.pathname.split('/').pop();
+    const mapaPaginas = {
+        'producto.html': 'chk-tortas', 'productos2.html': 'chk-tortas',
+        'combos.html': 'chk-combos', 'combos2.html': 'chk-combos',
+        'ofertas.html': 'chk-ofertas', 'ofertas2.html': 'chk-ofertas'
+    };
 
-document.addEventListener('DOMContentLoaded', actualizarBadgeCarritoHeader);
+    // Marcamos el checkbox activo
+    const idActivo = mapaPaginas[paginaActual] || 'chk-tortas';
+    document.querySelectorAll('.chk-categoria').forEach(chk => chk.checked = false);
+    const checkActivo = document.getElementById(idActivo);
+    if (checkActivo) checkActivo.checked = true;
+
+    // Lógica de redirección
+    document.querySelectorAll('.chk-categoria').forEach(chk => {
+        chk.addEventListener('change', function() {
+            if (this.checked) {
+                const url = this.getAttribute('data-url');
+                url && url !== '#' ? window.location.href = url : (alert('En construcción 🛠️'), this.checked = false, checkActivo.checked = true);
+            } else {
+                this.checked = true;
+            }
+        });
+    });
+}
