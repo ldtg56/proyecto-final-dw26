@@ -415,21 +415,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- OTRA LÓGICA QUE YA TENGAS AQUÍ ---
-
-            // 1. LÓGICA PARA OCULTAR FILTROS INNECESARIOS
             const rutaFiltros = window.location.pathname.toLowerCase();
             const bloqueSabor = document.getElementById('bloque-sabor');
             const bloqueColeccion = document.getElementById('bloque-coleccion');
 
-            // Verificamos que los bloques existan en el HTML para no generar errores
             if (bloqueSabor && bloqueColeccion) {
-                // Si estamos en bocaditos, combos u ofertas, los ocultamos (display: none)
                 if (rutaFiltros.includes('bocaditos') || rutaFiltros.includes('combos') || rutaFiltros.includes('ofertas')) {
                     bloqueSabor.style.display = 'none';
                     bloqueColeccion.style.display = 'none';
                 } else {
-                    // Si es tortas (producto.html) o pedidos, los mostramos
                     bloqueSabor.style.display = 'block';
                     bloqueColeccion.style.display = 'block';
                 }
