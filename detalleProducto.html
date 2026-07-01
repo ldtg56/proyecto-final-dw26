@@ -129,286 +129,248 @@
             </div>
         </nav>
     </header>
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-md-5 d-flex gap-2">
+                <div class="d-flex flex-column gap-2">
+                    <img id="foto-miniatura" src="" class="border border-dark"
+                        style="width: 80px; height: 80px; object-fit: cover;">
+                </div>
+                <div class="flex-grow-1">
+                    <img id="foto-principal" src="" class="img-fluid border" alt="Torta Principal">
+                </div>
+            </div>
 
-    <body>
-
-        <main class="container my-5">
-            <div class="row">
-                <div class="col-md-5 d-flex gap-2">
-                    <div class="d-flex flex-column gap-2">
-                        <img id="foto-miniatura" src="" class="border border-dark"
-                            style="width: 80px; height: 80px; object-fit: cover;">
-                    </div>
-                    <div class="flex-grow-1">
-                        <img id="foto-principal" src="" class="img-fluid border" alt="Torta Principal">
+            <div class="col-md-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="fw-bold">Tortas:</span>
+                        <button id="btn-pequena" class="btn btn-guinda btn-sm px-3">Pequeña</button>
+                        <button id="btn-mediana"
+                            class="btn btn-outline-dark btn-sm px-3 border-guinda text-guinda fw-bold">Mediana</button>
                     </div>
                 </div>
+
 
                 <div class="col-md-3">
-                    <div>
-                        <div class="d-flex align-items-center gap-2 mb-3">
-                            <span class="fw-bold">Tortas:</span>
-                            <button id="btn-pequena" class="btn btn-guinda btn-sm px-3">Pequeña</button>
-                            <button id="btn-mediana"
-                                class="btn btn-outline-dark btn-sm px-3 border-guinda text-guinda fw-bold">Mediana</button>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3">
-                        <h5 id="titulo-producto" class="text-secondary mb-4" style="white-space: nowrap;">Cargando...
-                        </h5>
-                        <div class="d-flex justify-content-between fw-bold mb-4 gap-3">
-                            <span style="white-space: nowrap;">Precio Total:</span>
-                            <span id="precio-total" style="white-space: nowrap;">S/ 0.00</span>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-center gap-3">
-                        <button class="btn btn-guinda align-items-center px-4"
-                            onclick="agregarItemCarrito('201', 'Torta pequeña cereza', 65.00, 'img/Tor1.jpg')">Agregar</button>
+                    <h5 id="titulo-producto" class="text-secondary mb-4" style="white-space: nowrap;">Cargando...
+                    </h5>
+                    <div class="d-flex justify-content-between fw-bold mb-4 gap-3">
+                        <span style="white-space: nowrap;">Precio Total:</span>
+                        <span id="precio-total" style="white-space: nowrap;">S/ 0.00</span>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="caja-info-derecha h-80">
-                        <p class="fw-bold mb-1">Vendido en tienda:</p>
-                        <p class="mb-3">D'Mela</p>
-                        <hr>
-                        <div class="d-flex justify-content-between text-white mb-2">
-                            <span>Masa:</span>
-                            <span id="info-masa">---</span>
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between text-white mb-2">
-                            <span>Peso:</span>
-                            <span id="info-peso">---</span>
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between text-white mb-2">
-                            <span>Preparación:</span>
-                            <span id="info-tiempo">---</span>
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between text-white mb-2">
-                            <span>Estilo:</span>
-                            <span id="info-estilo">---</span>
-                        </div>
-                        <hr>
-                        <p class="fw-bold mb-2">Método de pago:</p>
-                        <p class="small mb-2">Pago por tarjeta</p>
-                        <div class="iconos-pago">
-                            <img src="img/bcp.png" alt="BCP">
-                            <img src="img/visa.png" alt="Visa">
-                            <img src="img/amex.png" alt="Mastercard">
-                            <img src="img/oh.png" alt="Tarjeta Oh">
-                        </div>
-                    </div>
+                <div class="d-flex align-items-center justify-content-center gap-3">
+                    <button id="btn-agregar" class="btn btn-guinda align-items-center px-4">Agregar</button>
                 </div>
             </div>
 
-            <div class="seccion-tambien-ofrecemos shadow">
-                <h5 class="fw-bold mb-4">También ofrecemos:</h5>
-                <div class="row row-cols-2 row-cols-md-5 g-3">
-
-                    <div class="col">
-                        <div class="card-complemento">
-                            <input type="checkbox" class="form-check-input check-complemento border-dark">
-                            <img src="img/Comb6.jpg" class="img-fluid w-100" alt="Queques">
-                            <p class="small m-0 fw-bold">Queques</p>
-                        </div>
+            <div class="col-md-4">
+                <div class="caja-info-derecha h-80">
+                    <p class="fw-bold mb-1">Vendido en tienda:</p>
+                    <p class="mb-3">D'Mela</p>
+                    <hr>
+                    <div class="d-flex justify-content-between text-white mb-2">
+                        <span>Masa:</span>
+                        <span id="info-masa">---</span>
                     </div>
-
-                    <div class="col">
-                        <div class="card-complemento">
-                            <input type="checkbox" class="form-check-input check-complemento border-dark">
-                            <img src="img/Comb4.jpg" class="img-fluid w-100" alt="Macarrones">
-                            <p class="small m-0 fw-bold">Macarrones</p>
-                        </div>
+                    <hr>
+                    <div class="d-flex justify-content-between text-white mb-2">
+                        <span>Peso:</span>
+                        <span id="info-peso">---</span>
                     </div>
-
-                    <div class="col">
-                        <div class="card-complemento">
-                            <input type="checkbox" class="form-check-input check-complemento border-dark">
-                            <img src="img/Arre1.jpg" class="img-fluid w-100" alt="Paletas">
-                            <p class="small m-0 fw-bold">Paletas</p>
-                        </div>
+                    <hr>
+                    <div class="d-flex justify-content-between text-white mb-2">
+                        <span>Preparación:</span>
+                        <span id="info-tiempo">---</span>
                     </div>
-
-                    <div class="col">
-                        <div class="card-complemento">
-                            <input type="checkbox" class="form-check-input check-complemento border-dark">
-                            <img src="img/Beb1.jpg" class="img-fluid w-100" alt="Matcha">
-                            <p class="small m-0 fw-bold">Matcha</p>
-                        </div>
+                    <hr>
+                    <div class="d-flex justify-content-between text-white mb-2">
+                        <span>Estilo:</span>
+                        <span id="info-estilo">---</span>
                     </div>
-
-                    <div class="col">
-                        <div class="card-complemento">
-                            <input type="checkbox" class="form-check-input check-complemento border-dark">
-                            <img src="img/Comb7.jpg" class="img-fluid w-100" alt="Trufas">
-                            <p class="small m-0 fw-bold">Trufas</p>
-                        </div>
+                    <hr>
+                    <p class="fw-bold mb-2">Método de pago:</p>
+                    <p class="small mb-2">Pago por tarjeta</p>
+                    <div class="iconos-pago">
+                        <img src="img/bcp.png" alt="BCP">
+                        <img src="img/visa.png" alt="Visa">
+                        <img src="img/amex.png" alt="Mastercard">
+                        <img src="img/oh.png" alt="Tarjeta Oh">
                     </div>
-
                 </div>
             </div>
-        </main>
+        </div>
 
-        <footer class="pt-5 pb-4 shadow-lg"
-            style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
+        <div class="seccion-tambien-ofrecemos shadow">
+            <h5 class="fw-bold mb-4">También ofrecemos:</h5>
+            <div class="row row-cols-2 row-cols-md-5 g-3">
 
-            <div class="container" style="max-width: 1150px;">
-
-                <div class="row g-4 justify-content-between text-center text-lg-start">
-
-                    <div class="col-12 col-lg-4">
-
-                        <div class="mb-3">
-                            <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería"
-                                class="img-fluid mx-auto mx-lg-0"
-                                style="max-width: 260px; width: 100%; object-fit: contain;">
-                        </div>
-
-                        <div
-                            class="d-flex flex-column flex-sm-row gap-3 align-items-center align-items-lg-start justify-content-center justify-content-lg-start mt-3">
-
-                            <div class="d-flex gap-2">
-                                <a href="#"
-                                    class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
-                                    style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                </a>
-                                <a href="#"
-                                    class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
-                                    style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                            </div>
-
-                            <div class="small" style="line-height: 1.6;">
-                                <div class="fw-bold mb-1 text-white">
-                                    <i class="fa-solid fa-location-dot me-1"></i> Visítanos en:
-                                </div>
-                                <div class="opacity-90">• Manuel María Izaga 612</div>
-                                <div class="opacity-90">• Los Pinos 438 (Sta. Victoria)</div>
-                            </div>
-
-                        </div>
+                <div class="col">
+                    <div class="card-complemento">
+                        <input type="checkbox" class="form-check-input check-complemento border-dark">
+                        <img src="img/Tor1.webp" class="img-fluid w-100" alt="Queques">
+                        <p class="small m-0 fw-bold">Torta Amor y Chispas (Edición Especial)</p>
                     </div>
+                </div>
 
-                    <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center align-items-lg-start">
-                        <h6 class="fw-bold mb-3 fs-6 pb-1"
-                            style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
-                            Nuestros productos
-                        </h6>
-                        <ul
-                            class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta tres leches</a>
-                            </li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Chantilly con durazno</a>
-                            </li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Carrot cake</a></li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta helada</a></li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Selva negra</a></li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Cabeza de indio</a></li>
-                        </ul>
+                <div class="col">
+                    <div class="card-complemento">
+                        <input type="checkbox" class="form-check-input check-complemento border-dark">
+                        <img src="img/Tor2.webp" class="img-fluid w-100" alt="Macarrones">
+                        <p class="small m-0 fw-bold">Torta Premium Durazno & manjar</p>
                     </div>
+                </div>
 
-                    <div class="col-12 col-md-4 col-lg-2 d-flex flex-column align-items-center align-items-lg-start">
-                        <h6 class="fw-bold mb-3 fs-6 pb-1"
-                            style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
-                            Enlaces de Interés
-                        </h6>
-                        <ul
-                            class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Catálogo</a></li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Combos</a></li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Promociones</a></li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">FAQ</a></li>
-                            <li><a href="#" class="text-decoration-none opacity-75 text-white">Contáctanos</a></li>
-                        </ul>
+                <div class="col">
+                    <div class="card-complemento">
+                        <input type="checkbox" class="form-check-input check-complemento border-dark">
+                        <img src="img/Tor3.webp" class="img-fluid w-100" alt="Paletas">
+                        <p class="small m-0 fw-bold">Torta Suprema de Chocolate & Fudge</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card-complemento">
+                        <input type="checkbox" class="form-check-input check-complemento border-dark">
+                        <img src="img/Tor4.webp" class="img-fluid w-100" alt="Matcha">
+                        <p class="small m-0 fw-bold">Torta Vintage de Vainilla & Cerezas</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card-complemento">
+                        <input type="checkbox" class="form-check-input check-complemento border-dark">
+                        <img src="img/Tor5.webp" class="img-fluid w-100" alt="Trufas">
+                        <p class="small m-0 fw-bold">Torta de Chantilly con Durazno Especial</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="pt-5 pb-4 shadow-lg"
+        style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
+
+        <div class="container" style="max-width: 1150px;">
+
+            <div class="row g-4 justify-content-between text-center text-lg-start">
+
+                <div class="col-12 col-lg-4">
+
+                    <div class="mb-3">
+                        <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería"
+                            class="img-fluid mx-auto mx-lg-0"
+                            style="max-width: 260px; width: 100%; object-fit: contain;">
                     </div>
 
                     <div
-                        class="col-12 col-md-4 col-lg-3 text-center text-lg-end d-flex flex-column align-items-center align-items-lg-end">
+                        class="d-flex flex-column flex-sm-row gap-3 align-items-center align-items-lg-start justify-content-center justify-content-lg-start mt-3">
 
-                        <h6 class="fw-bold mb-2 fs-6 text-white">Libro de reclamaciones</h6>
-                        <div class="mb-4">
-                            <a href="#">
-                                <img src="img/libroReclamos.jpg" alt="Libro de Reclamaciones"
-                                    class="img-fluid rounded shadow-sm"
-                                    style="max-width: 145px; background-color: #ffffff; padding: 4px;">
+                        <div class="d-flex gap-2">
+                            <a href="#"
+                                class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
+                                style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#"
+                                class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
+                                style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                <i class="fa-brands fa-instagram"></i>
                             </a>
                         </div>
 
-                        <h6 class="fw-bold mb-2 fs-6 text-white">Métodos de pago</h6>
-                        <div class="d-flex gap-1 justify-content-center justify-content-lg-end align-items-center">
-                            <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                                style="height: 30px; width: 48px;">
-                                <i class="fa-brands fa-cc-visa fs-5 text-primary"></i>
+                        <div class="small" style="line-height: 1.6;">
+                            <div class="fw-bold mb-1 text-white">
+                                <i class="fa-solid fa-location-dot me-1"></i> Visítanos en:
                             </div>
-                            <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                                style="height: 30px; width: 48px;">
-                                <i class="fa-brands fa-cc-mastercard fs-5 text-danger"></i>
-                            </div>
-                            <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                                style="height: 30px; width: 48px;">
-                                <i class="fa-brands fa-cc-amex fs-5 text-info"></i>
-                            </div>
+                            <div class="opacity-90">• Manuel María Izaga 612</div>
+                            <div class="opacity-90">• Los Pinos 438 (Sta. Victoria)</div>
                         </div>
 
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center align-items-lg-start">
+                    <h6 class="fw-bold mb-3 fs-6 pb-1"
+                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                        Nuestros productos
+                    </h6>
+                    <ul
+                        class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta tres leches</a>
+                        </li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Chantilly con durazno</a>
+                        </li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Carrot cake</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta helada</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Selva negra</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Cabeza de indio</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-2 d-flex flex-column align-items-center align-items-lg-start">
+                    <h6 class="fw-bold mb-3 fs-6 pb-1"
+                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                        Enlaces de Interés
+                    </h6>
+                    <ul
+                        class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Catálogo</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Combos</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Promociones</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">FAQ</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Contáctanos</a></li>
+                    </ul>
+                </div>
+
+                <div
+                    class="col-12 col-md-4 col-lg-3 text-center text-lg-end d-flex flex-column align-items-center align-items-lg-end">
+
+                    <h6 class="fw-bold mb-2 fs-6 text-white">Libro de reclamaciones</h6>
+                    <div class="mb-4">
+                        <a href="#">
+                            <img src="img/libroReclamos.jpg" alt="Libro de Reclamaciones"
+                                class="img-fluid rounded shadow-sm"
+                                style="max-width: 145px; background-color: #ffffff; padding: 4px;">
+                        </a>
+                    </div>
+
+                    <h6 class="fw-bold mb-2 fs-6 text-white">Métodos de pago</h6>
+                    <div class="d-flex gap-1 justify-content-center justify-content-lg-end align-items-center">
+                        <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                            style="height: 30px; width: 48px;">
+                            <i class="fa-brands fa-cc-visa fs-5 text-primary"></i>
+                        </div>
+                        <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                            style="height: 30px; width: 48px;">
+                            <i class="fa-brands fa-cc-mastercard fs-5 text-danger"></i>
+                        </div>
+                        <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                            style="height: 30px; width: 48px;">
+                            <i class="fa-brands fa-cc-amex fs-5 text-info"></i>
+                        </div>
                     </div>
 
                 </div>
 
-                <hr class="my-4 opacity-25" style="border-color: #F2F2F2;">
-
-                <div class="text-center small opacity-75" style="font-size: 0.8rem;">
-                    &copy; 2026 D'Mela Dulcería & Cafetería. Todos los derechos reservados.
-                </div>
-
             </div>
-        </footer>
 
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/productosData.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const id = localStorage.getItem('prod_id');
-                const prod = catalogoDela[id];
-                const btnPequena = document.getElementById('btn-pequena');
-                const btnMediana = document.getElementById('btn-mediana');
-                const displayPeso = document.getElementById('info-peso');
+            <hr class="my-4 opacity-25" style="border-color: #F2F2F2;">
 
-                btnPequena.addEventListener('click', () => {
-                    displayPeso.innerText = '700 gr';
-                    btnPequena.classList.replace('btn-outline-dark', 'btn-guinda');
-                    btnPequena.classList.add('text-white');
-                    btnMediana.classList.replace('btn-guinda', 'btn-outline-dark');
-                });
+            <div class="text-center small opacity-75" style="font-size: 0.8rem;">
+                &copy; 2026 D'Mela Dulcería & Cafetería. Todos los derechos reservados.
+            </div>
 
-                btnMediana.addEventListener('click', () => {
-                    displayPeso.innerText = '1 kg';
-                    btnMediana.classList.replace('btn-outline-dark', 'btn-guinda');
-                    btnMediana.classList.add('text-white');
-                    btnPequena.classList.replace('btn-guinda', 'btn-outline-dark');
-                });
+        </div>
+    </footer>
 
-                if (prod) {
-                    document.getElementById('titulo-producto').innerText = prod.nombre;
-                    document.getElementById('precio-total').innerText = prod.precio;
-                    document.getElementById('foto-principal').src = prod.img;
-                    document.getElementById('foto-miniatura').src = prod.img;
-
-                    document.getElementById('info-masa').innerText = prod.masa;
-                    document.getElementById('info-peso').innerText = prod.peso;
-                    document.getElementById('info-tiempo').innerText = prod.tiempo;
-                    document.getElementById('info-estilo').innerText = prod.estilo;
-                }
-            });
-        </script>
-    </body>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/productosData.js"></script>
+    <script src="js/detalle.js"></script>
+</body>
 
 </html>
