@@ -1,16 +1,14 @@
-// Variables globales
 let precioBase = 0;
-let productoActual = null; // NUEVA: Guardaremos el producto aquí
+let productoActual = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const id = localStorage.getItem('prod_id');
-    productoActual = catalogoDela[id]; // Lo guardamos en la variable global
+    productoActual = catalogoDela[id]; 
 
     if (productoActual) {
         productoActual.id = id;
         precioBase = parseFloat(productoActual.precio.replace('S/', '').trim());
 
-        // Inyectar datos
         document.getElementById('titulo-producto').innerText = productoActual.nombre;
         document.getElementById('foto-principal').src = productoActual.img;
         document.getElementById('foto-miniatura').src = productoActual.img;
@@ -21,20 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('info-estilo').innerText = productoActual.estilo;
         }
 
-        // Asignación de eventos usando la variable global
         document.getElementById('btn-pequena').onclick = () => actualizarPrecio('pequena');
         document.getElementById('btn-mediana').onclick = () => actualizarPrecio('mediana');
         
-        // Carga inicial
         actualizarPrecio('pequena');
     }
 });
 
-// Función central corregida
 function actualizarPrecio(tamano) {
-    // Usamos productoActual en lugar de pasar el parámetro 'prod'
     const prod = productoActual; 
-    if (!prod) return; // Seguridad extra
+    if (!prod) return;
 
     const displayTotal = document.getElementById('precio-total');
     const displayPeso = document.getElementById('info-peso');
@@ -46,7 +40,6 @@ function actualizarPrecio(tamano) {
     let precioFinal = (tamano === 'pequena') ? precioBase : (precioBase + extra);
     let nombreFinal = `${prod.nombre} (${tamano === 'pequena' ? 'Pequeña' : 'Mediana'})`;
     
-    // Ahora sí funcionará porque 'prod' ya no es undefined
     let pesoFinal = '';
     if (prod.id && prod.id.startsWith('10')) {
         pesoFinal = (tamano === 'pequena') ? '700 gr' : '1 kg';
