@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/paginaPrincipal.css">
-    <link rel="stylesheet" href="css/pedidosPersonalizados.css">
+    <link rel="stylesheet" href="css/headerYfooter.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
 
     <link rel="icon" href="img/logoD'Mela.jpg">
@@ -98,7 +98,6 @@
                     <div
                         class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
 
-                        <!-- Carrito Desplegable -->
                         <!-- Carrito con Medalla Numérica Flotante (Enlace directo a carrito.html) -->
                         <a class="text-white text-decoration-none d-flex align-items-center p-1 position-relative"
                             href="carrito.html" title="Ver mi carrito">
@@ -128,11 +127,12 @@
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z" />
                                 </svg>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" id="menuUsuarioDropdown">
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
                                 <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
-                                <li><a class="dropdown-item" href="registro.html">Crear Cuenta</a></li>
-                                <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
-                                <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="crearCuenta.html">Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" href="editarcontraseña.html">Editar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="recuperarcontraseña.html">Recuperar Contraseña</a>
+                                </li>
                             </ul>
                         </div>
 
@@ -148,11 +148,13 @@
         <section id="banner-principal" class="pt-4 pb-5">
             <div class="container text-center" style="max-width: 900px;">
 
-                <a href="index.html"><div class="contenedor-logo-principal p-0">
-                    <img src="img/D'Mela.png" alt="D'Mela Dulcería & Cafetería" class="img-fluid"
-                        style="max-width: 600px; width: 100%;">
-                </div></a>
-                
+                <a href="index.html">
+                    <div class="contenedor-logo-principal p-0">
+                        <img src="img/D'Mela.png" alt="D'Mela Dulcería & Cafetería" class="img-fluid"
+                            style="max-width: 600px; width: 100%;">
+                    </div>
+                </a>
+
 
                 <div class="row g-3 justify-content-center mt-0">
                     <div class="col-4">
@@ -162,7 +164,8 @@
                                     style="object-fit: cover;">
                             </div>
                             <div class="py-2 text-center bg-white">
-                                <a href="historia.html" class="text-decoration-none text-dark fw-bold text-uppercase fuente-titulos"
+                                <a href="historia.html"
+                                    class="text-decoration-none text-dark fw-bold text-uppercase fuente-titulos"
                                     style="font-size: 1.6rem; letter-spacing: 0.5px;">Historia</a>
                             </div>
                         </div>
@@ -175,7 +178,8 @@
                                     style="object-fit: cover;">
                             </div>
                             <div class="py-2 text-center bg-white">
-                                <a href="equipo.html" class="text-decoration-none text-dark fw-bold text-uppercase fuente-titulos"
+                                <a href="equipo.html"
+                                    class="text-decoration-none text-dark fw-bold text-uppercase fuente-titulos"
                                     style="font-size: 1.6rem; letter-spacing: 0.5px;">Equipo</a>
                             </div>
                         </div>
@@ -188,7 +192,8 @@
                                     style="object-fit: cover;">
                             </div>
                             <div class="py-2 text-center bg-white">
-                                <a href="producto.html" class="text-decoration-none text-dark fw-bold text-uppercase fuente-titulos"
+                                <a href="producto.html"
+                                    class="text-decoration-none text-dark fw-bold text-uppercase fuente-titulos"
                                     style="font-size: 1.6rem; letter-spacing: 0.5px;">Productos</a>
                             </div>
                         </div>
@@ -582,6 +587,8 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/sesion.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 
 </html>

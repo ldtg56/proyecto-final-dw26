@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-    <link rel="alternate" href="paginaPrincipal.html">
     <link rel="stylesheet" href="css/usuario_dashboard_inicio.css">
+    <link rel="stylesheet" href="css/paginaPrincipal.css">
+    <link rel="stylesheet" href="css/headerYfooter.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
 
     <link rel="icon" href="img/logoD'Mela - copia.jpg">
     <title>Dashboard - Inicio - D'Mela</title>
@@ -73,7 +74,8 @@
                                 SOPORTE <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item fw-bold text-danger bg-light" href="#">Inicio Dashboard</a>
+                                <li><a class="dropdown-item fw-bold text-danger bg-light"
+                                        href="usuario_dashboard_inicio.html">Inicio Dashboard</a>
                                 </li>
                                 <li><a class="dropdown-item" href="#">Historial Compras</a></li>
                                 <li><a class="dropdown-item" href="#">Mis Cupones</a></li>
@@ -95,11 +97,9 @@
 
                     </ul>
 
-                    <!-- ÍCONOS VECTORIALES PUROS (Cero dependencias externas, 100% visibles) -->
                     <div
                         class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
 
-                        <!-- Carrito Desplegable -->
                         <!-- Carrito con Medalla Numérica Flotante (Enlace directo a carrito.html) -->
                         <a class="text-white text-decoration-none d-flex align-items-center p-1 position-relative"
                             href="carrito.html" title="Ver mi carrito">
@@ -131,9 +131,10 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
                                 <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
-                                <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
-                                <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
-                                <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="crearCuenta.html">Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" href="editarcontraseña.html">Editar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="recuperarcontraseña.html">Recuperar Contraseña</a>
+                                </li>
                             </ul>
                         </div>
 
@@ -332,10 +333,9 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- Agregamos el de sesión para que el menú superior pinte de rojo las opciones -->
     <script src="js/sesion.js"></script>
-    <!-- Corregimos el nombre exacto de tu archivo JavaScript -->
     <script src="js/usuario_dashboard_inicio.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 

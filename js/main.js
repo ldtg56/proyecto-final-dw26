@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarBadgeCarritoHeader();
     inicializarFiltrosNavegacion();
 });
+
 function agregarItemCarrito(id, nombre, precio, imagenUrl) {
     let carritoGuardado = localStorage.getItem(STORAGE_KEY);
     let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
@@ -78,6 +79,7 @@ function actualizarBadgeCarritoHeader() {
         }
     }
 }
+
 function inicializarFiltrosNavegacion() {
     const paginaActual = window.location.pathname.split('/').pop();
     

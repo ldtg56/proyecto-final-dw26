@@ -2,97 +2,6 @@ body {
     background-color: #f5f5f5;
 }
 
-/* ── Header ── */
-.header-dmela {
-    background-color: #8C1616;
-    border-bottom: 4px solid #A65353;
-}
-
-.logo-header {
-    max-height: 85px;
-    width: auto;
-    object-fit: contain;
-}
-
-/* Matar flechas por defecto de Bootstrap */
-.header-dmela .dropdown-toggle::after {
-    display: none !important;
-}
-
-/* Textos de navegación */
-.menu-central .nav-link {
-    font-size: 1.05rem;
-    letter-spacing: 0.6px;
-    transition: color 0.2s ease;
-}
-
-.menu-central .nav-link:hover {
-    color: #BF8484 !important;
-}
-
-/* El triangulito negro ▼ */
-.triangulo-opciones {
-    color: #1A1A1A;
-    font-size: 0.65rem;
-    margin-left: 5px;
-    transform: translateY(-1px);
-}
-
-/* Submenús */
-.header-dmela .dropdown-menu {
-    background-color: #F2F2F2;
-    border-radius: 8px;
-    padding: 0.5rem 0;
-}
-
-.header-dmela .dropdown-item {
-    color: #8C1616;
-    font-weight: 600;
-    font-size: 0.92rem;
-    padding: 0.55rem 1.3rem;
-}
-
-.header-dmela .dropdown-item:hover {
-    background-color: #BF8484;
-    color: #FFFFFF;
-}
-
-/* Efecto hover sobre los iconos SVG dibujados */
-.iconos-derecha svg {
-    transition: transform 0.2s ease;
-}
-
-.iconos-derecha a:hover svg {
-    transform: scale(1.15);
-    color: #BF8484;
-}
-
-@media (min-width: 768px) {
-    .menu-central {
-        border-bottom: 2px solid #FFFFFF;
-        padding-bottom: 6px;
-        margin-right: 2rem;
-    }
-
-    .menu-central .nav-item {
-        border-right: 1.5px solid rgba(255, 255, 255, 0.65);
-        padding-left: 1.1rem;
-        padding-right: 1.1rem;
-    }
-
-    .menu-central .nav-item:last-child {
-        border-right: none;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .menu-central .nav-link { font-size: 0.85rem; }
-    .menu-central .nav-item { padding-left: 0.45rem; padding-right: 0.45rem; }
-    .logo-header { max-height: 62px; }
-    .menu-central { margin-right: 0.5rem; }
-    .iconos-derecha { gap: 0.8rem !important; }
-}
-
 /* ── Card login ── */
 .card-login {
     border: 2px solid #BF8484 !important;
@@ -129,8 +38,9 @@ body {
     border-color: #8C1616;
     box-shadow: 0 0 0 0.2rem rgba(140, 22, 22, 0.15);
 }
+
 .titulo-banner {
-    background-color: rgba(184, 115, 115, 0.85); 
+    background-color: rgba(184, 115, 115, 0.85);
     color: white;
     padding: 15px 50px;
     border-radius: 40px;
