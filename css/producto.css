@@ -160,7 +160,6 @@ body {
     z-index: 2;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
-
 /* 2. Estrella roja para las Ofertas */
 .badge-estrella {
     position: absolute;

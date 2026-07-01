@@ -129,6 +129,16 @@ body {
     border-color: #8C1616;
     box-shadow: 0 0 0 0.2rem rgba(140, 22, 22, 0.15);
 }
+.titulo-banner {
+    background-color: rgba(184, 115, 115, 0.85); 
+    color: white;
+    padding: 15px 50px;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
 /* ── Ojo contraseña ── */
 .ojo-password {

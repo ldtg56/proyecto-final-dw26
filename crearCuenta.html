@@ -132,23 +132,19 @@
 
     <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
         <div class="container px-3">
-            <div class="card-login mx-auto shadow border overflow-hidden">
+            <h1 class="titulo-banner">CREAR CUENTA</h1>
                 <div class="row g-0">
 
                     <!-- Columna formulario -->
                     <div class="col-12 col-md-6 p-4 p-md-5">
 
-                        <div class="d-flex align-items-center gap-3 mb-4">
-                            <i class="fa-solid fa-cake-candles icono-login"></i>
-                            <h3 class="fw-bold mb-0 titulo-login">INICIAR SESIÓN</h3>
-                        </div>
 
                         <div class="mb-3">
                             <label for="loginEmail" class="form-label label-login">Correo electrónico</label>
                             <input type="email" class="form-control input-login" id="loginEmail"
                                 placeholder="cliente@correo.com">
                         </div>
-
+                        <label for="loginPassword" class="form-label label-login">INFORMACIÓN INICIO DE SESIÓN</label>
                         <div class="mb-3">
                             <label for="loginPassword" class="form-label label-login">Contraseña</label>
                             <div class="position-relative">
@@ -159,12 +155,17 @@
                                 </span>
                             </div>
                         </div>
-
-                        <div class="mb-4">
-                            <a href="#" class="link-rojo" style="font-size: 0.85rem;">Olvidé mi contraseña</a>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label label-login"> Confirmar Contraseña</label>
+                            <div class="position-relative">
+                                <input type="password" class="form-control input-login pe-5" id="conmfirmPassword"
+                                    placeholder="••••••••">
+                                <span class="ojo-password" onclick="togglePassword()">
+                                    <i class="fa-regular fa-eye" id="iconoOjo"></i>
+                                </span>
+                            </div>
                         </div>
 
-                        <!-- reCAPTCHA simulado -->
                         <div
                             class="d-flex align-items-center justify-content-between border rounded p-2 mb-4 recaptcha-box">
                             <div class="form-check mb-0 d-flex align-items-center gap-2 ms-2">
@@ -180,13 +181,8 @@
                         </div>
 
                         <button onclick="iniciarSesion()" class="btn btn-login w-100 py-2 fw-bold mb-4">
-                            Iniciar Sesión
+                            Crear Cuenta
                         </button>
-
-                        <p class="text-center mb-0" style="font-size: 0.88rem;">
-                            ¿No tienes cuenta?
-                            <a href="crearCuenta.html" class="link-rojo fw-semibold ms-1">Crear cuenta</a>
-                        </p>
 
                     </div>
 
@@ -196,7 +192,6 @@
                     </div>
 
                 </div>
-            </div>
         </div>
     </main>
 
