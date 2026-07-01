@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
-    <link rel="stylesheet" href="css/producto.css">
+    <link rel="alternate" href="paginaPrincipal.html">
+    <link rel="stylesheet" href="css/usuario_dashboard_inicio.css">
 
     <link rel="icon" href="img/logoD'Mela - copia.jpg">
     <title>Dashboard - Inicio - D'Mela</title>
 </head>
 
-<body>
+<body class="bg-light d-flex flex-column min-vh-100">
+
     <header>
         <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
             <div class="container-fluid px-3 px-md-4 px-lg-5">
@@ -86,8 +88,8 @@
                                 CONTACTO <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="#">Contacto y Ubicación</a></li>
-                                <li><a class="dropdown-item" href="#">Contacto FAC</a></li>
+                                <li><a class="dropdown-item" href="contacto.html">Contacto y Ubicación</a></li>
+                                <li><a class="dropdown-item" href="preguntas.html">Contacto FAC</a></li>
                             </ul>
                         </li>
 
@@ -128,7 +130,7 @@
                                 </svg>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
                                 <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
                                 <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
                                 <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
@@ -142,7 +144,75 @@
         </nav>
     </header>
 
+    <main class="container py-5 flex-grow-1">
+        <div class="row g-4">
 
+            <div class="col-12 col-md-3">
+                <div class="card border-0 shadow-sm rounded-0">
+                    <div class="card-body text-center py-4 border-bottom">
+                        <h4 class="fw-bold mb-0" style="color: #8C1616;" id="dashboardSaludo">Hola, Cliente!</h4>
+                    </div>
+                    <div class="list-group list-group-flush sidebar-dashboard">
+                        <a href="usuario_dashboard_inicio.html"
+                            class="list-group-item list-group-item-action active">Inicio</a>
+                        <a href="#" class="list-group-item list-group-item-action">Mis compras</a>
+                        <a href="#" class="list-group-item list-group-item-action">Cupones</a>
+                        <a href="#" class="list-group-item list-group-item-action">Mi perfil</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-9">
+                <div class="row g-4 mb-4 text-center">
+                    <div class="col-12 col-sm-6">
+                        <div class="card border-0 shadow-sm rounded-0 h-100 py-3">
+                            <h6 class="fw-bold text-uppercase" style="color: #8C1616; font-size: 0.85rem;">Puntos
+                                Acumulados</h6>
+                            <h3 class="fw-bold text-secondary my-2" id="dashboardPuntosText">0 pts.</h3>
+                            <div class="mt-2">
+                                <button onclick="canjearPuntos()"
+                                    class="btn btn-sm text-white fw-bold px-3 rounded-1 shadow-sm"
+                                    style="background-color: #BF8484;">
+                                    <i class="fa-solid fa-gift me-1"></i> Canjear por descuento
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <div
+                            class="card border-0 shadow-sm rounded-0 h-100 py-3 d-flex flex-column justify-content-center">
+                            <h6 class="fw-bold text-uppercase" style="color: #8C1616; font-size: 0.85rem;">Rango de
+                                Cliente</h6>
+                            <h3 class="fw-bold text-secondary my-2" id="dashboardRangoText">Nuevo</h3>
+                            <div class="small text-muted mt-1" id="dashboardSiguienteRango">Acumula puntos para subir!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm rounded-0 p-4">
+                    <h6 class="fw-bold text-uppercase mb-3" style="color: #8C1616;">Pedidos Recientes</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle mb-0 text-center"
+                            style="font-size: 0.9rem;">
+                            <thead class="text-white" style="background-color: #8C1616;">
+                                <tr>
+                                    <th class="fw-semibold font-weight-normal py-2 border-end border-white">PEDIDO</th>
+                                    <th class="fw-semibold font-weight-normal py-2 border-end border-white">FECHA</th>
+                                    <th class="fw-semibold font-weight-normal py-2 border-end border-white">ESTADO</th>
+                                    <th class="fw-semibold font-weight-normal py-2">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaPedidosCuerpo" class="bg-white">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
 
     <footer class="pt-5 pb-4 shadow-lg"
         style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
@@ -260,7 +330,11 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Agregamos el de sesión para que el menú superior pinte de rojo las opciones -->
     <script src="js/sesion.js"></script>
+    <!-- Corregimos el nombre exacto de tu archivo JavaScript -->
+    <script src="js/usuario_dashboard_inicio.js"></script>
+
 </body>
 
 </html>

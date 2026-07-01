@@ -76,14 +76,22 @@
                 <div class="bg-white p-3 p-md-4 rounded-3 shadow border"
                     style="border-color: #BF8484 !important; border-width: 2px !important;">
 
-                    <h6 class="fw-bold mb-3 fs-6" style="color: #8C1616;">1. INFORMACIÓN DE CONTACTO</h6>
-                    <div class="row mb-2 align-items-center">
-                        <label class="col-sm-4 col-form-label fw-semibold text-dark small"
-                            style="font-size: 0.85rem;">Correo electrónico:</label>
+                    <h6 class="fw-bold mb-3" style="color: #8C1616;">1. INFORMACIÓN DE CONTACTO</h6>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-bold text-dark small">Nombre o Apodo:</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="contactoNombre"
+                                class="form-control form-control-sm border-secondary border-opacity-50" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-bold text-dark small">Correo electrónico:</label>
                         <div class="col-sm-8">
                             <input type="email" id="contactoEmail"
-                                class="form-control form-control-sm rounded-1 border-secondary border-opacity-50"
-                                placeholder="cliente@correo.com">
+                                class="form-control form-control-sm border-secondary border-opacity-50"
+                                placeholder="ejemplo@correo.com" required>
                         </div>
                     </div>
                     <div class="row mb-4 align-items-center">
@@ -91,8 +99,7 @@
                             style="font-size: 0.85rem;">Teléfono/WhatsApp:</label>
                         <div class="col-sm-5">
                             <input type="tel" id="contactoTelefono"
-                                class="form-control form-control-sm rounded-1 border-secondary border-opacity-50"
-                                placeholder="987654321">
+                                class="form-control form-control-sm rounded-1 border-secondary border-opacity-50">
                         </div>
                     </div>
 
@@ -160,16 +167,22 @@
                                 class="form-control form-control-sm rounded-1 border-secondary border-opacity-50 text-secondary">
                         </div>
                     </div>
+
                     <div class="row mb-4 align-items-center">
                         <label class="col-sm-4 col-form-label fw-semibold text-dark small"
-                            style="font-size: 0.85rem;">Rango de hora:</label>
+                            style="font-size: 0.85rem;">Hora Estimada:</label>
                         <div class="col-sm-5 col-10">
-                            <select
+                            <select id="horaEntrega"
                                 class="form-select form-select-sm rounded-1 border-secondary border-opacity-50 text-secondary">
-                                <option selected>10:00 AM - 11:00 AM</option>
-                                <option value="1">11:00 AM - 12:00 PM</option>
-                                <option value="2">02:00 PM - 03:00 PM</option>
-                                <option value="3">04:00 PM - 06:00 PM</option>
+                                <option value="" disabled selected>Seleccione una hora...</option>
+                                <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+                                <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                                <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                                <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                                <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
+                                <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
                             </select>
                         </div>
                     </div>
@@ -249,6 +262,12 @@
                             <span id="checkoutCostoEnvioText">S/ 15.00</span>
                         </div>
 
+                        <div class="d-flex justify-content-between small fw-bold mb-3 text-danger d-none"
+                            id="filaDescuentoCheckout">
+                            <span>Descuento (Cupón):</span>
+                            <span id="checkoutDescuentoText">- S/ 0.00</span>
+                        </div>
+
                         <div class="d-flex justify-content-between align-items-center my-3 text-success fw-bold"
                             style="font-size: 0.9rem;">
                             <span><i class="fa-solid fa-gift me-1"></i> Puntos a ganar:</span>
@@ -261,7 +280,7 @@
                                 0.00</span>
                         </div>
 
-                        <button id="btnPagarFinal" onclick="procesarPago()" type="button"
+                        <button id="btnPagarFinal" onclick="procesarPago(event)" type="button"
                             class="btn text-white fw-bold py-2 px-4 mb-3 w-100 rounded-2 shadow-sm fs-5"
                             style="background-color: #8C1616; letter-spacing: 0.5px;">
                             Pagar

@@ -57,10 +57,10 @@ function iniciarSesion() {
         return;
     }
 
-    // Guardar sesión activa
+    // Guardar sesión activa leyendo los datos reales del usuario logueado
     localStorage.setItem('dmela_sesion', JSON.stringify({
         email: usuarioEncontrado.email,
-        nombre: usuarioEncontrado.nombre,
+        nombre: usuarioEncontrado.nombre, // <-- ESTO LO HACE DINÁMICO
         logueado: true
     }));
 
