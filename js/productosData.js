@@ -27,7 +27,7 @@ const catalogoDela = {
         estilo: 'Clásico Intenso'
     },
     '104': { 
-        nombre: 'Torta Helada de la Casa', 
+        nombre: 'Torta Helada Artesanal de Fresa & Bizcochuelo', 
         precio: 'S/ 35.00', 
         img: 'img/Tor4.webp',
         masa: 'Bizcochuelo y Gelatina',

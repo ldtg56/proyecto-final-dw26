@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('btn-mediana').onclick = () => actualizarPrecio('mediana');
         
         actualizarPrecio('pequena');
+        cargarTambienOfrecemos();
     }
 });
 
@@ -63,4 +64,41 @@ function actualizarPrecio(tamano) {
         btnMediana.className = 'btn btn-guinda btn-sm px-3';
         btnPequena.className = 'btn btn-outline-dark btn-sm px-3 border-guinda text-guinda fw-bold';
     }
+}
+function cargarTambienOfrecemos() {
+    const contenedor = document.getElementById('contenedor-tambien-ofrecemos');
+    if (!contenedor || !productoActual) return;
+
+    const idActual = productoActual.id;
+
+    // Tomamos las claves del catálogo, quitamos el producto actual, y cogemos las primeras 5
+    const idsFiltrados = Object.keys(catalogoDela)
+        .filter(id => id !== idActual)
+        .slice(0, 5);
+
+    contenedor.innerHTML = ''; // Limpiar por si acaso
+
+    idsFiltrados.forEach(id => {
+        const prod = catalogoDela[id];
+
+        const col = document.createElement('div');
+        col.className = 'col';
+        col.innerHTML = `
+            <div class="card-complemento" style="cursor:pointer;">
+                <img src="${prod.img}" class="img-fluid w-100" alt="${prod.nombre}">
+                <p class="small m-0 fw-bold">${prod.nombre}</p>
+            </div>
+        `;
+
+        // Click en la tarjeta (imagen o nombre) navega al detalle de ESE producto
+        col.querySelector('img').addEventListener('click', () => irADetalleProducto(id));
+        col.querySelector('p').addEventListener('click', () => irADetalleProducto(id));
+
+        contenedor.appendChild(col);
+    });
+}
+
+function irADetalleProducto(id) {
+    localStorage.setItem('prod_id', id);
+    location.reload(); // Como estamos en la misma página (producto.html), recargamos con el nuevo id
 }
