@@ -112,102 +112,203 @@ function renderizarResumenCheckout() {
         contenedor.insertAdjacentHTML('beforeend', tarjetaMini);
     });
 
-    const esDelivery = document.getElementById('delivery').checked;
+    // ... (Lo pegas reemplazando desde la variable esDelivery hasta el final de la función) ...
+    const esDelivery = document.getElementById('delivery') && document.getElementById('delivery').checked;
     const costoFinalEnvio = esDelivery ? TARIFA_DELIVERY : 0.00;
-    const totalPagar = sumaSubtotal + costoFinalEnvio;
 
-    document.getElementById('checkoutSubtotalText').innerText = `S/ ${sumaSubtotal.toFixed(2)}`;
-    document.getElementById('checkoutEtiquetaEnvio').innerText = esDelivery ? 'Costo de envío (Delivery)' : 'Recojo en tienda';
-    document.getElementById('checkoutCostoEnvioText').innerText = esDelivery ? `S/ ${costoFinalEnvio.toFixed(2)}` : 'Gratis';
-    document.getElementById('checkoutTotalFinalText').innerText = `S/ ${totalPagar.toFixed(2)}`;
+    // NUEVO: Leer el descuento guardado y restarlo
+    const descuentoPendiente = parseFloat(localStorage.getItem('dmela_descuento_pendiente')) || 0;
+
+    let totalPagar = sumaSubtotal + costoFinalEnvio - descuentoPendiente;
+    if (totalPagar < 0) totalPagar = 0; // Evitar cobros negativos
+
+    // Mostrar u ocultar la fila de descuento
+    const filaDesc = document.getElementById('filaDescuentoCheckout');
+    if (filaDesc) {
+        if (descuentoPendiente > 0) {
+            filaDesc.classList.remove('d-none');
+            document.getElementById('checkoutDescuentoText').innerText = `- S/ ${descuentoPendiente.toFixed(2)}`;
+        } else {
+            filaDesc.classList.add('d-none');
+        }
+    }
+
+    if (document.getElementById('checkoutSubtotalText')) document.getElementById('checkoutSubtotalText').innerText = `S/ ${sumaSubtotal.toFixed(2)}`;
+    if (document.getElementById('checkoutEtiquetaEnvio')) document.getElementById('checkoutEtiquetaEnvio').innerText = esDelivery ? 'Costo de envío (Delivery)' : 'Recojo en tienda';
+    if (document.getElementById('checkoutCostoEnvioText')) document.getElementById('checkoutCostoEnvioText').innerText = esDelivery ? `S/ ${costoFinalEnvio.toFixed(2)}` : 'Gratis';
+    if (document.getElementById('checkoutTotalFinalText')) document.getElementById('checkoutTotalFinalText').innerText = `S/ ${totalPagar.toFixed(2)}`;
 
     const elemPuntos = document.getElementById('checkoutPuntosText');
-    if (elemPuntos) {
-        elemPuntos.innerText = `+ ${sumaPuntos} pts`;
-    }
+    if (elemPuntos) elemPuntos.innerText = `+ ${sumaPuntos} pts`;
+
     localStorage.setItem('dmela_puntos_pendientes', sumaPuntos);
 }
 
 
-function procesarPago() {
+function procesarPago(event) {
+    // 1. Detenemos la recarga automática del formulario
+    if (event) event.preventDefault();
 
-    const email = document.getElementById('contactoEmail');
-    const telefono = document.getElementById('contactoTelefono');
+    // 2. LEER CARRITO
+    const carritoString = localStorage.getItem('dmela_carrito_compras');
+    const carritoGuardado = carritoString ? JSON.parse(carritoString) : [];
 
-    if (!email.value.trim() || !telefono.value.trim()) {
-        alert("⚠️ Por favor, ingresa tu correo electrónico y teléfono de contacto.");
-        if (!email.value.trim()) email.focus();
-        else telefono.focus();
+    if (carritoGuardado.length === 0) {
+        alert("Tu carrito está vacío. Agrega productos antes de pagar.");
         return;
     }
 
-    const esDelivery = document.getElementById('delivery').checked;
+    // ===============================================================
+    // 3. VALIDACIONES ESTRICTAS DE FORMULARIO
+    // ===============================================================
+    const inputNombre = document.getElementById('contactoNombre');
+    const inputCorreo = document.getElementById('contactoEmail');
+
+    if (inputNombre && !inputNombre.value.trim()) {
+        alert("⚠️ Por favor, ingresa tu Nombre o Apodo.");
+        inputNombre.focus();
+        return;
+    }
+
+    if (inputCorreo && !inputCorreo.value.trim()) {
+        alert("⚠️ Por favor, ingresa tu correo electrónico.");
+        inputCorreo.focus();
+        return;
+    }
+
+    const checkDelivery = document.getElementById('delivery');
+    const esDelivery = checkDelivery ? checkDelivery.checked : false;
+
     if (esDelivery) {
         const envio = document.getElementById('dirEnvio');
         const calle = document.getElementById('dirCalle');
-        const distrito = document.getElementById('dirDistrito');
 
-        if (!envio.value.trim() || !calle.value.trim() || !distrito.value.trim()) {
-            alert("⚠️ Por favor, completa los campos obligatorios de tu dirección (Dirección, Calle/Avenida y Distrito).");
-            if (!envio.value.trim()) envio.focus();
-            else if (!calle.value.trim()) calle.focus();
-            else distrito.focus();
+        if (envio && !envio.value.trim()) {
+            alert("⚠️ Por favor, ingresa tu dirección de envío.");
+            envio.focus();
+            return;
+        }
+        if (calle && !calle.value.trim()) {
+            alert("⚠️ Por favor, ingresa la calle o referencia.");
+            calle.focus();
             return;
         }
     }
 
+    // 👉 AQUÍ ESTÁ LA VALIDACIÓN DE FECHA Y HORA (AHORA SÍ FUNCIONARÁ)
     const fecha = document.getElementById('fechaEntrega');
-    if (!fecha.value) {
-        alert("⚠️ Por favor, selecciona la fecha para la entrega o recojo de tu pedido.");
+    const hora = document.getElementById('horaEntrega');
+
+    if (fecha && !fecha.value) {
+        alert("⚠️ Por favor, selecciona la fecha para tu pedido.");
         fecha.focus();
         return;
     }
 
-    const esTarjeta = document.getElementById('tarjeta').checked;
+    // Al haber puesto value="" en tu HTML, hora.value estará vacío si no eligen nada
+    if (hora && !hora.value) {
+        alert("⚠️ Por favor, selecciona la hora para tu pedido.");
+        hora.focus();
+        return;
+    }
+
+    // Validación de tarjeta (si está seleccionada)
+    const esTarjeta = document.getElementById('tarjeta') && document.getElementById('tarjeta').checked;
     if (esTarjeta) {
         const numTarjeta = document.getElementById('tarjetaNum');
         const vencTarjeta = document.getElementById('tarjetaVenc');
         const cvcTarjeta = document.getElementById('tarjetaCVC');
 
-        if (!numTarjeta.value.trim() || !vencTarjeta.value.trim() || !cvcTarjeta.value.trim()) {
-            alert("⚠️ Por favor, completa todos los datos de tu Tarjeta de Crédito/Débito.");
-            if (!numTarjeta.value.trim()) numTarjeta.focus();
-            else if (!vencTarjeta.value.trim()) vencTarjeta.focus();
-            else cvcTarjeta.focus();
+        if ((numTarjeta && !numTarjeta.value.trim()) ||
+            (vencTarjeta && !vencTarjeta.value.trim()) ||
+            (cvcTarjeta && !cvcTarjeta.value.trim())) {
+            alert("⚠️ Por favor, completa todos los datos de tu tarjeta.");
+            if (numTarjeta && !numTarjeta.value.trim()) numTarjeta.focus();
             return;
         }
     }
 
-    alert("✅ Todos los datos son correctos. Procesando pago seguro... ¡Redirigiendo a la confirmación!");
-
-    // Guardar nombre desde el email
-    const emailValue = document.getElementById('contactoEmail').value;
-    const nombreFormateado = emailValue.split('@')[0].charAt(0).toUpperCase() + emailValue.split('@')[0].slice(1);
+    // ===============================================================
+    // 4. CAPTURA DE NOMBRE DINÁMICA
+    // ===============================================================
+    let nombreFormateado = 'Cliente';
+    if (inputNombre && inputNombre.value.trim() !== '') {
+        let primerNombre = inputNombre.value.trim().split(' ')[0];
+        nombreFormateado = primerNombre.charAt(0).toUpperCase() + primerNombre.slice(1).toLowerCase();
+    }
     localStorage.setItem('nombreComprador', nombreFormateado);
 
-    // Generar y guardar número de orden al momento de pagar
-    const fecha2 = new Date();
-    const numOrden = `${fecha2.getFullYear().toString().slice(2)}${(fecha2.getMonth() + 1).toString().padStart(2, '0')}-${Math.floor(Math.random() * 90000) + 10000}`;
+    // ===============================================================
+    // 5. GENERAR ORDEN Y COSTOS
+    // ===============================================================
+    const numOrden = `${new Date().getFullYear().toString().slice(2)}${(new Date().getMonth() + 1).toString().padStart(2, '0')}-${Math.floor(Math.random() * 90000) + 10000}`;
     localStorage.setItem('numeroOrden', numOrden);
-
-    // Copiar carrito al puente
-    const carritoActual = localStorage.getItem(STORAGE_KEY);
-    if (carritoActual) {
-        localStorage.setItem('carritoBoleta', carritoActual);
-    }
-
-    // Guardar costo de envío real
     localStorage.setItem('costoEnvio', esDelivery ? '15.00' : '0.00');
 
-    const puntosPendientes = parseInt(localStorage.getItem('dmela_puntos_pendientes')) || 0;
-    const puntosActuales = parseInt(localStorage.getItem('dmela_puntos_totales')) || 0;
+    // ===============================================================
+    // 6. CALCULAR PUNTOS (100% SEGURO)
+    // ===============================================================
+    let puntosGanados = 0;
+    let subtotalProductos = 0;
 
-    // Sumamos los puntos actuales con los que acaba de ganar
-    localStorage.setItem('dmela_puntos_totales', puntosActuales + puntosPendientes);
+    carritoGuardado.forEach(prod => {
+        puntosGanados += Math.floor(prod.precio) * prod.cantidad;
+        subtotalProductos += prod.precio * prod.cantidad;
+    });
 
-    // Limpiamos los puntos en tránsito para que no se dupliquen
-    localStorage.removeItem('dmela_puntos_pendientes');
+    // Forzamos a que si la memoria está vacía, empiece en 0 numérico
+    let puntosActuales = parseInt(localStorage.getItem('dmela_puntos_totales'));
+    if (isNaN(puntosActuales)) puntosActuales = 0;
 
+    localStorage.setItem('dmela_puntos_totales', puntosActuales + puntosGanados);
+    // ===============================================================
+    // 7. GUARDAR HISTORIAL PARA EL DASHBOARD
+    // ===============================================================
+    let primerProducto = carritoGuardado[0];
+    let nombreRef = primerProducto.nombre;
+
+    // NUEVO: Si compró más de 1 unidad de este producto, le agregamos el (xN)
+    if (primerProducto.cantidad > 1) {
+        nombreRef += ` (x${primerProducto.cantidad})`;
+    }
+
+    // Mantenemos la lógica por si hay otros productos diferentes en el carrito
+    if (carritoGuardado.length > 1) {
+        nombreRef += ` (+${carritoGuardado.length - 1} más)`;
+    }
+    
+    const hoy = new Date();
+    const fechaFormat = `${hoy.getDate().toString().padStart(2, '0')}/${(hoy.getMonth() + 1).toString().padStart(2, '0')}/${hoy.getFullYear()}`;
+
+    const costoEnvioNum = esDelivery ? 15.00 : 0.00;
+    const descuentoPendiente = parseFloat(localStorage.getItem('dmela_descuento_pendiente')) || 0;
+
+    let totalPagarNum = subtotalProductos + costoEnvioNum - descuentoPendiente;
+    if (totalPagarNum < 0) totalPagarNum = 0;
+
+    const nuevoPedido = {
+        id: `#${numOrden}`,
+        nombre: nombreRef,
+        fecha: fechaFormat,
+        estado: 'En Proceso',
+        total: totalPagarNum
+    };
+
+    let historial = JSON.parse(localStorage.getItem('dmela_historial_pedidos')) || [];
+    historial.unshift(nuevoPedido);
+    localStorage.setItem('dmela_historial_pedidos', JSON.stringify(historial));
+
+    // ===============================================================
+    // 8. VACIAR CARRITO Y PASAR DATOS A LA BOLETA
+    // ===============================================================
+    localStorage.setItem('carritoBoleta', carritoString);
+    localStorage.setItem('descuentoBoleta', descuentoPendiente); // Pasamos el descuento a la confirmación
+
+    localStorage.removeItem('dmela_carrito_compras');
+    localStorage.removeItem('dmela_descuento_pendiente'); // Limpiamos la memoria
+
+    // 9. REDIRECCIÓN
+    alert(`✅ ¡Pago procesado con éxito!\n🎉 Has ganado ${puntosGanados} puntos.\nRedirigiendo a tu boleta...`);
     window.location.href = 'confirmacion.html';
 }
 

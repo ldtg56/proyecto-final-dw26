@@ -1,0 +1,129 @@
+:root {
+    --guinda: #8C1616;
+    --fondo-claro: #f4f4f4;
+}
+body {
+    background-color: var(--fondo-claro);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.header-dmela {
+    background-color: #8C1616;
+    border-bottom: 4px solid #A65353;
+}
+.logo-header {
+    max-height: 85px;
+    width: auto;
+    object-fit: contain;
+}
+.header-dmela .dropdown-toggle::after {
+    display: none !important;
+}
+.menu-central .nav-link {
+    font-size: 1.05rem;
+    letter-spacing: 0.6px;
+    transition: color 0.2s ease;
+}
+.menu-central .nav-link:hover {
+    color: #BF8484 !important;
+}
+.triangulo-opciones {
+    color: #1A1A1A;
+    font-size: 0.65rem;
+    margin-left: 5px;
+    transform: translateY(-1px);
+}
+.header-dmela .dropdown-menu {
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    padding: 0.5rem 0;
+}
+.header-dmela .dropdown-item {
+    color: #8C1616;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.55rem 1.3rem;
+}
+.header-dmela .dropdown-item:hover {
+    background-color: #BF8484;
+    color: #FFFFFF;
+}
+.iconos-derecha svg {
+    transition: transform 0.2s ease;
+}
+.iconos-derecha a:hover svg {
+    transform: scale(1.15);
+    color: #BF8484;
+}
+@media (min-width: 768px) {
+    .menu-central {
+        border-bottom: 2px solid #FFFFFF;
+        padding-bottom: 6px;
+        margin-right: 2rem;
+    }
+    .menu-central .nav-item {
+        border-right: 1.5px solid rgba(255, 255, 255, 0.65);
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+    .menu-central .nav-item:last-child {
+        border-right: none;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .menu-central .nav-link { font-size: 0.85rem; }
+    .menu-central .nav-item { padding-left: 0.45rem; padding-right: 0.45rem; }
+    .logo-header { max-height: 62px; }
+    .menu-central { margin-right: 0.5rem; }
+    .iconos-derecha { gap: 0.8rem !important; }
+}
+
+/* Sidebar Dashboard */
+.sidebar-dashboard .list-group-item {
+    font-weight: 600;
+    color: #333;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.sidebar-dashboard .list-group-item:hover {
+    background-color: #f8f9fa;
+    color: #8C1616;
+}
+
+/* Estado activo del menú (Rojo D'Mela) */
+.sidebar-dashboard .list-group-item.active {
+    background-color: #8C1616 !important;
+    color: #ffffff !important;
+    border-color: #8C1616 !important;
+}
+
+/* Badges de Estado (Pasteles) */
+.badge-estado {
+    padding: 0.35rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.estado-entregado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.estado-proceso {
+    background-color: #ffe8cc;
+    color: #e67e22;
+}
+
+.estado-pendiente {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+/* Tabla de pedidos */
+.table-bordered th, .table-bordered td {
+    border-color: #dee2e6;
+}

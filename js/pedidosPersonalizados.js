@@ -78,12 +78,12 @@ function actualizarOpciones() {
 
 function llenarCajaOpciones(idSelect, arreglo) {
     const select = document.getElementById(idSelect);
-    select.innerHTML = ''; 
+    select.innerHTML = '';
     arreglo.forEach(item => {
         const opt = document.createElement('option');
         opt.value = item.nombre;
         opt.text = item.nombre;
-        opt.setAttribute('data-precio', item.precio); 
+        opt.setAttribute('data-precio', item.precio);
         select.appendChild(opt);
     });
 }
@@ -106,22 +106,22 @@ function recalcularCotizacion() {
 // 3. CAPTURA Y COMPRESIÓN DE IMAGEN 
 function capturarNombreArchivo(input) {
     const aviso = document.getElementById('avisoArchivoSubido');
-    
+
     if (input.files && input.files[0]) {
         const archivo = input.files[0];
-        
+
         const ext = archivo.name.split('.').pop().toLowerCase();
         if (ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
             alert("❌ Formato no permitido. Sube un JPG o PNG.");
-            input.value = ''; 
+            input.value = '';
             imagenBase64Elegida = '';
             aviso.classList.add('d-none');
             return;
         }
-        
+
         if (archivo.size > 5242880) {
             alert("❌ El archivo pesa más de 5 MB.");
-            input.value = ''; 
+            input.value = '';
             imagenBase64Elegida = '';
             aviso.classList.add('d-none');
             return;
@@ -133,9 +133,9 @@ function capturarNombreArchivo(input) {
 
         // MAGIA: Comprimimos la foto a una miniatura para no reventar la memoria
         const lector = new FileReader();
-        lector.onload = function(e) {
+        lector.onload = function (e) {
             const img = new Image();
-            img.onload = function() {
+            img.onload = function () {
                 const canvas = document.createElement('canvas');
                 const MAX_WIDTH = 250; // Tamaño ligero
                 const scaleSize = MAX_WIDTH / img.width;
@@ -164,18 +164,16 @@ function procesarPedidoPersonalizado(event) {
     const tipo = document.getElementById('tipoProd').value;
     const tematica = document.getElementById('tematicaText').value.trim();
     let mensaje = document.getElementById('mensajeText').value.trim();
-    const fecha = document.getElementById('fechaReq').value;
-    const hora = document.getElementById('horaReq').value;
+
+    // Eliminamos las variables de fecha y hora que estaban aquí
 
     if (!tematica) {
         alert("⚠️ Por favor ingresa la temática o colores principales.");
         document.getElementById('tematicaText').focus();
         return false;
     }
-    if (!fecha || !hora) {
-        alert("⚠️ Por favor selecciona fecha y hora de entrega.");
-        return false;
-    }
+
+    // Eliminamos la validación de (!fecha || !hora) que estaba aquí
 
     if (mensaje === "") mensaje = "Sin mensaje";
 
@@ -186,7 +184,7 @@ function procesarPedidoPersonalizado(event) {
         id: 'pers_' + Date.now(),
         nombre: `Diseño Personalizado: ${tipo}`,
         precio: precioCotizado,
-        imagen: imagenFinal, // <--- Aquí inyectamos la foto real
+        imagen: imagenFinal,
         cantidad: 1,
         favorito: false,
         tipo: 'personalizado',
@@ -195,8 +193,8 @@ function procesarPedidoPersonalizado(event) {
             'Masa/Base': document.getElementById('specMasa').value,
             'Relleno': document.getElementById('specRelleno').value,
             'Temática': tematica,
-            'Mensaje': mensaje,
-            'Entrega para': `${fecha} / ${hora}`
+            'Mensaje': mensaje
+            // Eliminamos la línea de 'Entrega para'
         }
     };
 
@@ -207,7 +205,3 @@ function procesarPedidoPersonalizado(event) {
     alert("🎉 ¡Pedido personalizado añadido al carrito con éxito!");
     window.location.href = 'carrito.html';
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    actualizarOpciones();
-});

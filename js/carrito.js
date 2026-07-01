@@ -194,6 +194,9 @@ function agregarExtraSimple(nombre, precio, img) {
 // =================================================================
 // MOTOR DE DESCUENTOS Y MATEMÁTICA
 // =================================================================
+// =================================================================
+// MOTOR DE DESCUENTOS Y MATEMÁTICA
+// =================================================================
 function aplicarCupon() {
     const input = document.getElementById('inputCupon');
     const codigo = input.value.trim().toUpperCase();
@@ -203,15 +206,33 @@ function aplicarCupon() {
         descuentoFijo = 0;
         cuponNombreActivo = 'Cupón DMELA10 (10%)';
         alert('¡Cupón DMELA10 aplicado con éxito!');
+
     } else if (codigo === 'FESTEJO20') {
         descuentoPorcentaje = 0;
         descuentoFijo = 20.00; // S/ 20 soles directos
         cuponNombreActivo = 'Cupón FESTEJO20 (-S/20)';
         alert('¡Cupón FESTEJO20 aplicado con éxito!');
+
+    } else if (codigo.startsWith('PUNTOS-')) {
+        // NUEVA LÓGICA: Extrae el número del cupón generado en el dashboard
+        const valorDescuento = parseFloat(codigo.replace('PUNTOS-', ''));
+
+        // Verifica que sí sea un número válido y mayor a 0
+        if (!isNaN(valorDescuento) && valorDescuento > 0) {
+            descuentoPorcentaje = 0;
+            descuentoFijo = valorDescuento;
+            cuponNombreActivo = `Cupón de Canje (-S/ ${valorDescuento.toFixed(2)})`;
+            alert(`¡Cupón de puntos aplicado con éxito! Tienes un descuento de S/ ${valorDescuento.toFixed(2)}`);
+        } else {
+            alert('Cupón de puntos no válido o corrupto.');
+            return;
+        }
+
     } else {
         alert('Cupón no válido o expirado.');
         return;
     }
+
     renderizarPantalla();
 }
 
@@ -272,12 +293,23 @@ function validarCheckout(event) {
         return false;
     }
 
-    // NUEVO: Si todo está bien, extraemos los puntos del texto y los guardamos para sumarlos a la cuenta global luego del pago
-    const textoPuntos = document.getElementById('resumenPuntosText').innerText; // ej: "+ 78 pts"
-    const puntosPendientes = parseInt(textoPuntos.replace(/[^0-9]/g, '')) || 0; // Extrae solo el número
-
-    // Guardamos en localStorage como "puntos en tránsito"
+    // Extraemos y guardamos los puntos
+    const textoPuntos = document.getElementById('resumenPuntosText').innerText;
+    const puntosPendientes = parseInt(textoPuntos.replace(/[^0-9]/g, '')) || 0;
     localStorage.setItem('dmela_puntos_pendientes', puntosPendientes);
+
+    // =========================================================
+    // NUEVO: Extraer y guardar el descuento para el Checkout
+    // =========================================================
+    const textoDescuento = document.getElementById('montoDescuentoText');
+    const filaDescuento = document.getElementById('filaDescuento');
+    let descuentoTotal = 0;
+
+    // Si el texto de descuento existe y no está oculto, lo capturamos
+    if (textoDescuento && filaDescuento && !filaDescuento.classList.contains('d-none')) {
+        descuentoTotal = parseFloat(textoDescuento.innerText.replace(/[^0-9.]/g, '')) || 0;
+    }
+    localStorage.setItem('dmela_descuento_pendiente', descuentoTotal);
 
     return true;
 }
