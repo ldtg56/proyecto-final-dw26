@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/producto.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+
+    <link rel="icon" href="img/logoD'Mela.jpg">
+    <title>Productos - D'Mela</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
+            <div class="container-fluid px-3 px-md-4 px-lg-5">
+
+                <a class="navbar-brand me-2 me-lg-4" href="index.html">
+                    <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería" class="logo-header">
+                </a>
+
+                <button class="navbar-toggler border-white p-1 p-sm-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false"
+                    aria-label="Abrir navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuNavegacion">
+
+                    <ul class="navbar-nav mx-auto menu-central my-3 my-md-0 align-items-center">
+
+                        <li class="nav-item dropdown w-100 text-center">
+                            <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                NOSOTROS <span class="triangulo-opciones">&#9660;</span>
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 text-center text-md-start">
+                                <li><a class="dropdown-item" href="nosotros.html">Acerca de nosotros</a></li>
+                                <li><a class="dropdown-item" href="historia.html">Historia</a></li>
+                                <li><a class="dropdown-item" href="equipo.html">Equipo</a></li>
+                                <li><a class="dropdown-item" href="normas.html">Normas de empresa</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown w-100 text-center">
+                            <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CATALOGO <span class="triangulo-opciones">&#9660;</span>
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 text-center text-md-start">
+                                <li><a class="dropdown-item" href="producto.html">Productos</a></li>
+                                <li><a class="dropdown-item" href="detalleProducto.html">Detalle del Producto</a></li>
+                                <li><a class="dropdown-item" href="combos.html">Combos</a></li>
+                                <li><a class="dropdown-item fw-bold text-danger bg-light"
+                                        href="ofertas.html">Ofertas</a></li>
+                                <li><a class="dropdown-item" href="pedidosPersonalizados.html">Pedidos
+                                        Personalizados</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown w-100 text-center">
+                            <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                SOPORTE <span class="triangulo-opciones">&#9660;</span>
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 text-center text-md-start">
+                                <li><a class="dropdown-item" href="#">Inicio Dashboard</a></li>
+                                <li><a class="dropdown-item" href="#">Historial Compras</a></li>
+                                <li><a class="dropdown-item" href="#">Mis Cupones</a></li>
+                                <li><a class="dropdown-item" href="#">Perfil de Usuario</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown w-100 text-center">
+                            <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CONTACTO <span class="triangulo-opciones">&#9660;</span>
+                            </a>
+                            <ul class="dropdown-menu shadow border-0 text-center text-md-start">
+                                <li><a class="dropdown-item" href="#">Contacto y Ubicación</a></li>
+                                <li><a class="dropdown-item" href="#">Contacto FAC</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <div
+                        class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
+
+                        <a class="text-white text-decoration-none d-flex align-items-center p-1 position-relative"
+                            href="carrito.html" title="Ver mi carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span id="badgeCarritoHeader"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light d-none"
+                                style="font-size: 0.68rem; padding: 0.25em 0.45em;">
+                                0
+                            </span>
+                        </a>
+
+                        <div class="dropdown">
+                            <a class="text-white text-decoration-none d-flex align-items-center p-1" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z" />
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="banner-seccion" style="background-image: url('img/fondo1.png');">
+        <h1 class="titulo-banner">NUESTROS PRODUCTOS</h1>
+    </div>
+
+    <main class="container mb-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sidebar-filtros accordion" id="filtrosAccordion">
+
+                    <div class="accordion-item border-0 bg-transparent"
+                        style="border-bottom: 1px solid rgba(255,255,255,0.3) !important;">
+                        <h2 class="accordion-header" id="headCat">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseCat">
+                                Categorias
+                            </button>
+                        </h2>
+                        <div id="collapseCat" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-tortas"
+                                        data-url="producto.html">
+                                    <label class="form-check-label text-white" for="chk-tortas">Tortas</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-pedido"
+                                        data-url="pedidos.html">
+                                    <label class="form-check-label text-white" for="chk-pedido">Tortas a Pedido</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-bocaditos"
+                                        data-url="bocaditos.html">
+                                    <label class="form-check-label text-white" for="chk-bocaditos">Bocaditos</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-combos"
+                                        data-url="combos.html">
+                                    <label class="form-check-label text-white" for="chk-combos">Combos</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input chk-categoria" type="checkbox" id="chk-ofertas"
+                                        data-url="ofertas.html">
+                                    <label class="form-check-label text-white" for="chk-ofertas">Ofertas</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 bg-transparent" id="bloque-sabor"
+                        style="border-bottom: 1px solid rgba(255,255,255,0.3) !important;">
+                        <h2 class="accordion-header" id="headSabor">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSabor">
+                                Sabor
+                            </button>
+                        </h2>
+                        <div id="collapseSabor" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="sabor-choco">
+                                    <label class="form-check-label text-white small" for="sabor-choco">Chocolate</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="sabor-vainilla">
+                                    <label class="form-check-label text-white small"
+                                        for="sabor-vainilla">Vainilla</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="sabor-fresa">
+                                    <label class="form-check-label text-white small" for="sabor-fresa">Fresa</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 bg-transparent" id="bloque-coleccion">
+                        <h2 class="accordion-header" id="headCol">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseCol">
+                                Colección
+                            </button>
+                        </h2>
+                        <div id="collapseCol" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="col-valentin">
+                                    <label class="form-check-label text-white small" for="col-valentin">San
+                                        Valentín</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input class="form-check-input" type="checkbox" id="col-cumple">
+                                    <label class="form-check-label text-white small" for="col-cumple">Cumpleaños</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span class="small">Se muestran los resultados de las categorias</span>
+                    <select id="select-orden" class="form-select form-select-sm w-auto border-dark">
+                        <option value="predeterminado">Orden predeterminado</option>
+                        <option value="menor-mayor">Precio: Menor a Mayor</option>
+                        <option value="mayor-menor">Precio: Mayor a Menor</option>
+                    </select>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="grilla-productos">
+
+                </div>
+
+                <nav aria-label="Navegación de páginas">
+                    <ul class="pagination justify-content-center mt-4">
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="cambiarPagina(1)">1</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="cambiarPagina(2)">2</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="alternarPagina()">
+                                >
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="pt-5 pb-4 shadow-lg"
+        style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
+
+        <div class="container" style="max-width: 1150px;">
+
+            <div class="row g-4 justify-content-between text-center text-lg-start">
+
+                <div class="col-12 col-lg-4">
+
+                    <div class="mb-3">
+                        <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería"
+                            class="img-fluid mx-auto mx-lg-0"
+                            style="max-width: 260px; width: 100%; object-fit: contain;">
+                    </div>
+
+                    <div
+                        class="d-flex flex-column flex-sm-row gap-3 align-items-center align-items-lg-start justify-content-center justify-content-lg-start mt-3">
+
+                        <div class="d-flex gap-2">
+                            <a href="#"
+                                class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
+                                style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#"
+                                class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
+                                style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </div>
+
+                        <div class="small" style="line-height: 1.6;">
+                            <div class="fw-bold mb-1 text-white">
+                                <i class="fa-solid fa-location-dot me-1"></i> Visítanos en:
+                            </div>
+                            <div class="opacity-90">• Manuel María Izaga 612</div>
+                            <div class="opacity-90">• Los Pinos 438 (Sta. Victoria)</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center align-items-lg-start">
+                    <h6 class="fw-bold mb-3 fs-6 pb-1"
+                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                        Nuestros productos
+                    </h6>
+                    <ul
+                        class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta tres leches</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Chantilly con durazno</a>
+                        </li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Carrot cake</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta helada</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Selva negra</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Cabeza de indio</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-2 d-flex flex-column align-items-center align-items-lg-start">
+                    <h6 class="fw-bold mb-3 fs-6 pb-1"
+                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                        Enlaces de Interés
+                    </h6>
+                    <ul
+                        class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Catálogo</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Combos</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Promociones</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">FAQ</a></li>
+                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Contáctanos</a></li>
+                    </ul>
+                </div>
+
+                <div
+                    class="col-12 col-md-4 col-lg-3 text-center text-lg-end d-flex flex-column align-items-center align-items-lg-end">
+
+                    <h6 class="fw-bold mb-2 fs-6 text-white">Libro de reclamaciones</h6>
+                    <div class="mb-4">
+                        <a href="#">
+                            <img src="img/libroReclamos.jpg" alt="Libro de Reclamaciones"
+                                class="img-fluid rounded shadow-sm"
+                                style="max-width: 145px; background-color: #ffffff; padding: 4px;">
+                        </a>
+                    </div>
+
+                    <h6 class="fw-bold mb-2 fs-6 text-white">Métodos de pago</h6>
+                    <div class="d-flex gap-1 justify-content-center justify-content-lg-end align-items-center">
+                        <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                            style="height: 30px; width: 48px;">
+                            <i class="fa-brands fa-cc-visa fs-5 text-primary"></i>
+                        </div>
+                        <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                            style="height: 30px; width: 48px;">
+                            <i class="fa-brands fa-cc-mastercard fs-5 text-danger"></i>
+                        </div>
+                        <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
+                            style="height: 30px; width: 48px;">
+                            <i class="fa-brands fa-cc-amex fs-5 text-info"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-4 opacity-25" style="border-color: #F2F2F2;">
+
+            <div class="text-center small opacity-75" style="font-size: 0.8rem;">
+                &copy; 2026 D'Mela Dulcería & Cafetería. Todos los derechos reservados.
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/productosData.js"></script>
+    <script src="js/renderizarCatalogo.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductosPagina('40');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const archivoActual = window.location.pathname.toLowerCase();
+            let prefijoId = '10'; // Por defecto: Tortas
+
+            if (archivoActual.includes('combos')) {
+                prefijoId = '20';
+            } else if (archivoActual.includes('ofertas')) {
+                prefijoId = '30';
+            } else if (archivoActual.includes('bocaditos')) {
+                prefijoId = '40'; // NUEVO: Detecta la página de bocaditos
+            } else if (archivoActual.includes('pedidos')) {
+                prefijoId = '50'; // NUEVO: Detecta la página de tortas a pedido
+            }
+
+            cargarProductosPagina(prefijoId, 1);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- OTRA LÓGICA QUE YA TENGAS AQUÍ ---
+
+            // 1. LÓGICA PARA OCULTAR FILTROS INNECESARIOS
+            const rutaFiltros = window.location.pathname.toLowerCase();
+            const bloqueSabor = document.getElementById('bloque-sabor');
+            const bloqueColeccion = document.getElementById('bloque-coleccion');
+
+            // Verificamos que los bloques existan en el HTML para no generar errores
+            if (bloqueSabor && bloqueColeccion) {
+                // Si estamos en bocaditos, combos u ofertas, los ocultamos (display: none)
+                if (rutaFiltros.includes('bocaditos') || rutaFiltros.includes('combos') || rutaFiltros.includes('ofertas')) {
+                    bloqueSabor.style.display = 'none';
+                    bloqueColeccion.style.display = 'none';
+                } else {
+                    // Si es tortas (producto.html) o pedidos, los mostramos
+                    bloqueSabor.style.display = 'block';
+                    bloqueColeccion.style.display = 'block';
+                }
+            }
+        });
+    </script>
+    <script src="js/sesion.js"></script>
+</body>
+
+</html>

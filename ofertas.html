@@ -157,12 +157,12 @@
                                 </div>
                                 <div class="form-check mb-2">
                                     <input class="form-check-input chk-categoria" type="checkbox" id="chk-pedido"
-                                        data-url="#">
+                                        data-url="pedidos.html">
                                     <label class="form-check-label text-white" for="chk-pedido">Tortas a Pedido</label>
                                 </div>
                                 <div class="form-check mb-2">
                                     <input class="form-check-input chk-categoria" type="checkbox" id="chk-bocaditos"
-                                        data-url="#">
+                                        data-url="bocaditos.html">
                                     <label class="form-check-label text-white" for="chk-bocaditos">Bocaditos</label>
                                 </div>
                                 <div class="form-check mb-2">
@@ -179,7 +179,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item border-0 bg-transparent"
+                    <div class="accordion-item border-0 bg-transparent" id="bloque-sabor"
                         style="border-bottom: 1px solid rgba(255,255,255,0.3) !important;">
                         <h2 class="accordion-header" id="headSabor">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -206,7 +206,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item border-0 bg-transparent">
+                    <div class="accordion-item border-0 bg-transparent" id="bloque-coleccion">
                         <h2 class="accordion-header" id="headCol">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseCol">
@@ -234,147 +234,37 @@
             <div class="col-md-9">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <span class="small">Se muestran los resultados de las categorias</span>
-                    <select class="form-select form-select-sm w-auto border-dark">
-                        <option>Orden predeterminado</option>
+                    <select id="select-orden" class="form-select form-select-sm w-auto border-dark">
+                        <option value="predeterminado">Orden predeterminado</option>
+                        <option value="menor-mayor">Precio: Menor a Mayor</option>
+                        <option value="mayor-menor">Precio: Mayor a Menor</option>
                     </select>
                 </div>
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-21%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '301')">
-                                <img src="img/Ofert1.jpg" class="card-img-top"
-                                    alt="Oferta 1">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Amor y Chispas</p>
-                                <span class="precio-tachado">S/ 50.00</span>
-                                <p class="precio-producto mb-2">S/ 39.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('301', 'Torta Amor y Chispas', 39.00, 'img/Ofer1.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-20%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '302')">
-                                <img src="img/Ofer2.jpg" class="card-img-top"
-                                    alt="Oferta 2">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Fiesta Premium</p>
-                                <span class="precio-tachado">S/ 30.00</span>
-                                <p class="precio-producto mb-2">S/ 24.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('302', 'Torta Fiesta Premium', 24.00, 'img/Ofer2.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-20%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '303')">
-                                <img src="img/Ofer3.jpg" class="card-img-top"
-                                    alt="Oferta 3">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Fiesta Premium (Especial)</p>
-                                <span class="precio-tachado">S/ 30.00</span>
-                                <p class="precio-producto mb-2">S/ 24.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('303', 'Torta Fiesta Especial', 24.00, 'img/Ofer3.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-25%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '304')">
-                                <img src="img/Ofer4.jpg" class="card-img-top"
-                                    alt="Oferta 4">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Box de Trufas Selección</p>
-                                <span class="precio-tachado">S/ 40.00</span>
-                                <p class="precio-producto mb-2">S/ 30.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('304', 'Box Trufas', 30.00, 'img/Ofer4.jpg')">Añadir al
-                                    carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-20%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '305')">
-                                <img src="img/Ofer5.jpg" class="card-img-top"
-                                    alt="Oferta 5">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Caja de Macarrones Gala</p>
-                                <span class="precio-tachado">S/ 15.00</span>
-                                <p class="precio-producto mb-2">S/ 12.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('305', 'Caja Macarrones', 12.00, 'img/Ofer5.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-25%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '306')">
-                                <img src="img/Ofer6.jpg" class="card-img-top"
-                                    alt="Oferta 6">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Amor Eterno</p>
-                                <span class="precio-tachado">S/ 20.00</span>
-                                <p class="precio-producto mb-2">S/ 15.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('306', 'Torta Amor Eterno', 15.00, 'img/Ofer6.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="grilla-productos">
 
                 </div>
 
-                <div class="d-flex justify-content-center mt-5 align-items-center gap-3">
-                    <span class="border border-dark px-3 py-1 fw-bold bg-light">1</span>
+                <nav aria-label="Navegación de páginas">
+                    <ul class="pagination justify-content-center mt-4">
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="cambiarPagina(1)">1</a>
+                        </li>
 
-                    <a href="ofertas2.html" class="text-dark text-decoration-none">2</a>
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="cambiarPagina(2)">2</a>
+                        </li>
 
-                    <a href="ofertas2.html" class="text-dark"><i class="fas fa-play-circle fs-4"></i></a>
-                </div>
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="alternarPagina()">
+                                >
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
 
             </div>
         </div>
@@ -497,7 +387,56 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
-      <script src="js/sesion.js"></script>
+    <script src="js/productosData.js"></script>
+    <script src="js/renderizarCatalogo.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductosPagina('30');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const archivoActual = window.location.pathname.toLowerCase();
+            let prefijoId = '10'; // Por defecto: Tortas
+
+            if (archivoActual.includes('combos')) {
+                prefijoId = '20';
+            } else if (archivoActual.includes('ofertas')) {
+                prefijoId = '30';
+            } else if (archivoActual.includes('bocaditos')) {
+                prefijoId = '40'; // NUEVO: Detecta la página de bocaditos
+            } else if (archivoActual.includes('pedidos')) {
+                prefijoId = '50'; // NUEVO: Detecta la página de tortas a pedido
+            }
+
+            cargarProductosPagina(prefijoId, 1);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- OTRA LÓGICA QUE YA TENGAS AQUÍ ---
+
+            // 1. LÓGICA PARA OCULTAR FILTROS INNECESARIOS
+            const rutaFiltros = window.location.pathname.toLowerCase();
+            const bloqueSabor = document.getElementById('bloque-sabor');
+            const bloqueColeccion = document.getElementById('bloque-coleccion');
+
+            // Verificamos que los bloques existan en el HTML para no generar errores
+            if (bloqueSabor && bloqueColeccion) {
+                // Si estamos en bocaditos, combos u ofertas, los ocultamos (display: none)
+                if (rutaFiltros.includes('bocaditos') || rutaFiltros.includes('combos') || rutaFiltros.includes('ofertas')) {
+                    bloqueSabor.style.display = 'none';
+                    bloqueColeccion.style.display = 'none';
+                } else {
+                    // Si es tortas (producto.html) o pedidos, los mostramos
+                    bloqueSabor.style.display = 'block';
+                    bloqueColeccion.style.display = 'block';
+                }
+            }
+        });
+    </script>
+    <script src="js/sesion.js"></script>
 </body>
 
 </html>

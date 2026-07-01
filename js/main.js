@@ -80,10 +80,13 @@ function actualizarBadgeCarritoHeader() {
 }
 function inicializarFiltrosNavegacion() {
     const paginaActual = window.location.pathname.split('/').pop();
+    
     const mapaPaginas = {
-        'producto.html': 'chk-tortas', 'productos2.html': 'chk-tortas',
-        'combos.html': 'chk-combos', 'combos2.html': 'chk-combos',
-        'ofertas.html': 'chk-ofertas', 'ofertas2.html': 'chk-ofertas'
+        'producto.html': 'chk-tortas', 
+        'pedidos.html': 'chk-pedido', 
+        'bocaditos.html': 'chk-bocaditos', 
+        'combos.html': 'chk-combos', 
+        'ofertas.html': 'chk-ofertas'
     };
 
     const idActivo = mapaPaginas[paginaActual] || 'chk-tortas';
@@ -95,10 +98,41 @@ function inicializarFiltrosNavegacion() {
         chk.addEventListener('change', function() {
             if (this.checked) {
                 const url = this.getAttribute('data-url');
-                url && url !== '#' ? window.location.href = url : (alert('En construcción 🛠️'), this.checked = false, checkActivo.checked = true);
+                
+                if (url && url !== '#') {
+                    window.location.href = url;
+                } else {
+                    alert('En construcción 🛠️');
+                    this.checked = false;
+                    checkActivo.checked = true;
+                }
             } else {
                 this.checked = true;
             }
         });
     });
+    function configurarFiltroExclusivo(idsCheckboxes, tipoFiltro) {
+        const cajas = idsCheckboxes.map(id => document.getElementById(id)).filter(caja => caja !== null);
+        
+        cajas.forEach(cajaActual => {
+            cajaActual.addEventListener('change', function() {
+                if (this.checked) {
+                    cajas.forEach(hermano => {
+                        if (hermano !== this) hermano.checked = false;
+                    });
+                    
+                    if (tipoFiltro === 'sabor') filtroSaborActual = this.id.split('-')[1];
+                    if (tipoFiltro === 'coleccion') filtroColActual = this.id.split('-')[1];
+                } else {
+                    if (tipoFiltro === 'sabor') filtroSaborActual = null;
+                    if (tipoFiltro === 'coleccion') filtroColActual = null;
+                }
+                
+                cargarProductosPagina(prefijoActual, 1);
+            });
+        });
+    }
+
+    configurarFiltroExclusivo(['sabor-choco', 'sabor-vainilla', 'sabor-fresa'], 'sabor');
+    configurarFiltroExclusivo(['col-valentin', 'col-cumple'], 'coleccion');
 }

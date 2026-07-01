@@ -154,12 +154,12 @@
                                 </div>
                                 <div class="form-check mb-2">
                                     <input class="form-check-input chk-categoria" type="checkbox" id="chk-pedido"
-                                        data-url="#">
+                                        data-url="pedidos.html">
                                     <label class="form-check-label text-white" for="chk-pedido">Tortas a Pedido</label>
                                 </div>
                                 <div class="form-check mb-2">
                                     <input class="form-check-input chk-categoria" type="checkbox" id="chk-bocaditos"
-                                        data-url="#">
+                                        data-url="bocaditos.html">
                                     <label class="form-check-label text-white" for="chk-bocaditos">Bocaditos</label>
                                 </div>
                                 <div class="form-check mb-2">
@@ -176,7 +176,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item border-0 bg-transparent"
+                    <div class="accordion-item border-0 bg-transparent" id="bloque-sabor"
                         style="border-bottom: 1px solid rgba(255,255,255,0.3) !important;">
                         <h2 class="accordion-header" id="headSabor">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -203,7 +203,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item border-0 bg-transparent">
+                    <div class="accordion-item border-0 bg-transparent" id="bloque-coleccion">
                         <h2 class="accordion-header" id="headCol">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseCol">
@@ -231,118 +231,37 @@
             <div class="col-md-9">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <span class="small">Se muestran los resultados de las categorias</span>
-                    <select class="form-select form-select-sm w-auto border-dark">
-                        <option>Orden predeterminado</option>
+                    <select id="select-orden" class="form-select form-select-sm w-auto border-dark">
+                        <option value="predeterminado">Orden predeterminado</option>
+                        <option value="menor-mayor">Precio: Menor a Mayor</option>
+                        <option value="mayor-menor">Precio: Mayor a Menor</option>
                     </select>
                 </div>
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="tag-combo">¡OFERTA!</div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '201')">
-                                <img src="img/Combo1.png" class="card-img-top" alt="Combo 1">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">2 porciones de torta + Porcion de pie</p>
-                                <p class="precio-producto mb-2">S/ 39.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarComboCarrito('201', 'Combo 1', 39.00, 'img/Comb1.jpg', 'Porciones clásicas')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="tag-combo">¡OFERTA!</div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '202')">
-                                <img src="img/Comb2.jpg" class="card-img-top" alt="Combo 2">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">1 plato + Porcion de Torta</p>
-                                <p class="precio-producto mb-2">S/ 25.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarComboCarrito('202', 'Combo 2', 25.00, 'img/Comb2.jpg', 'Almuerzo dulce')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="tag-combo">¡OFERTA!</div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '203')">
-                                <img src="img/Comb3.jpg" class="card-img-top" alt="Combo 3">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Combo de Macarrones</p>
-                                <p class="precio-producto mb-2">S/ 25.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarComboCarrito('203', 'Combo 3', 25.00, 'img/Comb3.jpg', 'Caja de 6 macarrones')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="tag-combo">¡OFERTA!</div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '204')">
-                                <img src="img/Comb4.jpg" class="card-img-top" alt="Combo 4">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Box de Macarrones</p>
-                                <p class="precio-producto mb-2">S/ 30.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarComboCarrito('204', 'Combo 4', 30.00, 'img/Comb4.jpg', 'Caja de 12 macarrones')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="tag-combo">¡OFERTA!</div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '205')">
-                                <img src="img/Comb7.jpg" class="card-img-top" alt="Combo 5">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Pack Trufas</p>
-                                <p class="precio-producto mb-2">S/ 12.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarComboCarrito('205', 'Combo 5', 12.00, 'img/Comb7.jpg', '10 trufas chocolate')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="tag-combo">¡OFERTA!</div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '206')">
-                                <img src="img/Comb9.jpg" class="card-img-top" alt="Combo 6">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Pack Galletas</p>
-                                <p class="precio-producto mb-2">S/ 15.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarComboCarrito('206', 'Combo 6', 15.00, 'img/Comb9.jpg', 'Galletas artesanales')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="grilla-productos">
 
                 </div>
 
-                <div class="d-flex justify-content-center mt-5 align-items-center gap-3">
-                    <span class="border border-dark px-3 py-1 fw-bold bg-light">1</span>
+                <nav aria-label="Navegación de páginas">
+                    <ul class="pagination justify-content-center mt-4">
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="cambiarPagina(1)">1</a>
+                        </li>
 
-                    <a href="combos2.html" class="text-dark text-decoration-none">2</a>
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="cambiarPagina(2)">2</a>
+                        </li>
 
-                    <a href="combos2.html" class="text-dark"><i class="fas fa-play-circle fs-4"></i></a>
-                </div>
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="alternarPagina()">
+                                >
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
 
             </div>
         </div>
@@ -465,6 +384,55 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/productosData.js"></script>
+    <script src="js/renderizarCatalogo.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductosPagina('20');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const archivoActual = window.location.pathname.toLowerCase();
+            let prefijoId = '10'; // Por defecto: Tortas
+
+            if (archivoActual.includes('combos')) {
+                prefijoId = '20';
+            } else if (archivoActual.includes('ofertas')) {
+                prefijoId = '30';
+            } else if (archivoActual.includes('bocaditos')) {
+                prefijoId = '40'; // NUEVO: Detecta la página de bocaditos
+            } else if (archivoActual.includes('pedidos')) {
+                prefijoId = '50'; // NUEVO: Detecta la página de tortas a pedido
+            }
+
+            cargarProductosPagina(prefijoId, 1);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- OTRA LÓGICA QUE YA TENGAS AQUÍ ---
+
+            // 1. LÓGICA PARA OCULTAR FILTROS INNECESARIOS
+            const rutaFiltros = window.location.pathname.toLowerCase();
+            const bloqueSabor = document.getElementById('bloque-sabor');
+            const bloqueColeccion = document.getElementById('bloque-coleccion');
+
+            // Verificamos que los bloques existan en el HTML para no generar errores
+            if (bloqueSabor && bloqueColeccion) {
+                // Si estamos en bocaditos, combos u ofertas, los ocultamos (display: none)
+                if (rutaFiltros.includes('bocaditos') || rutaFiltros.includes('combos') || rutaFiltros.includes('ofertas')) {
+                    bloqueSabor.style.display = 'none';
+                    bloqueColeccion.style.display = 'none';
+                } else {
+                    // Si es tortas (producto.html) o pedidos, los mostramos
+                    bloqueSabor.style.display = 'block';
+                    bloqueColeccion.style.display = 'block';
+                }
+            }
+        });
+    </script>
     <script src="js/sesion.js"></script>
 
 </body>
