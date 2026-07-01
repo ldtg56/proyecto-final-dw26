@@ -53,7 +53,7 @@ function cargarPuntosYRango() {
     if (elemMeta) elemMeta.innerText = meta;
 }
 
-// 3. SISTEMA DE CANJE DE PUNTOS
+// 3. SISTEMA DE CANJE DE PUNTOS (VERSIÓN SEGURA)
 function canjearPuntos() {
     let puntosActuales = parseInt(localStorage.getItem('dmela_puntos_totales')) || 0;
 
@@ -82,7 +82,21 @@ function canjearPuntos() {
 
     localStorage.setItem('dmela_puntos_totales', puntosRestantes);
 
-    alert(`🎉 ¡Canje exitoso!\nHas canjeado ${puntosACanjear} puntos por S/ ${valorDescuento.toFixed(2)} de descuento.\n\nGuarda este código para tu próxima compra:\n\nPUNTOS-${valorDescuento}`);
+    // =========================================================
+    // NUEVO: GENERAR CÓDIGO ÚNICO Y GUARDARLO EN LA BÓVEDA
+    // =========================================================
+    // Genera un sufijo aleatorio de 4 letras/números (Ej: X7B2)
+    const sufijoAleatorio = Math.random().toString(36).substring(2, 6).toUpperCase();
+    const codigoUnico = `PUNTOS-${valorDescuento}-${sufijoAleatorio}`;
+
+    // Leemos la lista de cupones activos o creamos una nueva
+    let cuponesGuardados = JSON.parse(localStorage.getItem('dmela_cupones_activos')) || [];
+
+    // Guardamos el código y su valor en dinero
+    cuponesGuardados.push({ codigo: codigoUnico, valor: valorDescuento });
+    localStorage.setItem('dmela_cupones_activos', JSON.stringify(cuponesGuardados));
+
+    alert(`🎉 ¡Canje exitoso!\nHas canjeado ${puntosACanjear} puntos por S/ ${valorDescuento.toFixed(2)} de descuento.\n\nGuarda este código ÚNICO para tu próxima compra:\n\n${codigoUnico}`);
 
     cargarPuntosYRango();
 }

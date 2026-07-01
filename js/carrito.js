@@ -192,14 +192,17 @@ function agregarExtraSimple(nombre, precio, img) {
 }
 
 // =================================================================
-// MOTOR DE DESCUENTOS Y MATEMÁTICA
-// =================================================================
-// =================================================================
-// MOTOR DE DESCUENTOS Y MATEMÁTICA
+// MOTOR DE DESCUENTOS Y MATEMÁTICA (VERSIÓN SEGURA)
 // =================================================================
 function aplicarCupon() {
     const input = document.getElementById('inputCupon');
     const codigo = input.value.trim().toUpperCase();
+
+    // NUEVO: Leer la bóveda de cupones válidos generados en el dashboard
+    let cuponesActivos = JSON.parse(localStorage.getItem('dmela_cupones_activos')) || [];
+
+    // Buscar si el código que escribió el usuario existe en nuestra bóveda
+    let cuponEncontrado = cuponesActivos.find(c => c.codigo === codigo);
 
     if (codigo === 'DMELA10') {
         descuentoPorcentaje = 0.10; // 10%
@@ -213,21 +216,21 @@ function aplicarCupon() {
         cuponNombreActivo = 'Cupón FESTEJO20 (-S/20)';
         alert('¡Cupón FESTEJO20 aplicado con éxito!');
 
+    } else if (cuponEncontrado) {
+        // NUEVA LÓGICA: Si el código existe en la bóveda, aplicamos su valor
+        descuentoPorcentaje = 0;
+        descuentoFijo = cuponEncontrado.valor;
+        cuponNombreActivo = `Cupón de Canje (-S/ ${descuentoFijo.toFixed(2)})`;
+
+        // Guardamos una bandera para saber qué código quemar luego de pagar
+        localStorage.setItem('dmela_cupon_en_uso', codigo);
+
+        alert(`¡Cupón de puntos verificado! Tienes un descuento de S/ ${descuentoFijo.toFixed(2)}`);
+
     } else if (codigo.startsWith('PUNTOS-')) {
-        // NUEVA LÓGICA: Extrae el número del cupón generado en el dashboard
-        const valorDescuento = parseFloat(codigo.replace('PUNTOS-', ''));
-
-        // Verifica que sí sea un número válido y mayor a 0
-        if (!isNaN(valorDescuento) && valorDescuento > 0) {
-            descuentoPorcentaje = 0;
-            descuentoFijo = valorDescuento;
-            cuponNombreActivo = `Cupón de Canje (-S/ ${valorDescuento.toFixed(2)})`;
-            alert(`¡Cupón de puntos aplicado con éxito! Tienes un descuento de S/ ${valorDescuento.toFixed(2)}`);
-        } else {
-            alert('Cupón de puntos no válido o corrupto.');
-            return;
-        }
-
+        // Si empieza con PUNTOS pero no está en la bóveda, es falso o ya se usó
+        alert('Este código de puntos no existe, ya fue usado o está mal escrito.');
+        return;
     } else {
         alert('Cupón no válido o expirado.');
         return;

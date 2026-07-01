@@ -276,7 +276,7 @@ function procesarPago(event) {
     if (carritoGuardado.length > 1) {
         nombreRef += ` (+${carritoGuardado.length - 1} más)`;
     }
-    
+
     const hoy = new Date();
     const fechaFormat = `${hoy.getDate().toString().padStart(2, '0')}/${(hoy.getMonth() + 1).toString().padStart(2, '0')}/${hoy.getFullYear()}`;
 
@@ -299,13 +299,23 @@ function procesarPago(event) {
     localStorage.setItem('dmela_historial_pedidos', JSON.stringify(historial));
 
     // ===============================================================
-    // 8. VACIAR CARRITO Y PASAR DATOS A LA BOLETA
+    // 8. VACIAR CARRITO, PASAR DATOS A LA BOLETA Y QUEMAR CUPÓN
     // ===============================================================
     localStorage.setItem('carritoBoleta', carritoString);
     localStorage.setItem('descuentoBoleta', descuentoPendiente); // Pasamos el descuento a la confirmación
 
     localStorage.removeItem('dmela_carrito_compras');
-    localStorage.removeItem('dmela_descuento_pendiente'); // Limpiamos la memoria
+    localStorage.removeItem('dmela_descuento_pendiente'); // Limpiamos la memoria temporal
+
+    //QUEMAR EL CUPÓN USADO PARA QUE NO SE REPITA
+    const cuponUsado = localStorage.getItem('dmela_cupon_en_uso');
+    if (cuponUsado) {
+        let cuponesActivos = JSON.parse(localStorage.getItem('dmela_cupones_activos')) || [];
+        // Filtramos la lista para dejar todos menos el que acabamos de usar
+        cuponesActivos = cuponesActivos.filter(c => c.codigo !== cuponUsado);
+        localStorage.setItem('dmela_cupones_activos', JSON.stringify(cuponesActivos));
+        localStorage.removeItem('dmela_cupon_en_uso'); // Limpiamos la bandera
+    }
 
     // 9. REDIRECCIÓN
     alert(`✅ ¡Pago procesado con éxito!\n🎉 Has ganado ${puntosGanados} puntos.\nRedirigiendo a tu boleta...`);
