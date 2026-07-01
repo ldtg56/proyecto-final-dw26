@@ -65,7 +65,7 @@ function iniciarSesion() {
     }));
 
     alert(`✅ ¡Bienvenido, ${usuarioEncontrado.nombre}!`);
-    window.location.href = 'paginaPrincipal.html';
+    window.location.href = 'index.html';
 }
 
 // Al cargar
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sesion) {
         const datos = JSON.parse(sesion);
         if (datos.logueado) {
-            window.location.href = 'paginaPrincipal.html';
+            window.location.href = 'index.html';
         }
     }
 });
