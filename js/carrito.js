@@ -1,5 +1,4 @@
 const STORAGE_KEY = 'dmela_carrito_compras';
-const COSTO_SERVICIO = 15.00;
 
 let descuentoPorcentaje = 0;
 let descuentoFijo = 0;
@@ -48,11 +47,16 @@ function renderizarPantalla() {
 
     let sumaSubtotal = 0;
     let conteoUnidades = 0;
+    let sumaPuntos = 0; // NUEVA VARIABLE PARA LOS PUNTOS
 
     carrito.forEach((prod) => {
         const subtotalProd = prod.precio * prod.cantidad;
+        // Calculamos los puntos (Ej: 1 punto por cada sol gastado, redondeado hacia abajo)
+        const puntosProd = Math.floor(prod.precio) * prod.cantidad;
+
         sumaSubtotal += subtotalProd;
         conteoUnidades += prod.cantidad;
+        sumaPuntos += puntosProd;
 
         // ============================================================
         // LÓGICA DIFERENCIADA PARA PEDIDOS PERSONALIZADOS Y CATÁLOGO
@@ -61,18 +65,18 @@ function renderizarPantalla() {
         if (prod.detalles) {
             if (prod.tipo === 'personalizado') {
                 // EXCLUSIVO PERSONALIZADOS: Grilla 2 columnas fluida y limpia
-                const itemsGrid = Object.entries(prod.detalles).map(([clave, valor]) => 
+                const itemsGrid = Object.entries(prod.detalles).map(([clave, valor]) =>
                     `<div class="col-12 col-md-6 mb-2 d-flex flex-wrap align-items-baseline gap-1">
                         <strong class="fw-bold text-dark text-nowrap" style="font-size: 0.9rem;">${clave}:</strong> 
                         <span class="text-secondary" style="word-break: break-word; font-size: 0.88rem;">${valor}</span>
                     </div>`
                 ).join('');
-                
+
                 filasDetalle = `<div class="row gx-3 gy-1 w-100 m-0 pt-2 pb-1">${itemsGrid}</div>`;
             } else {
                 // TODOS LOS DEMÁS PRODUCTOS: Formato clásico vertical de siempre
                 filasDetalle = Object.entries(prod.detalles).map(([clave, valor]) =>
-                    `<div class="mb-1">
+                    `<div class="mb-2">
                         <strong class="fw-bold text-dark">${clave}:</strong> 
                         <span class="text-secondary">${valor}</span>
                     </div>`
@@ -115,6 +119,9 @@ function renderizarPantalla() {
                             <div class="fw-bold fs-5 mt-1" style="color: #8C1616;">
                                 Subtotal: S/ ${subtotalProd.toFixed(2)}
                             </div>
+                            <div class="text-success fw-bold mt-1" style="font-size: 0.85rem;">
+                                <i class="fa-solid fa-star"></i> Otorga ${puntosProd} puntos
+                            </div>
                         </div>
 
                     </div>
@@ -124,7 +131,7 @@ function renderizarPantalla() {
         contenedor.insertAdjacentHTML('beforeend', plantillaTarjeta);
     });
 
-    actualizarTextosResumen(conteoUnidades, sumaSubtotal);
+    actualizarTextosResumen(conteoUnidades, sumaSubtotal, sumaPuntos);
 }
 
 function modificarCantidad(id, cambio) {
@@ -208,10 +215,11 @@ function aplicarCupon() {
     renderizarPantalla();
 }
 
-function actualizarTextosResumen(unidades, subtotal) {
+function actualizarTextosResumen(unidades, subtotal, puntosTotales = 0) {
     document.getElementById('resumenCantidadText').innerText = `${unidades} ${unidades === 1 ? 'Producto' : 'Productos'}`;
     document.getElementById('resumenSubtotalText').innerText = `S/ ${subtotal.toFixed(2)}`;
 
+    // Lógica de descuentos restaurada
     let montoDescuentoCalculado = (subtotal * descuentoPorcentaje) + descuentoFijo;
     if (montoDescuentoCalculado > subtotal) montoDescuentoCalculado = subtotal; // Evitar totales negativos
 
@@ -227,8 +235,15 @@ function actualizarTextosResumen(unidades, subtotal) {
     }
 
     const subtotalFinal = subtotal - montoDescuentoCalculado;
-    const total = unidades > 0 ? (subtotalFinal + COSTO_SERVICIO) : 0.00;
+    const total = unidades > 0 ? subtotalFinal : 0.00;
+
     document.getElementById('resumenTotalText').innerText = `S/ ${total.toFixed(2)}`;
+
+    // Imprimimos los puntos totales en el HTML
+    const elementoPuntos = document.getElementById('resumenPuntosText');
+    if (elementoPuntos) {
+        elementoPuntos.innerText = `+ ${puntosTotales} pts`;
+    }
 }
 
 // =================================================================
@@ -251,17 +266,18 @@ function validarCheckout(event) {
     const checkTerminos = document.getElementById('checkTerminos');
     const checkPrivacidad = document.getElementById('checkPrivacidad');
 
-    // Si alguna de las dos no está marcada...
     if (!checkTerminos.checked || !checkPrivacidad.checked) {
-        // Bloqueamos el salto a la página de pago
         event.preventDefault();
-
-        // Lanzamos la advertencia al usuario
         alert('Debe marcar las casillas de "Términos y Condiciones" y "Política de Privacidad" para poder procesar tu pago.');
-
         return false;
     }
 
-    // Si ambas están marcadas, lo deja pasar a finalizarCompra.html
+    // NUEVO: Si todo está bien, extraemos los puntos del texto y los guardamos para sumarlos a la cuenta global luego del pago
+    const textoPuntos = document.getElementById('resumenPuntosText').innerText; // ej: "+ 78 pts"
+    const puntosPendientes = parseInt(textoPuntos.replace(/[^0-9]/g, '')) || 0; // Extrae solo el número
+
+    // Guardamos en localStorage como "puntos en tránsito"
+    localStorage.setItem('dmela_puntos_pendientes', puntosPendientes);
+
     return true;
 }
