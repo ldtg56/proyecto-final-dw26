@@ -1,26 +1,36 @@
+function iniciarMapas() {
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Instanciar mapa de Izaga
-    var mapIzaga = L.map('mapaIzaga').setView([-6.771446, -79.841525], 16);
+    const coordIzaga = { lat: -6.7730468377734665, lng: -79.83928991837116 };
+    const mapIzaga = new google.maps.Map(document.getElementById("mapaIzaga"), {
+        zoom: 16,
+        center: coordIzaga
+    });
 
-    // Cargar la capa visual (OpenStreetMap)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-    }).addTo(mapIzaga);
+    const markerIzaga = new google.maps.Marker({
+        position: coordIzaga,
+        map: mapIzaga,
+        title: "D'Mela - Sede Manuel María Izaga"
+    });
+    const infoIzaga = new google.maps.InfoWindow({
+        content: '<div style="font-family: sans-serif;"><b style="color: #8C1616; font-size: 1.1em;">D\'Mela</b><br>Sede Manuel María Izaga</div>'
+    });
+    infoIzaga.open(mapIzaga, markerIzaga);
 
-    // Poner el marcador
-    L.marker([-6.771446, -79.841525]).addTo(mapIzaga)
-        .bindPopup('<b style="color: #8C1616;">D\'Mela</b><br>Sede Manuel María Izaga')
-        .openPopup();
 
-    // 2. Instanciar mapa de Los Pinos
-    var mapPinos = L.map('mapaPinos').setView([-6.782012, -79.845900], 16);
+    const coordPinos = { lat: -6.782395240656596, lng: -79.8395603913857 };
+    const mapPinos = new google.maps.Map(document.getElementById("mapaPinos"), {
+        zoom: 16,
+        center: coordPinos
+    });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-    }).addTo(mapPinos);
+    const markerPinos = new google.maps.Marker({
+        position: coordPinos,
+        map: mapPinos,
+        title: "D'Mela - Sede Los Pinos"
+    });
 
-    L.marker([-6.782012, -79.845900]).addTo(mapPinos)
-        .bindPopup('<b style="color: #8C1616;">D\'Mela</b><br>Sede Los Pinos')
-        .openPopup();
-});
+    const infoPinos = new google.maps.InfoWindow({
+        content: '<div style="font-family: sans-serif;"><b style="color: #8C1616; font-size: 1.1em;">D\'Mela</b><br>Sede Los Pinos</div>'
+    });
+    infoPinos.open(mapPinos, markerPinos);
+}
