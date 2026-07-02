@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/producto.css">
+    <link rel="stylesheet" href="css/paginaPrincipal.css">
+    <link rel="stylesheet" href="css/headerYfooter.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
 
     <link rel="icon" href="img/logoD'Mela.jpg">
@@ -18,20 +20,24 @@
         <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
             <div class="container-fluid px-3 px-md-4 px-lg-5">
 
+                <!-- Logo principal -->
                 <a class="navbar-brand me-2 me-lg-4" href="index.html">
                     <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería" class="logo-header">
                 </a>
 
+                <!-- Botón Hamburguesa (SOLO saldrá en celulares menores a 768px) -->
                 <button class="navbar-toggler border-white p-1 p-sm-2" type="button" data-bs-toggle="collapse"
                     data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false"
                     aria-label="Abrir navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Contenedor del Menú -->
                 <div class="collapse navbar-collapse" id="menuNavegacion">
 
                     <ul class="navbar-nav mx-auto menu-central my-3 my-md-0 align-items-center">
 
+                        <!-- 1. NOSOTROS -->
                         <li class="nav-item dropdown w-100 text-center">
                             <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,6 +51,7 @@
                             </ul>
                         </li>
 
+                        <!-- 2. CATÁLOGO -->
                         <li class="nav-item dropdown w-100 text-center">
                             <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,27 +68,30 @@
                             </ul>
                         </li>
 
+                        <!-- 3. SOPORTE -->
                         <li class="nav-item dropdown w-100 text-center">
                             <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 SOPORTE <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="#">Inicio Dashboard</a></li>
+                                <li><a class="dropdown-item" href="usuario_dashboard_inicio.html">Inicio Dashboard</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#">Historial Compras</a></li>
                                 <li><a class="dropdown-item" href="#">Mis Cupones</a></li>
                                 <li><a class="dropdown-item" href="#">Perfil de Usuario</a></li>
                             </ul>
                         </li>
 
+                        <!-- 4. CONTACTO -->
                         <li class="nav-item dropdown w-100 text-center">
                             <a class="nav-link text-white fw-bold d-inline-flex align-items-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 CONTACTO <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="#">Contacto y Ubicación</a></li>
-                                <li><a class="dropdown-item" href="#">Contacto FAC</a></li>
+                                <li><a class="dropdown-item" href="contacto.html">Contacto y Ubicación</a></li>
+                                <li><a class="dropdown-item" href="preguntas.html">Contacto FAC</a></li>
                             </ul>
                         </li>
 
@@ -90,6 +100,7 @@
                     <div
                         class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
 
+                        <!-- Carrito con Medalla Numérica Flotante (Enlace directo a carrito.html) -->
                         <a class="text-white text-decoration-none d-flex align-items-center p-1 position-relative"
                             href="carrito.html" title="Ver mi carrito">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
@@ -99,6 +110,7 @@
                                 <circle cx="20" cy="21" r="1"></circle>
                                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                             </svg>
+                            <!-- Medalla roja flotante (badge) -->
                             <span id="badgeCarritoHeader"
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light d-none"
                                 style="font-size: 0.68rem; padding: 0.25em 0.45em;">
@@ -106,9 +118,11 @@
                             </span>
                         </a>
 
+                        <!-- Usuario Desplegable -->
                         <div class="dropdown">
                             <a class="text-white text-decoration-none d-flex align-items-center p-1" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <!-- SVG Perfil en círculo exacto a tu referencia -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24"
                                     fill="currentColor">
                                     <path
@@ -116,10 +130,11 @@
                                 </svg>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
-                                <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
-                                <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
-                                <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="crearCuenta.html">Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" href="editarcontraseña.html">Editar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="recuperarcontraseña.html">Recuperar Contraseña</a>
+                                </li>
                             </ul>
                         </div>
 
@@ -157,12 +172,12 @@
                                 </div>
                                 <div class="form-check mb-2">
                                     <input class="form-check-input chk-categoria" type="checkbox" id="chk-pedido"
-                                        data-url="#">
+                                        data-url="pedidos.html">
                                     <label class="form-check-label text-white" for="chk-pedido">Tortas a Pedido</label>
                                 </div>
                                 <div class="form-check mb-2">
                                     <input class="form-check-input chk-categoria" type="checkbox" id="chk-bocaditos"
-                                        data-url="#">
+                                        data-url="bocaditos.html">
                                     <label class="form-check-label text-white" for="chk-bocaditos">Bocaditos</label>
                                 </div>
                                 <div class="form-check mb-2">
@@ -179,7 +194,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item border-0 bg-transparent"
+                    <div class="accordion-item border-0 bg-transparent" id="bloque-sabor"
                         style="border-bottom: 1px solid rgba(255,255,255,0.3) !important;">
                         <h2 class="accordion-header" id="headSabor">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -206,7 +221,7 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item border-0 bg-transparent">
+                    <div class="accordion-item border-0 bg-transparent" id="bloque-coleccion">
                         <h2 class="accordion-header" id="headCol">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseCol">
@@ -234,223 +249,114 @@
             <div class="col-md-9">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <span class="small">Se muestran los resultados de las categorias</span>
-                    <select class="form-select form-select-sm w-auto border-dark">
-                        <option>Orden predeterminado</option>
+                    <select id="select-orden" class="form-select form-select-sm w-auto border-dark">
+                        <option value="predeterminado">Orden predeterminado</option>
+                        <option value="menor-mayor">Precio: Menor a Mayor</option>
+                        <option value="mayor-menor">Precio: Mayor a Menor</option>
                     </select>
                 </div>
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-21%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '301')">
-                                <img src="img/Ofert1.jpg" class="card-img-top"
-                                    alt="Oferta 1">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Amor y Chispas</p>
-                                <span class="precio-tachado">S/ 50.00</span>
-                                <p class="precio-producto mb-2">S/ 39.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('301', 'Torta Amor y Chispas', 39.00, 'img/Ofer1.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-20%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '302')">
-                                <img src="img/Ofer2.jpg" class="card-img-top"
-                                    alt="Oferta 2">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Fiesta Premium</p>
-                                <span class="precio-tachado">S/ 30.00</span>
-                                <p class="precio-producto mb-2">S/ 24.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('302', 'Torta Fiesta Premium', 24.00, 'img/Ofer2.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-20%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '303')">
-                                <img src="img/Ofer3.jpg" class="card-img-top"
-                                    alt="Oferta 3">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Fiesta Premium (Especial)</p>
-                                <span class="precio-tachado">S/ 30.00</span>
-                                <p class="precio-producto mb-2">S/ 24.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('303', 'Torta Fiesta Especial', 24.00, 'img/Ofer3.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-25%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '304')">
-                                <img src="img/Ofer4.jpg" class="card-img-top"
-                                    alt="Oferta 4">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Box de Trufas Selección</p>
-                                <span class="precio-tachado">S/ 40.00</span>
-                                <p class="precio-producto mb-2">S/ 30.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('304', 'Box Trufas', 30.00, 'img/Ofer4.jpg')">Añadir al
-                                    carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-20%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '305')">
-                                <img src="img/Ofer5.jpg" class="card-img-top"
-                                    alt="Oferta 5">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Caja de Macarrones Gala</p>
-                                <span class="precio-tachado">S/ 15.00</span>
-                                <p class="precio-producto mb-2">S/ 12.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('305', 'Caja Macarrones', 12.00, 'img/Ofer5.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm">
-                            <div class="contenedor-estrella">
-                                <img src="img/oferta.png" alt="Estrella">
-                                <span class="texto-estrella">-25%</span>
-                            </div>
-                            <a href="detalleProducto.html" onclick="localStorage.setItem('prod_id', '306')">
-                                <img src="img/Ofer6.jpg" class="card-img-top"
-                                    alt="Oferta 6">
-                            </a>
-                            <div class="card-body p-2">
-                                <p class="small mb-1">Torta Amor Eterno</p>
-                                <span class="precio-tachado">S/ 20.00</span>
-                                <p class="precio-producto mb-2">S/ 15.00</p>
-                                <button class="btn btn-guinda"
-                                    onclick="agregarItemCarrito('306', 'Torta Amor Eterno', 15.00, 'img/Ofer6.jpg')">Añadir
-                                    al carrito</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4" id="grilla-productos">
 
                 </div>
 
-                <div class="d-flex justify-content-center mt-5 align-items-center gap-3">
-                    <span class="border border-dark px-3 py-1 fw-bold bg-light">1</span>
+                <nav aria-label="Navegación de páginas">
+                    <ul class="pagination justify-content-center mt-4">
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="cambiarPagina(1)">1</a>
+                        </li>
 
-                    <a href="ofertas2.html" class="text-dark text-decoration-none">2</a>
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="cambiarPagina(2)">2</a>
+                        </li>
 
-                    <a href="ofertas2.html" class="text-dark"><i class="fas fa-play-circle fs-4"></i></a>
-                </div>
+                        <li class="page-item">
+                            <a class="page-link text-guinda border-guinda fw-bold" href="javascript:void(0)"
+                                onclick="alternarPagina()">
+                                >
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
 
             </div>
         </div>
     </main>
 
-    <footer class="pt-5 pb-4 shadow-lg"
+    <footer class="pt-4 pb-3 shadow-lg mt-auto"
         style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
 
-        <div class="container" style="max-width: 1150px;">
+        <div class="container" style="max-width: 1250px;">
 
-            <div class="row g-4 justify-content-between text-center text-lg-start">
+            <div class="row gy-4 gx-lg-5 text-center text-lg-start align-items-start">
 
                 <div class="col-12 col-lg-4">
-
                     <div class="mb-3">
                         <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería"
                             class="img-fluid mx-auto mx-lg-0"
-                            style="max-width: 260px; width: 100%; object-fit: contain;">
+                            style="max-width: 230px; width: 100%; object-fit: contain;">
                     </div>
 
                     <div
-                        class="d-flex flex-column flex-sm-row gap-3 align-items-center align-items-lg-start justify-content-center justify-content-lg-start mt-3">
-
+                        class="d-flex flex-column flex-sm-row gap-3 align-items-center justify-content-center justify-content-lg-start mt-2">
                         <div class="d-flex gap-2">
-                            <a href="#"
+                            <a href="https://www.facebook.com/share/1EoKdyRBJk/" target="_blank"
                                 class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
-                                style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                style="width: 40px; height: 40px; background-color: #2D2D2D; font-size: 1.2rem;">
                                 <i class="fa-brands fa-facebook-f"></i>
                             </a>
-                            <a href="#"
+                            <a href="https://www.instagram.com/dmeladulceria?igsh=Ynl0a3RmZHN4Znkx" target="_blank"
                                 class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
-                                style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                style="width: 40px; height: 40px; background-color: #2D2D2D; font-size: 1.2rem;">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </div>
-
-                        <div class="small" style="line-height: 1.6;">
+                        <div class="text-center text-sm-start" style="line-height: 1.5; font-size: 0.85rem;">
                             <div class="fw-bold mb-1 text-white">
                                 <i class="fa-solid fa-location-dot me-1"></i> Visítanos en:
                             </div>
                             <div class="opacity-90">• Manuel María Izaga 612</div>
                             <div class="opacity-90">• Los Pinos 438 (Sta. Victoria)</div>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center align-items-lg-start">
-                    <h6 class="fw-bold mb-3 fs-6 pb-1"
-                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                    <h6 class="fw-bold mb-3 fs-6 pb-1 border-bottom border-light border-opacity-25"
+                        style="color: #F2F2F2; display: inline-block; min-width: 150px;">
                         Nuestros productos
                     </h6>
-                    <ul
-                        class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta tres leches</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Chantilly con durazno</a>
+                    <ul class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 mb-0"
+                        style="font-size: 0.9rem;">
+                        <li><a href="producto.html" class="text-decoration-none opacity-90 text-white">Torta Crocante de
+                                Castañas</a></li>
+                        <li><a href="producto.html" class="text-decoration-none opacity-90 text-white">Chantilly con
+                                durazno</a></li>
+                        <li><a href="bocaditos.html" class="text-decoration-none opacity-90 text-white">Mini Rollos de
+                                Canela</a></li>
+                        <li><a href="pedidos.html" class="text-decoration-none opacity-90 text-white">Cheesecake</a>
                         </li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Carrot cake</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta helada</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Selva negra</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Cabeza de indio</a></li>
+                        <li><a href="combos.html" class="text-decoration-none opacity-90 text-white">Trufas</a></li>
+                        <li><a href="pedidos.html" class="text-decoration-none opacity-90 text-white">Crema Volteada</a>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-2 d-flex flex-column align-items-center align-items-lg-start">
-                    <h6 class="fw-bold mb-3 fs-6 pb-1"
-                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                    <h6 class="fw-bold mb-3 fs-6 pb-1 border-bottom border-light border-opacity-25"
+                        style="color: #F2F2F2; display: inline-block; min-width: 150px;">
                         Enlaces de Interés
                     </h6>
-                    <ul
-                        class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Catálogo</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Combos</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Promociones</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">FAQ</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Contáctanos</a></li>
+                    <ul class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 mb-0"
+                        style="font-size: 0.9rem;">
+                        <li><a href="producto.html" class="text-decoration-none opacity-90 text-white">Catálogo</a></li>
+                        <li><a href="combos.html" class="text-decoration-none opacity-90 text-white">Combos</a></li>
+                        <li><a href="ofertas.html" class="text-decoration-none opacity-90 text-white">Ofertas</a></li>
+                        <li><a href="preguntas.html" class="text-decoration-none opacity-90 text-white">FAQ</a></li>
+                        <li><a href="contacto.html" class="text-decoration-none opacity-90 text-white">Contáctanos</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -459,25 +365,26 @@
 
                     <h6 class="fw-bold mb-2 fs-6 text-white">Libro de reclamaciones</h6>
                     <div class="mb-4">
-                        <a href="#">
+                        <a href="javascript:void(0)"
+                            onclick="alert('El Libro de Reclamaciones virtual está en mantenimiento. Por favor, contáctenos vía WhatsApp al 948415501.')">
                             <img src="img/libroReclamos.jpg" alt="Libro de Reclamaciones"
                                 class="img-fluid rounded shadow-sm"
-                                style="max-width: 145px; background-color: #ffffff; padding: 4px;">
+                                style="max-width: 130px; background-color: #ffffff; padding: 4px;">
                         </a>
                     </div>
 
                     <h6 class="fw-bold mb-2 fs-6 text-white">Métodos de pago</h6>
-                    <div class="d-flex gap-1 justify-content-center justify-content-lg-end align-items-center">
+                    <div class="d-flex gap-2 justify-content-center justify-content-lg-end align-items-center">
                         <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                            style="height: 30px; width: 48px;">
+                            style="height: 32px; width: 48px;">
                             <i class="fa-brands fa-cc-visa fs-5 text-primary"></i>
                         </div>
                         <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                            style="height: 30px; width: 48px;">
+                            style="height: 32px; width: 48px;">
                             <i class="fa-brands fa-cc-mastercard fs-5 text-danger"></i>
                         </div>
                         <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                            style="height: 30px; width: 48px;">
+                            style="height: 32px; width: 48px;">
                             <i class="fa-brands fa-cc-amex fs-5 text-info"></i>
                         </div>
                     </div>
@@ -486,9 +393,9 @@
 
             </div>
 
-            <hr class="my-4 opacity-25" style="border-color: #F2F2F2;">
+            <hr class="my-3 opacity-25" style="border-color: #F2F2F2;">
 
-            <div class="text-center small opacity-75" style="font-size: 0.8rem;">
+            <div class="text-center opacity-90" style="font-size: 0.85rem;">
                 &copy; 2026 D'Mela Dulcería & Cafetería. Todos los derechos reservados.
             </div>
 
@@ -497,7 +404,53 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
-      <script src="js/sesion.js"></script>
+    <script src="js/productosData.js"></script>
+    <script src="js/renderizarCatalogo.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductosPagina('30');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const archivoActual = window.location.pathname.toLowerCase();
+            let prefijoId = '10'; // Por defecto: Tortas
+
+            if (archivoActual.includes('combos')) {
+                prefijoId = '20';
+            } else if (archivoActual.includes('ofertas')) {
+                prefijoId = '30';
+            } else if (archivoActual.includes('bocaditos')) {
+                prefijoId = '40'; // NUEVO: Detecta la página de bocaditos
+            } else if (archivoActual.includes('pedidos')) {
+                prefijoId = '50'; // NUEVO: Detecta la página de tortas a pedido
+            }
+
+            cargarProductosPagina(prefijoId, 1);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const rutaFiltros = window.location.pathname.toLowerCase();
+            const bloqueSabor = document.getElementById('bloque-sabor');
+            const bloqueColeccion = document.getElementById('bloque-coleccion');
+
+            if (bloqueSabor && bloqueColeccion) {
+                if (rutaFiltros.includes('bocaditos') || rutaFiltros.includes('combos') || rutaFiltros.includes('ofertas')) {
+                    bloqueSabor.style.display = 'none';
+                    bloqueColeccion.style.display = 'none';
+                } else {
+                    bloqueSabor.style.display = 'block';
+                    bloqueColeccion.style.display = 'block';
+                }
+            }
+        });
+    </script>
+
+    <script src="js/sesion.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 
 </html>

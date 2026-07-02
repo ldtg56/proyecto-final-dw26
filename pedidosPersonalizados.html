@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/pedidosPersonalizados.css">
+    <link rel="stylesheet" href="css/paginaPrincipal.css">
+    <link rel="stylesheet" href="css/headerYfooter.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
 
     <link rel="icon" href="img/logoD'Mela.jpg">
@@ -59,9 +61,9 @@
                                 <li><a class="dropdown-item" href="producto.html">Productos</a></li>
                                 <li><a class="dropdown-item" href="detalleProducto.html">Detalle del Producto</a></li>
                                 <li><a class="dropdown-item" href="combos.html">Combos</a></li>
+                                <li><a class="dropdown-item" href="ofertas.html">Ofertas</a></li>
                                 <li><a class="dropdown-item fw-bold text-danger bg-light"
-                                        href="ofertas.html">Ofertas</a></li>
-                                <li><a class="dropdown-item" href="pedidosPersonalizados.html">Pedidos
+                                        href="pedidosPersonalizados.html">Pedidos
                                         Personalizados</a></li>
                             </ul>
                         </li>
@@ -73,7 +75,8 @@
                                 SOPORTE <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="#">Inicio Dashboard</a></li>
+                                <li><a class="dropdown-item" href="usuario_dashboard_inicio.html">Inicio Dashboard</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#">Historial Compras</a></li>
                                 <li><a class="dropdown-item" href="#">Mis Cupones</a></li>
                                 <li><a class="dropdown-item" href="#">Perfil de Usuario</a></li>
@@ -87,18 +90,16 @@
                                 CONTACTO <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="#">Contacto y Ubicación</a></li>
-                                <li><a class="dropdown-item" href="#">Contacto FAC</a></li>
+                                <li><a class="dropdown-item" href="contacto.html">Contacto y Ubicación</a></li>
+                                <li><a class="dropdown-item" href="preguntas.html">Contacto FAC</a></li>
                             </ul>
                         </li>
 
                     </ul>
 
-                    <!-- ÍCONOS VECTORIALES PUROS (Cero dependencias externas, 100% visibles) -->
                     <div
                         class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
 
-                        <!-- Carrito Desplegable -->
                         <!-- Carrito con Medalla Numérica Flotante (Enlace directo a carrito.html) -->
                         <a class="text-white text-decoration-none d-flex align-items-center p-1 position-relative"
                             href="carrito.html" title="Ver mi carrito">
@@ -129,10 +130,11 @@
                                 </svg>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
-                                <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
-                                <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
-                                <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="crearCuenta.html">Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" href="editarcontraseña.html">Editar Contraseña</a></li>
+                                <li><a class="dropdown-item" href="recuperarcontraseña.html">Recuperar Contraseña</a>
+                                </li>
                             </ul>
                         </div>
 
@@ -260,28 +262,6 @@
                     </div>
                 </div>
 
-                <hr class="opacity-25 my-4">
-
-                <div class="mb-4">
-                    <h6 class="fw-bold mb-3" style="color: #8C1616;">PASO 4: FECHA DE ENTREGA</h6>
-                    <div class="row g-3">
-                        <div class="col-12 col-sm-6">
-                            <label class="form-label fw-bold text-dark small">Fecha requerida: <span
-                                    class="text-danger">*</span></label>
-                            <input type="date" id="fechaReq"
-                                class="form-control form-control-sm border-secondary border-opacity-50 text-secondary"
-                                required>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <label class="form-label fw-bold text-dark small">Hora estimada: <span
-                                    class="text-danger">*</span></label>
-                            <input type="time" id="horaReq"
-                                class="form-control form-control-sm border-secondary border-opacity-50 text-secondary"
-                                required>
-                        </div>
-                    </div>
-                </div>
-
                 <div
                     class="mt-5 pt-3 border-top d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
                     <div class="text-center text-sm-start">
@@ -299,77 +279,78 @@
         </div>
     </main>
 
-    <footer class="pt-5 pb-4 shadow-lg"
+    <footer class="pt-4 pb-3 shadow-lg mt-auto"
         style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
 
-        <div class="container" style="max-width: 1150px;">
+        <div class="container" style="max-width: 1250px;">
 
-            <div class="row g-4 justify-content-between text-center text-lg-start">
+            <div class="row gy-4 gx-lg-5 text-center text-lg-start align-items-start">
 
                 <div class="col-12 col-lg-4">
-
                     <div class="mb-3">
                         <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería"
                             class="img-fluid mx-auto mx-lg-0"
-                            style="max-width: 260px; width: 100%; object-fit: contain;">
+                            style="max-width: 230px; width: 100%; object-fit: contain;">
                     </div>
 
                     <div
-                        class="d-flex flex-column flex-sm-row gap-3 align-items-center align-items-lg-start justify-content-center justify-content-lg-start mt-3">
-
+                        class="d-flex flex-column flex-sm-row gap-3 align-items-center justify-content-center justify-content-lg-start mt-2">
                         <div class="d-flex gap-2">
-                            <a href="#"
+                            <a href="https://www.facebook.com/share/1EoKdyRBJk/" target="_blank"
                                 class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
-                                style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                style="width: 40px; height: 40px; background-color: #2D2D2D; font-size: 1.2rem;">
                                 <i class="fa-brands fa-facebook-f"></i>
                             </a>
-                            <a href="#"
+                            <a href="https://www.instagram.com/dmeladulceria?igsh=Ynl0a3RmZHN4Znkx" target="_blank"
                                 class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
-                                style="width: 42px; height: 42px; background-color: #2D2D2D; font-size: 1.25rem;">
+                                style="width: 40px; height: 40px; background-color: #2D2D2D; font-size: 1.2rem;">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </div>
-
-                        <div class="small" style="line-height: 1.6;">
+                        <div class="text-center text-sm-start" style="line-height: 1.5; font-size: 0.85rem;">
                             <div class="fw-bold mb-1 text-white">
                                 <i class="fa-solid fa-location-dot me-1"></i> Visítanos en:
                             </div>
                             <div class="opacity-90">• Manuel María Izaga 612</div>
                             <div class="opacity-90">• Los Pinos 438 (Sta. Victoria)</div>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center align-items-lg-start">
-                    <h6 class="fw-bold mb-3 fs-6 pb-1"
-                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                    <h6 class="fw-bold mb-3 fs-6 pb-1 border-bottom border-light border-opacity-25"
+                        style="color: #F2F2F2; display: inline-block; min-width: 150px;">
                         Nuestros productos
                     </h6>
-                    <ul
-                        class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta tres leches</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Chantilly con durazno</a>
+                    <ul class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 mb-0"
+                        style="font-size: 0.9rem;">
+                        <li><a href="producto.html" class="text-decoration-none opacity-90 text-white">Torta Crocante de
+                                Castañas</a></li>
+                        <li><a href="producto.html" class="text-decoration-none opacity-90 text-white">Chantilly con
+                                durazno</a></li>
+                        <li><a href="bocaditos.html" class="text-decoration-none opacity-90 text-white">Mini Rollos de
+                                Canela</a></li>
+                        <li><a href="pedidos.html" class="text-decoration-none opacity-90 text-white">Cheesecake</a>
                         </li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Carrot cake</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta helada</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Selva negra</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Cabeza de indio</a></li>
+                        <li><a href="combos.html" class="text-decoration-none opacity-90 text-white">Trufas</a></li>
+                        <li><a href="pedidos.html" class="text-decoration-none opacity-90 text-white">Crema Volteada</a>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-2 d-flex flex-column align-items-center align-items-lg-start">
-                    <h6 class="fw-bold mb-3 fs-6 pb-1"
-                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
+                    <h6 class="fw-bold mb-3 fs-6 pb-1 border-bottom border-light border-opacity-25"
+                        style="color: #F2F2F2; display: inline-block; min-width: 150px;">
                         Enlaces de Interés
                     </h6>
-                    <ul
-                        class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Catálogo</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Combos</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Promociones</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">FAQ</a></li>
-                        <li><a href="#" class="text-decoration-none opacity-75 text-white">Contáctanos</a></li>
+                    <ul class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 mb-0"
+                        style="font-size: 0.9rem;">
+                        <li><a href="producto.html" class="text-decoration-none opacity-90 text-white">Catálogo</a></li>
+                        <li><a href="combos.html" class="text-decoration-none opacity-90 text-white">Combos</a></li>
+                        <li><a href="ofertas.html" class="text-decoration-none opacity-90 text-white">Ofertas</a></li>
+                        <li><a href="preguntas.html" class="text-decoration-none opacity-90 text-white">FAQ</a></li>
+                        <li><a href="contacto.html" class="text-decoration-none opacity-90 text-white">Contáctanos</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -378,25 +359,26 @@
 
                     <h6 class="fw-bold mb-2 fs-6 text-white">Libro de reclamaciones</h6>
                     <div class="mb-4">
-                        <a href="#">
+                        <a href="javascript:void(0)"
+                            onclick="alert('El Libro de Reclamaciones virtual está en mantenimiento. Por favor, contáctenos vía WhatsApp al 948415501.')">
                             <img src="img/libroReclamos.jpg" alt="Libro de Reclamaciones"
                                 class="img-fluid rounded shadow-sm"
-                                style="max-width: 145px; background-color: #ffffff; padding: 4px;">
+                                style="max-width: 130px; background-color: #ffffff; padding: 4px;">
                         </a>
                     </div>
 
                     <h6 class="fw-bold mb-2 fs-6 text-white">Métodos de pago</h6>
-                    <div class="d-flex gap-1 justify-content-center justify-content-lg-end align-items-center">
+                    <div class="d-flex gap-2 justify-content-center justify-content-lg-end align-items-center">
                         <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                            style="height: 30px; width: 48px;">
+                            style="height: 32px; width: 48px;">
                             <i class="fa-brands fa-cc-visa fs-5 text-primary"></i>
                         </div>
                         <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                            style="height: 30px; width: 48px;">
+                            style="height: 32px; width: 48px;">
                             <i class="fa-brands fa-cc-mastercard fs-5 text-danger"></i>
                         </div>
                         <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
-                            style="height: 30px; width: 48px;">
+                            style="height: 32px; width: 48px;">
                             <i class="fa-brands fa-cc-amex fs-5 text-info"></i>
                         </div>
                     </div>
@@ -405,9 +387,9 @@
 
             </div>
 
-            <hr class="my-4 opacity-25" style="border-color: #F2F2F2;">
+            <hr class="my-3 opacity-25" style="border-color: #F2F2F2;">
 
-            <div class="text-center small opacity-75" style="font-size: 0.8rem;">
+            <div class="text-center opacity-90" style="font-size: 0.85rem;">
                 &copy; 2026 D'Mela Dulcería & Cafetería. Todos los derechos reservados.
             </div>
 
@@ -417,7 +399,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/pedidosPersonalizados.js"></script>
-      <script src="js/sesion.js"></script>
+    <script src="js/sesion.js"></script>
 </body>
 
 </html>

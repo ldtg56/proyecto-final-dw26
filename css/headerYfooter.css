@@ -1,0 +1,297 @@
+/* ======================================================== */
+/* 1. ESTILOS Y ANIMACIONES DEL HEADER                      */
+/* ======================================================== */
+
+.header-dmela {
+    background-color: #8C1616;
+    border-bottom: 4px solid #A65353;
+}
+
+.logo-header {
+    max-height: 85px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-header:hover {
+    transform: scale(1.05);
+}
+
+.header-dmela .dropdown-toggle::after {
+    display: none !important;
+}
+
+.menu-central .nav-link {
+    font-size: 1.05rem;
+    letter-spacing: 0.6px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.menu-central .nav-link:hover {
+    color: #BF8484 !important;
+}
+
+.menu-central .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0px;
+    left: 50%;
+    background-color: #BF8484;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.menu-central .nav-link:hover::after {
+    width: 80%;
+}
+
+.triangulo-opciones {
+    color: #1A1A1A;
+    font-size: 0.65rem;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.menu-central .dropdown:hover .triangulo-opciones {
+    transform: rotate(180deg) translateY(2px);
+    color: #BF8484;
+}
+
+/* ---------------------------------------------------------- */
+/* DROPDOWNS: comportamiento base = el de Bootstrap (móvil)   */
+/* En móvil el menú se abre/cierra con la clase .show (clic), */
+/* así que NO tocamos display aquí. Solo damos estilo visual. */
+/* ---------------------------------------------------------- */
+.header-dmela .dropdown-menu {
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    padding: 0.5rem 0;
+}
+
+.header-dmela .dropdown-item {
+    color: #8C1616;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.55rem 1.3rem;
+    transition: all 0.2s ease;
+}
+
+.header-dmela .dropdown-item:hover {
+    background-color: #BF8484;
+    color: #FFFFFF;
+    padding-left: 1.8rem;
+}
+
+.iconos-derecha svg {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.iconos-derecha a:hover svg {
+    transform: scale(1.2) translateY(-2px);
+    color: #BF8484;
+}
+
+/* ---------------------------------------------------------- */
+/* FIX MENÚ DE USUARIO/CARRITO: que nunca se salga a la derecha */
+/* ---------------------------------------------------------- */
+.iconos-derecha .dropdown-menu {
+    right: 0;
+    left: auto;
+    max-width: min(260px, 92vw);
+}
+
+@media (max-width: 767px) {
+    .iconos-derecha .dropdown-menu {
+        right: -0.5rem; /* pequeño respiro con el borde de la pantalla */
+    }
+}
+
+/* ============================================================ */
+/* HOVER ANIMADO SOLO EN ESCRITORIO (>=992px, navbar expandido)  */
+/* En móvil esto NO se aplica: Bootstrap maneja el menú con clic */
+/* ============================================================ */
+@media (min-width: 992px) {
+    .header-dmela .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(15px);
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0s linear 0.25s;
+    }
+
+    .header-dmela .dropdown:hover .dropdown-menu,
+    .header-dmela .dropdown-menu:hover {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0s linear 0s;
+    }
+
+    .header-dmela .dropdown::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 12px;
+        bottom: -12px;
+    }
+}
+
+@media (min-width: 768px) {
+    .menu-central {
+        border-bottom: 2px solid #FFFFFF;
+        padding-bottom: 6px;
+        margin-right: 2rem;
+    }
+
+    .menu-central .nav-item {
+        border-right: 1.5px solid rgba(255, 255, 255, 0.65);
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+
+    .menu-central .nav-item:last-child {
+        border-right: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .menu-central .nav-link {
+        font-size: 0.85rem;
+    }
+
+    .menu-central .nav-item {
+        padding-left: 0.45rem;
+        padding-right: 0.45rem;
+    }
+
+    .logo-header {
+        max-height: 62px;
+    }
+
+    .menu-central {
+        margin-right: 0.5rem;
+    }
+
+    .iconos-derecha {
+        gap: 0.8rem !important;
+    }
+}
+
+/* ======================================================== */
+/* 2. ESTILOS Y ANIMACIONES DEL FOOTER                      */
+/* ======================================================== */
+
+footer ul li a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+footer ul li a:hover {
+    color: #BF8484 !important;
+    transform: translateX(8px);
+    opacity: 1 !important;
+}
+
+footer .d-flex.gap-2 a.btn {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+footer .d-flex.gap-2 a.btn:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: #BF8484 !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+footer img[alt="Libro de Reclamaciones"] {
+    transition: all 0.3s ease;
+}
+
+footer img[alt="Libro de Reclamaciones"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ======================================================== */
+/* 3. BANNER HERO FONDO ÚNICO - D'MELA                      */
+/* ======================================================== */
+
+.banner-personalizados {
+    background-image: url('../img/fondoTortas.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 380px;
+    margin-bottom: 3rem;
+}
+
+.cartel-hero-pill {
+    background-color: rgba(158, 71, 71, 0.92);
+    color: #FFFFFF;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    padding: 1.2rem 3.8rem;
+    border-radius: 60px;
+    border: 2px solid #7A3333;
+    backdrop-filter: blur(4px);
+    max-width: 95%;
+    white-space: nowrap;
+    animation: pulsoHero 3s infinite alternate;
+}
+
+@keyframes pulsoHero {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@media (max-width: 991px) {
+    .banner-personalizados {
+        height: 280px;
+    }
+
+    .cartel-hero-pill {
+        font-size: 1.45rem;
+        padding: 0.95rem 2.2rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+@media (max-width: 767px) {
+    .banner-personalizados {
+        height: 180px;
+        margin-bottom: 2rem;
+    }
+
+    .cartel-hero-pill {
+        font-size: 1rem;
+        padding: 0.75rem 1.3rem;
+        letter-spacing: 1px;
+        border-width: 1.5px;
+        white-space: normal;
+        line-height: 1.25;
+    }
+}

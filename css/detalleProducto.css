@@ -61,7 +61,6 @@ body {
     color: #FFFFFF;
 }
 
-/* Efecto hover sobre los iconos SVG dibujados */
 .iconos-derecha svg {
     transition: transform 0.2s ease;
 }
@@ -89,7 +88,6 @@ body {
     }
 }
 
-/* Ajuste milimétrico EXCLUSIVO para Tablet (768px a 991px) para que el texto no amontone al logo */
 @media (min-width: 768px) and (max-width: 991px) {
     .menu-central .nav-link { font-size: 0.85rem; }
     .menu-central .nav-item { padding-left: 0.45rem; padding-right: 0.45rem; }
@@ -97,7 +95,6 @@ body {
     .menu-central { margin-right: 0.5rem; }
     .iconos-derecha { gap: 0.8rem !important; }
 }
-/* --- BOTÓN GENERAL --- */
 .btn-guinda {
     background-color: var(--guinda);
     color: white;
@@ -112,7 +109,6 @@ body {
     color: white;
 }
 
-/* --- CAJA DERECHA (ESPECIFICACIONES) --- */
 .caja-info-derecha {
     background-color: var(--guinda);
     color: white;
@@ -123,15 +119,22 @@ body {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-.iconos-pago img {
-    height: 25px;
-    margin-right: 5px;
-    background-color: white;
-    border-radius: 3px;
-    padding: 2px;
+.iconos-pago {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
-/* --- ZONA "TAMBIÉN OFRECEMOS" --- */
+.iconos-pago img {
+    width: 48px;
+    height: 32px;
+    object-fit: contain;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
 .seccion-tambien-ofrecemos {
     background-color: var(--guinda);
     color: white;
