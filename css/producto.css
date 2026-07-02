@@ -131,3 +131,49 @@ body {
             50% 100%, 39% 78%, 15% 85%, 22% 61%,
             0% 50%, 22% 39%, 15% 15%, 39% 22%);
 }
+
+/* ============================================
+   SOBRESCRIBIR PAGINACIÓN DE BOOTSTRAP
+   ============================================ */
+
+/* Color por defecto de los números */
+.pagination .page-link {
+    color: #8C1616 !important; /* Tu color guinda */
+    border-color: #dee2e6; /* Color de borde sutil por defecto */
+}
+
+/* Efecto hover (cuando pasas el mouse por encima) */
+.pagination .page-link:hover {
+    background-color: #8C1616 !important;
+    color: #FFFFFF !important; /* Letra blanca para que resalte */
+    border-color: #8C1616 !important;
+}
+
+/* Efecto cuando haces clic (focus) */
+.pagination .page-link:focus {
+    box-shadow: 0 0 0 0.25rem rgba(140, 22, 22, 0.25) !important; /* Sombrita guinda */
+    color: #8C1616 !important;
+}
+
+/* Estilo para la página ACTIVA (si usas <li class="page-item active">) */
+.pagination .active .page-link {
+    background-color: #8C1616 !important;
+    color: #FFFFFF !important;
+    border-color: #8C1616 !important;
+}
+
+/* ============================================
+   PERSONALIZACIÓN DE CHECKBOXES (Color Rosado D'Mela)
+   ============================================ */
+
+/* Cambia el color del fondo y el borde cuando está marcado */
+.form-check-input:checked {
+    background-color: rgba(184, 115, 115, 0.85) !important; 
+    border-color: rgba(184, 115, 115, 0.85) !important;
+}
+
+/* Le quita el resplandor azul al hacer clic y le pone uno rosado */
+.form-check-input:focus {
+    border-color: rgba(184, 115, 115, 0.85) !important;
+    box-shadow: 0 0 0 0.25rem rgba(184, 115, 115, 0.3) !important; 
+}
