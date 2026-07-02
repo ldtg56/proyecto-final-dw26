@@ -182,20 +182,29 @@ function procesarPago(event) {
     if (esDelivery) {
         const envio = document.getElementById('dirEnvio');
         const calle = document.getElementById('dirCalle');
+        const distrito = document.getElementById('dirDistrito');
 
-        if (envio && !envio.value.trim()) {
-            alert("⚠️ Por favor, ingresa tu dirección de envío.");
+        // Validación de Zona Exacta
+        if (distrito && !distrito.value) {
+            alert("⚠️ Lo sentimos, actualmente solo realizamos repartos en Chiclayo, La Victoria y Santa Victoria. Por favor selecciona tu zona.");
+            distrito.focus();
+            return;
+        }
+
+        // Validación anti direcciones falsas (Debe tener más de 8 letras/números y no ser solo números)
+        if (envio && (!envio.value.trim() || envio.value.trim().length < 8 || !/[a-zA-Z]/.test(envio.value))) {
+            alert("⚠️ Por favor, ingresa una dirección real y detallada (Mínimo 8 caracteres, incluyendo letras).");
             envio.focus();
             return;
         }
+
         if (calle && !calle.value.trim()) {
-            alert("⚠️ Por favor, ingresa la calle o referencia.");
+            alert("⚠️ Por favor, ingresa la calle, avenida o referencia.");
             calle.focus();
             return;
         }
     }
 
-    // 👉 AQUÍ ESTÁ LA VALIDACIÓN DE FECHA Y HORA (AHORA SÍ FUNCIONARÁ)
     const fecha = document.getElementById('fechaEntrega');
     const hora = document.getElementById('horaEntrega');
 
@@ -205,25 +214,37 @@ function procesarPago(event) {
         return;
     }
 
-    // Al haber puesto value="" en tu HTML, hora.value estará vacío si no eligen nada
     if (hora && !hora.value) {
         alert("⚠️ Por favor, selecciona la hora para tu pedido.");
         hora.focus();
         return;
     }
 
-    // Validación de tarjeta (si está seleccionada)
+    // Validación estricta de tarjeta
     const esTarjeta = document.getElementById('tarjeta') && document.getElementById('tarjeta').checked;
     if (esTarjeta) {
         const numTarjeta = document.getElementById('tarjetaNum');
         const vencTarjeta = document.getElementById('tarjetaVenc');
         const cvcTarjeta = document.getElementById('tarjetaCVC');
 
-        if ((numTarjeta && !numTarjeta.value.trim()) ||
-            (vencTarjeta && !vencTarjeta.value.trim()) ||
-            (cvcTarjeta && !cvcTarjeta.value.trim())) {
-            alert("⚠️ Por favor, completa todos los datos de tu tarjeta.");
-            if (numTarjeta && !numTarjeta.value.trim()) numTarjeta.focus();
+        const numeroLimpio = numTarjeta ? numTarjeta.value.replace(/\s/g, '') : '';
+
+        if (numeroLimpio.length < 13) {
+            alert("⚠️ El número de tarjeta es inválido o demasiado corto.");
+            if (numTarjeta) numTarjeta.focus();
+            return;
+        }
+
+        // NUEVA VALIDACIÓN PARA FECHA Y CVC
+        if (!vencTarjeta.value || vencTarjeta.value.length < 5) {
+            alert("⚠️ Por favor, ingresa una fecha de vencimiento válida (Ej: 09/30).");
+            if (vencTarjeta) vencTarjeta.focus();
+            return;
+        }
+
+        if (!cvcTarjeta.value || cvcTarjeta.value.length < 3) {
+            alert("⚠️ El código CVC debe tener exactamente 3 dígitos.");
+            if (cvcTarjeta) cvcTarjeta.focus();
             return;
         }
     }
@@ -324,4 +345,55 @@ function procesarPago(event) {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderizarResumenCheckout();
+
+    // ===============================================================
+    // DETECTOR DINÁMICO Y FORMATO DE TARJETAS
+    // ===============================================================
+    const inputTarjeta = document.getElementById('tarjetaNum');
+    const iconoTarjeta = document.getElementById('iconoTarjeta');
+    const inputVenc = document.getElementById('tarjetaVenc');
+    const inputCVC = document.getElementById('tarjetaCVC');
+
+    // 1. Formato para Número de Tarjeta y Cambio de Logo
+    if (inputTarjeta && iconoTarjeta) {
+        inputTarjeta.addEventListener('input', function (e) {
+            let valorPuro = e.target.value.replace(/\D/g, ''); // Solo números
+            iconoTarjeta.className = 'fs-4 ';
+
+            if (valorPuro.startsWith('4')) {
+                iconoTarjeta.className += 'fa-brands fa-cc-visa text-primary';
+            } else if (valorPuro.startsWith('5')) {
+                iconoTarjeta.className += 'fa-brands fa-cc-mastercard text-danger';
+            } else if (valorPuro.startsWith('34') || valorPuro.startsWith('37')) {
+                iconoTarjeta.className += 'fa-brands fa-cc-amex text-info';
+            } else {
+                iconoTarjeta.className += 'fa-solid fa-credit-card text-secondary';
+            }
+
+            if (valorPuro.length > 0) {
+                valorPuro = valorPuro.match(new RegExp('.{1,4}', 'g')).join(' ');
+            }
+            e.target.value = valorPuro;
+        });
+    }
+
+    // 2. Formato automático para Fecha de Vencimiento (MM/AA)
+    if (inputVenc) {
+        inputVenc.addEventListener('input', function (e) {
+            let valor = e.target.value.replace(/\D/g, ''); // Borra letras al instante
+
+            if (valor.length > 2) {
+                // Si ya escribió más de 2 números, pone la barrita automáticamente
+                valor = valor.substring(0, 2) + '/' + valor.substring(2, 4);
+            }
+            e.target.value = valor;
+        });
+    }
+
+    // 3. Formato estricto para CVC (Solo números)
+    if (inputCVC) {
+        inputCVC.addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
+        });
+    }
 });

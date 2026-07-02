@@ -132,7 +132,8 @@
                                 style="font-size: 0.85rem;">Dirección de envío:</label>
                             <div class="col-sm-8">
                                 <input type="text" id="dirEnvio"
-                                    class="form-control form-control-sm rounded-1 border-secondary border-opacity-50">
+                                    class="form-control form-control-sm rounded-1 border-secondary border-opacity-50"
+                                    placeholder="Ej: Av. Manuel María Izaga 612">
                             </div>
                         </div>
                         <div class="row mb-2 align-items-center">
@@ -147,8 +148,14 @@
                             <label class="col-sm-4 col-form-label fw-semibold text-dark small"
                                 style="font-size: 0.85rem;">Distrito:</label>
                             <div class="col-sm-8">
-                                <input type="text" id="dirDistrito"
-                                    class="form-control form-control-sm rounded-1 border-secondary border-opacity-50">
+                                <!-- Cambiado a SELECT para forzar solo tus 3 zonas -->
+                                <select id="dirDistrito"
+                                    class="form-select form-select-sm rounded-1 border-secondary border-opacity-50 text-secondary">
+                                    <option value="" disabled selected>Selecciona tu zona...</option>
+                                    <option value="Chiclayo">Chiclayo</option>
+                                    <option value="La Victoria">La Victoria</option>
+                                    <option value="Santa Victoria">Santa Victoria</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-2 align-items-center">
@@ -202,8 +209,9 @@
                             <div class="d-flex align-items-center gap-2 mb-2 w-100" style="max-width: 300px;">
                                 <input type="text" id="tarjetaNum"
                                     class="form-control form-control-sm rounded-1 border-secondary border-opacity-50"
-                                    placeholder="Número de tarjeta" maxlength="19">
-                                <i class="fa-solid fa-credit-card fs-4 text-secondary"></i>
+                                    placeholder="0000 0000 0000 0000" maxlength="19">
+                                <i id="iconoTarjeta" class="fa-solid fa-credit-card fs-4 text-secondary"
+                                    style="width: 35px; text-align: center; transition: all 0.3s ease;"></i>
                             </div>
                             <div class="d-flex gap-2" style="max-width: 250px;">
                                 <input type="text" id="tarjetaVenc"
@@ -211,7 +219,7 @@
                                     placeholder="MM/AA" maxlength="5">
                                 <input type="text" id="tarjetaCVC"
                                     class="form-control form-control-sm rounded-1 border-secondary border-opacity-50 text-center"
-                                    placeholder="CVC" maxlength="4">
+                                    placeholder="CVC" maxlength="3">
                             </div>
                         </div>
                     </div>
