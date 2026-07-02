@@ -1,7 +1,5 @@
-// Usuarios registrados de prueba (puedes agregar más)
 const USUARIOS_KEY = 'dmela_usuarios';
 
-// Crea un usuario de prueba si no existe ninguno
 function inicializarUsuarios() {
     const existe = localStorage.getItem(USUARIOS_KEY);
     if (!existe) {
@@ -15,7 +13,6 @@ function inicializarUsuarios() {
 function togglePassword() {
     const input = document.getElementById('loginPassword');
     const icono = document.getElementById('iconoOjo');
-
     if (input.type === 'password') {
         input.type = 'text';
         icono.classList.replace('fa-eye', 'fa-eye-slash');
@@ -30,25 +27,21 @@ function iniciarSesion() {
     const password = document.getElementById('loginPassword').value.trim();
     const recaptcha = document.getElementById('recaptcha').checked;
 
-    // Validaciones
     if (!email) {
         alert('Por favor, ingresa tu correo electrónico.');
         document.getElementById('loginEmail').focus();
         return;
     }
-
     if (!password) {
         alert('Por favor, ingresa tu contraseña.');
         document.getElementById('loginPassword').focus();
         return;
     }
-
     if (!recaptcha) {
         alert('Por favor, confirma que no eres un robot.');
         return;
     }
 
-    // Buscar usuario en localStorage
     const usuarios = JSON.parse(localStorage.getItem(USUARIOS_KEY)) || [];
     const usuarioEncontrado = usuarios.find(u => u.email === email && u.password === password);
 
@@ -57,27 +50,28 @@ function iniciarSesion() {
         return;
     }
 
-    // Guardar sesión activa leyendo los datos reales del usuario logueado
     localStorage.setItem('dmela_sesion', JSON.stringify({
         email: usuarioEncontrado.email,
-        nombre: usuarioEncontrado.nombre, // <-- ESTO LO HACE DINÁMICO
+        nombre: usuarioEncontrado.nombre,
         logueado: true
     }));
 
     alert(`¡Bienvenido, ${usuarioEncontrado.nombre}!`);
-    window.location.href = 'paginaPrincipal.html';
+    window.location.href = 'index.html';
 }
 
-// Al cargar
 document.addEventListener('DOMContentLoaded', () => {
     inicializarUsuarios();
 
-    // Si ya está logueado, redirigir directo
     const sesion = localStorage.getItem('dmela_sesion');
     if (sesion) {
-        const datos = JSON.parse(sesion);
-        if (datos.logueado) {
-            window.location.href = 'index.html';
+        try {
+            const datos = JSON.parse(sesion);
+            if (datos.logueado) {
+                window.location.href = 'index.html';
+            }
+        } catch(e) {
+            localStorage.removeItem('dmela_sesion');
         }
     }
 });
