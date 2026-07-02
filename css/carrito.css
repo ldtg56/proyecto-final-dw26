@@ -79,3 +79,70 @@
     animation: flotarIdle 3s ease-in-out infinite;
     display: inline-block;
 }
+
+/* ======================================================== */
+/* ANIMACIONES DEL HEADER DE PROGRESO (CARRITO / PAGO)      */
+/* ======================================================== */
+
+/* Logo con hover suave y efecto de brillo */
+.logo-pasos {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+.logo-pasos:hover {
+    transform: scale(1.04);
+    filter: brightness(1.1);
+}
+
+/* Base para los pasos de texto y círculos */
+.paso-animado {
+    opacity: 0; /* Oculto al inicio */
+    animation: fadeSlideUp 0.6s ease forwards;
+}
+
+/* Base para la línea que los conecta */
+.linea-progreso {
+    opacity: 0;
+    transform: scaleX(0); /* Encogida al inicio */
+    transform-origin: left center;
+    animation: drawLine 0.6s ease forwards;
+}
+
+/* Retrasos milimétricos (delay) para crear el efecto Cascada (1 -> linea -> 2 -> linea -> 3) */
+.paso-1  { animation-delay: 0.1s; }
+.linea-1 { animation-delay: 0.3s; }
+.paso-2  { animation-delay: 0.5s; }
+.linea-2 { animation-delay: 0.7s; }
+.paso-3  { animation-delay: 0.9s; }
+
+/* Animación de aparición hacia arriba */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación de "dibujado" de la línea */
+@keyframes drawLine {
+    from { opacity: 0; transform: scaleX(0); }
+    to   { opacity: 0.6; transform: scaleX(1); } /* Opacidad 0.6 para que no brille más que las letras */
+}
+
+/* EFECTO PREMIUM: Latido o resplandor constante en el paso actual */
+.circulo-activo {
+    box-shadow: 0 0 0 0 rgba(242, 242, 242, 0.6);
+    animation: latidoPaso 2s infinite;
+}
+
+@keyframes latidoPaso {
+    0%   { box-shadow: 0 0 0 0 rgba(242, 242, 242, 0.6); }
+    70%  { box-shadow: 0 0 0 10px rgba(242, 242, 242, 0); } /* Expande y desaparece */
+    100% { box-shadow: 0 0 0 0 rgba(242, 242, 242, 0); }
+}
+
+/* Hover interactivo para que los pasos inactivos reaccionen si les pasas el mouse */
+.nav-pasos .opacity-75 {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.nav-pasos .opacity-75:hover {
+    opacity: 1 !important;
+    transform: translateY(-2px);
+}
