@@ -56,8 +56,10 @@
                                 <li><a class="dropdown-item" href="producto.html">Productos</a></li>
                                 <li><a class="dropdown-item" href="detalleProducto.html">Detalle del Producto</a></li>
                                 <li><a class="dropdown-item" href="combos.html">Combos</a></li>
-                                <li><a class="dropdown-item fw-bold text-danger bg-light" href="ofertas.html">Ofertas</a></li>
-                                <li><a class="dropdown-item" href="pedidosPersonalizados.html">Pedidos Personalizados</a></li>
+                                <li><a class="dropdown-item fw-bold text-danger bg-light"
+                                        href="ofertas.html">Ofertas</a></li>
+                                <li><a class="dropdown-item" href="pedidosPersonalizados.html">Pedidos
+                                        Personalizados</a></li>
                             </ul>
                         </li>
 
@@ -87,7 +89,8 @@
 
                     </ul>
 
-                    <div class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
+                    <div
+                        class="d-flex justify-content-center align-items-center gap-3 gap-lg-4 mt-3 mt-md-0 iconos-derecha">
 
                         <div class="dropdown">
                             <a class="text-white text-decoration-none d-flex align-items-center p-1" href="#"
@@ -159,7 +162,7 @@
                             <label for="passActual" class="form-label label-editar">Contraseña Actual</label>
                             <div class="position-relative">
                                 <input type="password" class="form-control input-editar pe-5" id="passActual"
-                                    placeholder="••••••••••••••••••••••••••••••••••••••••••">
+                                    placeholder="•••">
                                 <span class="ojo-password" onclick="togglePassword('passActual', 'iconoOjoActual')">
                                     <i class="fa-regular fa-eye" id="iconoOjoActual"></i>
                                 </span>
@@ -170,17 +173,24 @@
                             <label for="passNueva" class="form-label label-editar">Contraseña Nueva</label>
                             <div class="position-relative">
                                 <input type="password" class="form-control input-editar pe-5" id="passNueva"
-                                    placeholder="••••••••••••••••••••••••••••••••••">
+                                    placeholder="•••">
                                 <span class="ojo-password" onclick="togglePassword('passNueva', 'iconoOjoNueva')">
                                     <i class="fa-regular fa-eye" id="iconoOjoNueva"></i>
                                 </span>
                             </div>
                         </div>
+                        <div class="d-flex flex-column gap-2 mt-4">
+                            <button onclick="realizarCambioContrasena()" class="btn btn-editar w-100 py-2 fw-bold m-0"
+                                style="height: 42px;">
+                                Realizar cambio
+                            </button>
 
-                        <button onclick="realizarCambioContrasena()" class="btn btn-editar w-100 py-2 fw-bold">
-                            Realizar cambio
-                        </button>
-
+                            <a href="paginaPrincipal.html"
+                                class="btn w-100 py-2 fw-semibold m-0 d-flex align-items-center justify-content-center"
+                                style="height: 42px; background-color: #f8f9fa; color: #333; border: 1px solid #ccc; text-decoration: none; border-radius: 4px;">
+                                Cancelar y regresar
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Columna imagen -->
@@ -307,8 +317,10 @@
 
         </div>
     </footer>
- <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/sesion.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/editarcontraseña.js"></script>
+    <script src="js/sesion.js"></script>
+
 </body>
 
 </html>

@@ -1,24 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/paginaPrincipal.css">
-    <link rel="stylesheet" href="css/pedidosPersonalizados.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="icon" href="img/logoD'Mela.jpg">
-    <title>Pagina Principal - D'Mela</title>
-
-    <!-- CSS y JS de Leaflet (Mapas) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <title>Olvidé mi contraseña - D'Mela</title>
 </head>
 
-<body>
-
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
             <div class="container-fluid px-3 px-md-4 px-lg-5">
@@ -56,11 +49,10 @@
                                 CATALOGO <span class="triangulo-opciones">&#9660;</span>
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
-                                <li><a class="dropdown-item" href="producto.html">Productos</a></li>
-                                <li><a class="dropdown-item" href="detalleProducto.html">Detalle del Producto</a></li>
-                                <li><a class="dropdown-item" href="combos.html">Combos</a></li>
-                                <li><a class="dropdown-item fw-bold text-danger bg-light"
-                                        href="ofertas.html">Ofertas</a></li>
+                                <li><a class="dropdown-item" href="#">Productos</a></li>
+                                <li><a class="dropdown-item" href="#">Detalle del Producto</a></li>
+                                <li><a class="dropdown-item" href="#">Combos</a></li>
+                                <li><a class="dropdown-item" href="#">Ofertas</a></li>
                                 <li><a class="dropdown-item" href="pedidosPersonalizados.html">Pedidos
                                         Personalizados</a></li>
                             </ul>
@@ -122,10 +114,10 @@
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z" />
                                 </svg>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
-                                <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
-                                <li><a class="dropdown-item" href="#">Editar Contraseña</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" id="menuUsuarioDropdown">
+                                <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="registro.html">Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" href="editarContrasena.html">Editar Contraseña</a></li>
                                 <li><a class="dropdown-item" href="#">Recuperar Contraseña</a></li>
                             </ul>
                         </div>
@@ -137,164 +129,87 @@
         </nav>
     </header>
 
-    <!-- ==========================================
-         SECCIÓN PRINCIPAL: CONTACTO Y UBICACIÓN
-         ========================================== -->
-    <main>
-        <!-- SECCIÓN 1: FORMULARIO DE CONTACTO (Fondo Blanco) -->
-        <section class="bg-white py-5">
-            <div class="container py-lg-4">
-                <div class="row g-5 align-items-start">
+    <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+        <div class="container px-3">
+            <div class="card-login mx-auto shadow border overflow-hidden">
+                <div class="row g-0">
 
-                    <!-- Lado Izquierdo: Formulario -->
-                    <div class="col-12 col-lg-6 pe-lg-5">
-                        <form style="max-width: 450px;" class="mx-auto mx-lg-0">
-                            <div class="mb-3">
-                                <label for="nombres" class="form-label text-muted small mb-1">Nombres:</label>
-                                <input type="text" class="form-control form-control-sm border-secondary shadow-none"
-                                    id="nombres">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label text-muted small mb-1">Email:</label>
-                                <input type="email" class="form-control form-control-sm border-secondary shadow-none"
-                                    id="email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="asunto" class="form-label text-muted small mb-1">Asunto:</label>
-                                <input type="text" class="form-control form-control-sm border-secondary shadow-none"
-                                    id="asunto">
-                            </div>
-                            <div class="mb-4">
-                                <label for="texto" class="form-label text-muted small mb-1">Texto:</label>
-                                <textarea class="form-control border-secondary shadow-none" id="texto"
-                                    rows="4"></textarea>
-                            </div>
+                    <div class="col-12 col-md-6 p-4 p-md-5 d-flex flex-column justify-content-center">
 
-                            <!-- Simulador de reCAPTCHA -->
-                            <div class="d-flex align-items-center justify-content-between border rounded p-2 mb-4"
-                                style="max-width: 280px; background-color: #f9f9f9; border-color: #ccc !important;">
-                                <div class="form-check mb-0 d-flex align-items-center gap-2 ms-2">
-                                    <input class="form-check-input mt-0 border-secondary" type="checkbox" value=""
-                                        id="recaptcha" style="width: 20px; height: 20px; border-radius: 2px;">
-                                    <label class="form-check-label pt-1 ms-1 text-dark" for="recaptcha"
-                                        style="font-size: 0.8rem;">
-                                        No soy un robot
-                                    </label>
-                                </div>
-                                <div class="text-center me-2" style="font-size: 0.6rem; color: #555;">
-                                    <i class="fa-solid fa-arrows-rotate fs-5 text-primary mb-1"></i><br>
-                                    reCAPTCHA
-                                </div>
-                            </div>
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="fa-solid fa-unlock-keyhole icono-login"
+                                style="color: #8C1616; font-size: 1.8rem;"></i>
+                            <h3 class="fw-bold mb-0 titulo-login" style="color: #8C1616; font-size: 1.5rem;">OLVIDÉ MI
+                                CONTRASEÑA</h3>
+                        </div>
 
-                            <!-- Botón Enviar -->
-                            <button type="submit" class="btn text-white px-5 py-2 fw-semibold shadow-sm"
-                                style="background-color: #8C1616; border-radius: 4px;">Enviar</button>
-                        </form>
-                    </div>
-
-                    <!-- Lado Derecho: Info de Contacto -->
-                    <div class="col-12 col-lg-6 ps-lg-4 mt-lg-0 mt-5">
-                        <h3 class="fw-bold mb-4 text-dark text-center text-lg-start" style="font-size: 2rem;">
-                            Contáctanos</h3>
-                        <p class="text-muted mb-5" style="line-height: 1.8; font-size: 0.95rem;">
-                            Queremos estar en tus mejores momentos. Por eso, te facilitamos todas nuestras vías de
-                            contacto para que pedir esa torta o dulce que tanto te gusta sea rápido y sencillo.
+                        <p class="text-muted mb-4" style="font-size: 0.9rem; line-height: 1.5;">
+                            Ingresa tu dirección de correo electrónico para recibir un enlace de restablecimiento de
+                            contraseña.
                         </p>
 
-                        <div class="d-flex flex-column gap-4 mb-5 ps-lg-2">
-                            <div class="d-flex align-items-center gap-3">
-                                <i class="fa-solid fa-phone fs-4" style="color: #333;"></i>
-                                <span class="text-muted fw-medium fs-5">908567234</span>
+                        <div class="mb-4">
+                            <label for="recuperarEmail" class="form-label label-login fw-semibold"
+                                style="color: #333; font-size: 0.9rem;">
+                                Correo electrónico
+                            </label>
+                            <input type="email" class="form-control input-login shadow-none" id="recuperarEmail"
+                                placeholder="cliente@correo.com"
+                                style="border-radius: 4px; border: 1px solid #ced4da; padding: 0.6rem;">
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between border rounded p-2 mb-4 recaptcha-box"
+                            style="max-width: 260px; background-color: #f9f9f9; border-color: #ddd !important;">
+                            <div class="form-check mb-0 d-flex align-items-center gap-2 ms-2">
+                                <input class="form-check-input mt-0 border-secondary shadow-none" type="checkbox"
+                                    id="recaptchaRecuperar" style="width: 20px; height: 20px; border-radius: 2px;">
+                                <label class="form-check-label pt-1 ms-1 text-dark" for="recaptchaRecuperar"
+                                    style="font-size: 0.85rem;">
+                                    No soy un robot
+                                </label>
                             </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <i class="fa-brands fa-whatsapp fs-3" style="color: #333;"></i>
-                                <span class="text-muted fw-medium fs-5">945126778</span>
+                            <div class="text-center me-2" style="font-size: 0.65rem; color: #555;">
+                                <i class="fa-solid fa-arrows-rotate fs-5 text-primary mb-1"></i><br>reCAPTCHA
                             </div>
                         </div>
 
-                        <!-- Contenedor temporal elegante mientras pones tu foto real -->
-                        <div class="mt-4">
-                            <img src="img/dmelaa.jpg" alt="Interior Local D'Mela"
-                                class="img-fluid rounded shadow-sm w-100 object-fit-cover" style="max-height: 270px;">
+                        <div class="d-flex flex-column gap-2 mt-2">
+                            <button onclick="restablecerContrasena()"
+                                class="btn w-100 py-2 fw-bold text-white shadow-sm"
+                                style="background-color: #8C1616; border-radius: 4px;">
+                                Restablecer contraseña
+                            </button>
+                            <a href="login.html" class="btn w-100 py-2 fw-semibold shadow-sm"
+                                style="background-color: #fff; color: #333; border: 1px solid #ccc; border-radius: 4px; text-decoration: none;">
+                                Cancelar y regresar
+                            </a>
                         </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-6 d-none d-md-block">
+                        <img src="img/olvide.jpg" alt="Tortas D'Mela" class="foto-login"
+                            style="height: 100%; width: 100%; object-fit: cover;">
                     </div>
 
                 </div>
             </div>
-        </section>
-        
-        <!-- SECCIÓN 2: UBICACIÓN Y HORARIOS (Fondo con Patrón) -->
-        <section class="position-relative py-5" style="background-color: #f7f7f7; overflow: hidden;">
-
-            <!-- Capa de fondo con tu imagen invertida y semi-transparente -->
-            <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image: url('img/Designer__3_-removebg-preview\ \(1\).png'); 
-                        background-repeat: repeat; 
-                        opacity: 0.06; 
-                        filter: invert(1); 
-                        z-index: 0;">
-            </div>
-
-            <div class="container position-relative" style="z-index: 2;">
-
-                <h3 class="text-muted fs-4 mb-5 text-center text-lg-start">Ubicación y horarios</h3>
-
-                <!-- Sede 1 -->
-                <div class="mb-5 pb-3">
-                    <p class="text-muted small mb-2">Manuel María Izaga 612, Chiclayo 14001</p>
-                    <div class="row align-items-center g-4">
-                        <div class="col-12 col-md-6">
-                            <!-- CONTENEDOR MAPA IZAGA -->
-                            <div id="mapaIzaga" class="rounded shadow-sm border border-secondary border-opacity-25 w-100" style="height: 240px; z-index: 1;"></div>
-                        </div>
-                        <div class="col-12 col-md-6 ps-md-4 text-muted">
-                            <p class="mb-2 fs-5">Lunes a Viernes: 8:00 AM - 10:00 PM</p>
-                            <p class="mb-0 fs-5">Sábados y Domingos: 9:00 AM - 11:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sede 2 -->
-                <div class="mb-3">
-                    <p class="text-muted small mb-2">Ca. los pinos 438, Chiclayo 14008</p>
-                    <div class="row align-items-center g-4">
-                        <div class="col-12 col-md-6">
-                            <!-- CONTENEDOR MAPA LOS PINOS -->
-                            <div id="mapaPinos" class="rounded shadow-sm border border-secondary border-opacity-25 w-100" style="height: 240px; z-index: 1;"></div>
-                        </div>
-                        <div class="col-12 col-md-6 ps-md-4 text-muted">
-                            <p class="mb-3 fs-5">Horario Sucursal:</p>
-                            <p class="mb-2 fs-5">Lunes a Sábado: 9:00 AM - 9:00 PM</p>
-                            <p class="mb-2 fs-5">Domingos: 10:00 AM - 5:00 PM</p>
-                            <p class="mb-0 fs-5">Tel: (074) 505152</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
+        </div>
     </main>
-
 
     <footer class="pt-5 pb-4 shadow-lg"
         style="background-color: #8C1616; color: #F2F2F2; border-top: 4px solid #A65353;">
-
         <div class="container" style="max-width: 1150px;">
-
             <div class="row g-4 justify-content-between text-center text-lg-start">
 
                 <div class="col-12 col-lg-4">
-
                     <div class="mb-3">
                         <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería"
                             class="img-fluid mx-auto mx-lg-0"
                             style="max-width: 260px; width: 100%; object-fit: contain;">
                     </div>
-
                     <div
                         class="d-flex flex-column flex-sm-row gap-3 align-items-center align-items-lg-start justify-content-center justify-content-lg-start mt-3">
-
                         <div class="d-flex gap-2">
                             <a href="#"
                                 class="btn text-white d-flex align-items-center justify-content-center p-0 rounded-1 shadow-sm"
@@ -307,23 +222,19 @@
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </div>
-
                         <div class="small" style="line-height: 1.6;">
-                            <div class="fw-bold mb-1 text-white">
-                                <i class="fa-solid fa-location-dot me-1"></i> Visítanos en:
-                            </div>
+                            <div class="fw-bold mb-1 text-white"><i class="fa-solid fa-location-dot me-1"></i> Visítanos
+                                en:</div>
                             <div class="opacity-90">• Manuel María Izaga 612</div>
                             <div class="opacity-90">• Los Pinos 438 (Sta. Victoria)</div>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center align-items-lg-start">
                     <h6 class="fw-bold mb-3 fs-6 pb-1"
-                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
-                        Nuestros productos
-                    </h6>
+                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">Nuestros
+                        productos</h6>
                     <ul
                         class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
                         <li><a href="#" class="text-decoration-none opacity-75 text-white">Torta tres leches</a></li>
@@ -338,9 +249,8 @@
 
                 <div class="col-12 col-md-4 col-lg-2 d-flex flex-column align-items-center align-items-lg-start">
                     <h6 class="fw-bold mb-3 fs-6 pb-1"
-                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">
-                        Enlaces de Interés
-                    </h6>
+                        style="color: #F2F2F2; border-bottom: 2px solid #A65353; display: inline-block;">Enlaces de
+                        Interés</h6>
                     <ul
                         class="list-unstyled d-flex flex-column align-items-center align-items-lg-start gap-2 small mb-0">
                         <li><a href="#" class="text-decoration-none opacity-75 text-white">Catálogo</a></li>
@@ -353,7 +263,6 @@
 
                 <div
                     class="col-12 col-md-4 col-lg-3 text-center text-lg-end d-flex flex-column align-items-center align-items-lg-end">
-
                     <h6 class="fw-bold mb-2 fs-6 text-white">Libro de reclamaciones</h6>
                     <div class="mb-4">
                         <a href="#">
@@ -362,7 +271,6 @@
                                 style="max-width: 145px; background-color: #ffffff; padding: 4px;">
                         </a>
                     </div>
-
                     <h6 class="fw-bold mb-2 fs-6 text-white">Métodos de pago</h6>
                     <div class="d-flex gap-1 justify-content-center justify-content-lg-end align-items-center">
                         <div class="bg-white rounded px-2 py-1 shadow-sm d-flex align-items-center justify-content-center"
@@ -378,52 +286,19 @@
                             <i class="fa-brands fa-cc-amex fs-5 text-info"></i>
                         </div>
                     </div>
-
                 </div>
 
             </div>
-
             <hr class="my-4 opacity-25" style="border-color: #F2F2F2;">
-
             <div class="text-center small opacity-75" style="font-size: 0.8rem;">
                 &copy; 2026 D'Mela Dulcería & Cafetería. Todos los derechos reservados.
             </div>
-
         </div>
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/carrito.js"></script>
-    <script src="js/sesion.js"></script>
-
-    <!-- SCRIPT DE LOS MAPAS LEAFLET -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Instanciar mapa de Izaga
-            var mapIzaga = L.map('mapaIzaga').setView([-6.771446, -79.841525], 16);
-            
-            // Cargar la capa visual (OpenStreetMap)
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(mapIzaga);
-            
-            // Poner el marcador
-            L.marker([-6.771446, -79.841525]).addTo(mapIzaga)
-                .bindPopup('<b style="color: #8C1616;">D\'Mela</b><br>Sede Manuel María Izaga')
-                .openPopup();
-
-            // 2. Instanciar mapa de Los Pinos
-            var mapPinos = L.map('mapaPinos').setView([-6.782012, -79.845900], 16);
-            
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(mapPinos);
-            
-            L.marker([-6.782012, -79.845900]).addTo(mapPinos)
-                .bindPopup('<b style="color: #8C1616;">D\'Mela</b><br>Sede Los Pinos')
-                .openPopup();
-        });
-    </script>
+    <script src="js/login.js"></script>
+    <script src="js/olvidado.js"></script>
 </body>
 
 </html>

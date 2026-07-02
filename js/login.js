@@ -32,19 +32,19 @@ function iniciarSesion() {
 
     // Validaciones
     if (!email) {
-        alert('⚠️ Por favor, ingresa tu correo electrónico.');
+        alert('Por favor, ingresa tu correo electrónico.');
         document.getElementById('loginEmail').focus();
         return;
     }
 
     if (!password) {
-        alert('⚠️ Por favor, ingresa tu contraseña.');
+        alert('Por favor, ingresa tu contraseña.');
         document.getElementById('loginPassword').focus();
         return;
     }
 
     if (!recaptcha) {
-        alert('⚠️ Por favor, confirma que no eres un robot.');
+        alert('Por favor, confirma que no eres un robot.');
         return;
     }
 
@@ -53,7 +53,7 @@ function iniciarSesion() {
     const usuarioEncontrado = usuarios.find(u => u.email === email && u.password === password);
 
     if (!usuarioEncontrado) {
-        alert('❌ Correo o contraseña incorrectos. Intenta nuevamente.');
+        alert('Correo o contraseña incorrectos. Intenta nuevamente.');
         return;
     }
 
@@ -64,7 +64,7 @@ function iniciarSesion() {
         logueado: true
     }));
 
-    alert(`✅ ¡Bienvenido, ${usuarioEncontrado.nombre}!`);
+    alert(`¡Bienvenido, ${usuarioEncontrado.nombre}!`);
     window.location.href = 'paginaPrincipal.html';
 }
 
