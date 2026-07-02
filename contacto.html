@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/paginaPrincipal.css">
     <link rel="stylesheet" href="css/headerYfooter.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <link rel="icon" href="img/logoD'Mela.jpg">
@@ -17,13 +18,9 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
             <div class="container-fluid px-3 px-md-4 px-lg-5">
-
-                <!-- Logo principal -->
                 <a class="navbar-brand me-2 me-lg-4" href="index.html">
                     <img src="img/logoD'Mela - copia.jpg" alt="D'Mela Dulcería & Cafetería" class="logo-header">
                 </a>
-
-                <!-- Botón Hamburguesa (SOLO saldrá en celulares menores a 768px) -->
                 <button class="navbar-toggler border-white p-1 p-sm-2" type="button" data-bs-toggle="collapse"
                     data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false"
                     aria-label="Abrir navegación">
@@ -123,7 +120,7 @@
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z" />
                                 </svg>
                             </a>
-                           <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" id="menuUsuarioDropdown">
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" id="menuUsuarioDropdown">
                                 <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
                                 <li><a class="dropdown-item" href="crearCuenta.html">Crear Cuenta</a></li>
                                 <li><a class="dropdown-item" href="editarcontraseña.html">Editar Contraseña</a></li>
@@ -221,7 +218,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- SECCIÓN 2: UBICACIÓN Y HORARIOS (Fondo con Patrón) -->
         <section class="position-relative py-5" style="background-color: #f7f7f7; overflow: hidden;">
 
@@ -243,7 +240,9 @@
                     <div class="row align-items-center g-4">
                         <div class="col-12 col-md-6">
                             <!-- CONTENEDOR MAPA IZAGA -->
-                            <div id="mapaIzaga" class="rounded shadow-sm border border-secondary border-opacity-25 w-100" style="height: 240px; z-index: 1;"></div>
+                            <div id="mapaIzaga"
+                                class="rounded shadow-sm border border-secondary border-opacity-25 w-100"
+                                style="height: 240px; z-index: 1;"></div>
                         </div>
                         <div class="col-12 col-md-6 ps-md-4 text-muted">
                             <p class="mb-2 fs-5">Lunes a Viernes: 8:00 AM - 10:00 PM</p>
@@ -258,7 +257,9 @@
                     <div class="row align-items-center g-4">
                         <div class="col-12 col-md-6">
                             <!-- CONTENEDOR MAPA LOS PINOS -->
-                            <div id="mapaPinos" class="rounded shadow-sm border border-secondary border-opacity-25 w-100" style="height: 240px; z-index: 1;"></div>
+                            <div id="mapaPinos"
+                                class="rounded shadow-sm border border-secondary border-opacity-25 w-100"
+                                style="height: 240px; z-index: 1;"></div>
                         </div>
                         <div class="col-12 col-md-6 ps-md-4 text-muted">
                             <p class="mb-3 fs-5">Horario Sucursal:</p>
@@ -391,6 +392,7 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/mapa.js"></script>
     <script src="js/sesion.js"></script>
 
