@@ -123,7 +123,7 @@
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z" />
                                 </svg>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                           <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" id="menuUsuarioDropdown">
                                 <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
                                 <li><a class="dropdown-item" href="crearCuenta.html">Crear Cuenta</a></li>
                                 <li><a class="dropdown-item" href="editarcontraseña.html">Editar Contraseña</a></li>
@@ -391,37 +391,9 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/carrito.js"></script>
+    <script src="js/mapa.js"></script>
     <script src="js/sesion.js"></script>
 
-    <!-- SCRIPT DE LOS MAPAS LEAFLET -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Instanciar mapa de Izaga
-            var mapIzaga = L.map('mapaIzaga').setView([-6.771446, -79.841525], 16);
-            
-            // Cargar la capa visual (OpenStreetMap)
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(mapIzaga);
-            
-            // Poner el marcador
-            L.marker([-6.771446, -79.841525]).addTo(mapIzaga)
-                .bindPopup('<b style="color: #8C1616;">D\'Mela</b><br>Sede Manuel María Izaga')
-                .openPopup();
-
-            // 2. Instanciar mapa de Los Pinos
-            var mapPinos = L.map('mapaPinos').setView([-6.782012, -79.845900], 16);
-            
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(mapPinos);
-            
-            L.marker([-6.782012, -79.845900]).addTo(mapPinos)
-                .bindPopup('<b style="color: #8C1616;">D\'Mela</b><br>Sede Los Pinos')
-                .openPopup();
-        });
-    </script>
 </body>
 
 </html>
