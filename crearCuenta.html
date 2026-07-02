@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/paginaPrincipal.css">
     <link rel="stylesheet" href="css/headerYfooter.css">
+    <link rel="stylesheet" href="css/crearCuenta.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
 
     <link rel="icon" href="img/logoD'Mela.jpg">
@@ -140,68 +141,131 @@
     </header>
 
 
-    <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
-        <div class="container px-3">
-            <h1 class="titulo-banner">CREAR CUENTA</h1>
-            <div class="row g-0">
+    <main class="flex-grow-1 d-flex flex-column align-items-center justify-content-center py-5 bg-registro">
 
-                <!-- Columna formulario -->
-                <div class="col-12 col-md-6 p-4 p-md-5">
+        <!-- Título superior en píldora -->
+        <div class="text-center mb-4">
+            <h1 class="titulo-banner shadow-sm mb-0">CREAR CUENTA</h1>
+        </div>
 
+        <!-- Contenedor del Formulario -->
+        <div class="contenedor-registro">
 
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label label-login">Correo electrónico</label>
-                        <input type="email" class="form-control input-login" id="loginEmail"
-                            placeholder="cliente@correo.com">
+            <form id="formCrearCuenta" onsubmit="registrarUsuario(event)">
+
+                <!-- SECCIÓN: INFORMACIÓN PERSONAL -->
+                <h6 class="titulo-seccion-registro mt-2 mb-3">INFORMACION PERSONAL</h6>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12">
+                        <label class="form-label label-registro">Nombres</label>
+                        <input type="text" class="form-control input-registro" id="regNombres"
+                            placeholder="Nombres" required>
                     </div>
-                    <label for="loginPassword" class="form-label label-login">INFORMACIÓN INICIO DE SESIÓN</label>
-                    <div class="mb-3">
-                        <label for="loginPassword" class="form-label label-login">Contraseña</label>
+
+                    <div class="col-12">
+                        <label class="form-label label-registro">Apellidos</label>
+                        <input type="text" class="form-control input-registro" id="regApellidos"
+                            placeholder="Apellidos" required>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                    <label class="form-label label-registro">Tipo de documento</label>
+                    <!-- Agregamos el onchange para detectar cuando cambian de DNI a CE/Pasaporte -->
+                    <select class="form-select input-registro" id="regTipoDoc" onchange="actualizarReglasDocumento()">
+                        <option value="DNI" selected>DNI</option>
+                        <option value="CE">CE</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-8">
+                    <label class="form-label label-registro">Número de documento</label>
+                    <!-- Restricciones iniciales para DNI: 8 dígitos, solo números -->
+                    <input type="text" class="form-control input-registro" id="regNumDoc" placeholder="12345678" 
+                           maxlength="8" pattern="\d{8}" title="El DNI debe tener exactamente 8 números" 
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="form-label label-registro">Número de teléfono</label>
+                    <!-- Restricciones para teléfono: 9 dígitos, solo números -->
+                    <input type="tel" class="form-control input-registro" id="regTelefono" placeholder="123456789" 
+                           maxlength="9" pattern="\d{9}" title="El telefono debe tener exactamente 9 números" 
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label label-registro">Fecha de nacimiento</label>
+                        <input type="date" class="form-control input-registro" id="regFechaNac" required>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: INFORMACIÓN INICIO DE SESIÓN -->
+                <h6 class="titulo-seccion-registro mb-3">INFORMACION INICIO DE SESION</h6>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12">
+                        <label class="form-label label-registro">Correo electrónico</label>
+                        <input type="email" class="form-control input-registro" id="regCorreo"
+                            placeholder="usuario@correo.com" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label label-registro">Contraseña</label>
                         <div class="position-relative">
-                            <input type="password" class="form-control input-login pe-5" id="loginPassword"
-                                placeholder="••••••••">
-                            <span class="ojo-password" onclick="togglePassword()">
-                                <i class="fa-regular fa-eye" id="iconoOjo"></i>
+                            <input type="password" class="form-control input-registro pe-5" id="regPassword"
+                                placeholder="******" required>
+                            <span class="ojo-password" onclick="togglePassword('regPassword', 'ojoPass1')">
+                                <i class="fa-regular fa-eye" id="ojoPass1"></i>
                             </span>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="loginPassword" class="form-label label-login"> Confirmar Contraseña</label>
+
+                    <div class="col-12">
+                        <label class="form-label label-registro">Confirmar contraseña</label>
                         <div class="position-relative">
-                            <input type="password" class="form-control input-login pe-5" id="conmfirmPassword"
-                                placeholder="••••••••">
-                            <span class="ojo-password" onclick="togglePassword()">
-                                <i class="fa-regular fa-eye" id="iconoOjo"></i>
+                            <input type="password" class="form-control input-registro pe-5" id="regConfirmPassword"
+                                placeholder="******" required>
+                            <span class="ojo-password" onclick="togglePassword('regConfirmPassword', 'ojoPass2')">
+                                <i class="fa-regular fa-eye" id="ojoPass2"></i>
                             </span>
                         </div>
                     </div>
+                </div>
 
-                    <div
-                        class="d-flex align-items-center justify-content-between border rounded p-2 mb-4 recaptcha-box">
-                        <div class="form-check mb-0 d-flex align-items-center gap-2 ms-2">
-                            <input class="form-check-input mt-0 border-secondary" type="checkbox" id="recaptcha"
-                                style="width: 20px; height: 20px; border-radius: 2px;">
-                            <label class="form-check-label pt-1 ms-1 text-dark" for="recaptcha"
-                                style="font-size: 0.8rem;">No soy un robot</label>
-                        </div>
-                        <div class="text-center me-2" style="font-size: 0.6rem; color: #555;">
-                            <i class="fa-solid fa-arrows-rotate fs-5 text-primary mb-1"></i><br>
-                            reCAPTCHA
-                        </div>
+                <!-- reCAPTCHA Simulado (Fiel al mockup) -->
+                <div class="recaptcha-box-mockup mb-3">
+                    <div class="d-flex align-items-center bg-primary text-white px-2 py-1 h-100"
+                        style="font-size: 0.65rem;">
+                        protección de reCAPTCHA
                     </div>
+                    <div class="d-flex align-items-center justify-content-center px-2">
+                        <i class="fa-solid fa-arrows-rotate fs-4 text-secondary"></i>
+                    </div>
+                </div>
 
-                    <button onclick="iniciarSesion()" class="btn btn-login w-100 py-2 fw-bold mb-4">
-                        Crear Cuenta
+                <!-- Términos y Condiciones -->
+                <p class="text-muted" style="font-size: 0.75rem; line-height: 1.4;">
+                    Al registrarse aceptas nuestros términos y condiciones y nuestra política de tratamiento de datos
+                    personales
+                </p>
+
+                <div class="form-check mb-4 d-flex align-items-center gap-2">
+                    <input class="form-check-input mt-0 border-secondary custom-checkbox" type="checkbox"
+                        id="regPromociones">
+                    <label class="form-check-label text-dark" for="regPromociones" style="font-size: 0.85rem;">
+                        Acepto recibir promociones y novedades
+                    </label>
+                </div>
+
+                <!-- Botón Final -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-crear-cuenta">
+                        CREAR CUENTA
                     </button>
-
                 </div>
 
-                <!-- Columna imagen -->
-                <div class="col-12 col-md-6 d-none d-md-block">
-                    <img src="img/tortaa.jpg" alt="Tortas D'Mela" class="foto-login">
-                </div>
-
-            </div>
+            </form>
         </div>
     </main>
 
@@ -326,6 +390,7 @@
     <script src="js/login.js"></script>
     <script src="js/main.js"></script>
     <script src="js/sesion.js"></script>
+    <script src="js/crearCuenta.js"></script>
 </body>
 
 </html>

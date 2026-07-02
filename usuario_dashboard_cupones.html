@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/editarcontraseña.css">
+    <link rel="stylesheet" href="css/usuario_dashboard_inicio.css">
+    <link rel="stylesheet" href="css/usuario_dashboard_cupones.css">
+
     <link rel="stylesheet" href="css/paginaPrincipal.css">
     <link rel="stylesheet" href="css/headerYfooter.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+
     <link rel="icon" href="img/logoD'Mela.jpg">
-    <title>Editar Contraseña - D'Mela</title>
+    <title>Dashboard - Inicio - D'Mela</title>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="bg-light d-flex flex-column min-vh-100">
 
     <header>
         <nav class="navbar navbar-expand-md navbar-dark header-dmela shadow py-2 py-md-3">
@@ -137,68 +140,54 @@
             </div>
         </nav>
     </header>
-    <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
-        <div class="container px-3">
-            <div class="card-editar mx-auto shadow border overflow-hidden">
-                <div class="row g-0">
 
-                    <!-- Columna formulario -->
-                    <div class="col-12 col-md-6 p-4 p-md-5">
+    <main class="container py-5 flex-grow-1">
+        <div class="row g-4">
 
-                        <div class="d-flex align-items-center gap-3 mb-4">
-                            <i class="fa-solid fa-key icono-editar"></i>
-                            <h3 class="fw-bold mb-0 titulo-editar">EDITAR CONTRASEÑA</h3>
-                        </div>
-
-                        <p class="texto-editar mb-3">
-                            Cambia tu acceso aquí. Ingresa tu clave anterior y la nueva clave que quieres usar.
-                        </p>
-                        <p class="texto-editar mb-4">
-                            Una vez que confirmes el cambio, se actualizará automáticamente tu cuenta.
-                        </p>
-
-                        <div class="mb-3">
-                            <label for="passActual" class="form-label label-editar">Contraseña Actual</label>
-                            <div class="position-relative">
-                                <input type="password" class="form-control input-editar pe-5" id="passActual"
-                                    placeholder="•••">
-                                <span class="ojo-password" onclick="togglePassword('passActual', 'iconoOjoActual')">
-                                    <i class="fa-regular fa-eye" id="iconoOjoActual"></i>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="passNueva" class="form-label label-editar">Contraseña Nueva</label>
-                            <div class="position-relative">
-                                <input type="password" class="form-control input-editar pe-5" id="passNueva"
-                                    placeholder="•••">
-                                <span class="ojo-password" onclick="togglePassword('passNueva', 'iconoOjoNueva')">
-                                    <i class="fa-regular fa-eye" id="iconoOjoNueva"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column gap-2 mt-4">
-                            <button onclick="realizarCambioContrasena()" class="btn btn-editar w-100 py-2 fw-bold m-0"
-                                style="height: 42px;">
-                                Realizar cambio
-                            </button>
-
-                            <a href="paginaPrincipal.html"
-                                class="btn w-100 py-2 fw-semibold m-0 d-flex align-items-center justify-content-center"
-                                style="height: 42px; background-color: #f8f9fa; color: #333; border: 1px solid #ccc; text-decoration: none; border-radius: 4px;">
-                                Cancelar y regresar
-                            </a>
-                        </div>
+            <!-- Sidebar Dashboard -->
+            <div class="col-12 col-md-3">
+                <div class="card border-0 shadow-sm rounded-0">
+                    <div class="card-body text-center py-4 border-bottom">
+                        <!-- Título en rojo tal como en el mockup -->
+                        <h4 class="fw-bold mb-0" style="color: #8C1616;" id="dashboardSaludo">Hola, Cliente!</h4>
                     </div>
-
-                    <!-- Columna imagen -->
-                    <div class="col-12 col-md-6 d-none d-md-block">
-                        <img src="img/tortaaaaaa.jpg" alt="Tortas D'Mela" class="foto-editar">
+                    <div class="list-group list-group-flush sidebar-dashboard">
+                        <a href="usuario_dashboard_inicio.html"
+                            class="list-group-item list-group-item-action">Inicio</a>
+                        <a href="usuario_dashboard_pedidos.html" class="list-group-item list-group-item-action">Mis compras</a>
+                        <!-- Clase active movida a Cupones -->
+                        <a href="usuario_dashboard_cupones.html" class="list-group-item list-group-item-action active">Cupones</a>
+                        <a href="usuario_dashboard_perfil.html" class="list-group-item list-group-item-action">Mi perfil</a>
                     </div>
-
                 </div>
             </div>
+
+            <!-- Contenido Cupones -->
+            <div class="col-12 col-md-9">
+                <div class="card border-0 shadow-sm rounded-0 p-4 h-100 d-flex flex-column">
+                    <h5 class="mb-4 fw-bold" style="color: #333; letter-spacing: 0.5px;">CUPONES VIGENTES</h5>
+
+                    <div class="table-responsive mb-auto">
+                        <table class="table table-bordered table-hover align-middle mb-0 text-center"
+                            style="font-size: 0.9rem;">
+                            <thead class="text-white" style="background-color: #8C1616;">
+                                <tr>
+                                    <th class="fw-semibold font-weight-normal py-2 border-end border-white">CUPON</th>
+                                    <th class="fw-semibold font-weight-normal py-2 border-end border-white">DESCUENTO
+                                    </th>
+                                    <th class="fw-semibold font-weight-normal py-2 border-end border-white">FECHA EXP.
+                                    </th>
+                                    <th class="fw-semibold font-weight-normal py-2">DETALLE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaCuponesCuerpo" class="bg-white">
+                                <!-- Las filas se renderizan con JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -318,9 +307,12 @@
 
         </div>
     </footer>
+
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/editarcontraseña.js"></script>
     <script src="js/sesion.js"></script>
+    <script src="js/usuario_dashboard_inicio.js"></script>
+    <script src="js/usuario_dashboard_cupones.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 

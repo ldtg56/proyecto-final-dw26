@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Estilos específicos para la sección Mi Perfil
+   ========================================================================== */
+
+/* Foto de perfil gris genérica */
+.contenedor-foto-perfil {
+    width: 160px;
+    height: 160px;
+    background-color: #D9D9D9;
+    border-radius: 4px;
+}
+
+.icono-foto-perfil {
+    font-size: 6rem;
+    color: #A3A3A3; /* Color silueta similar al mockup */
+}
+
+/* Títulos de sección con línea inferior pegada */
+.titulo-seccion-perfil {
+    font-weight: 700;
+    color: #4A4A4A;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #C4C4C4; /* Línea gris que cruza todo */
+    text-transform: uppercase;
+}
+
+/* Cajas grises de datos (Mockup) */
+.caja-dato-perfil {
+    background-color: #EBEBEB;
+    color: #555555;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    min-height: 35px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+}

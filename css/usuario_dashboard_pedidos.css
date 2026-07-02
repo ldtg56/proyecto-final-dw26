@@ -1,0 +1,14 @@
+/* Adiciones para la vista "Mis Pedidos" */
+.btn-light.border:hover {
+    background-color: #BF8484;
+    border-color: #BF8484 !important;
+}
+
+.btn-light.border:hover i {
+    color: #FFFFFF !important;
+}
+
+/* Alineación sutil para la nueva tabla de 6 columnas */
+#tablaMisPedidosCuerpo td {
+    vertical-align: middle;
+}

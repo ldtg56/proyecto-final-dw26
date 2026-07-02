@@ -7,10 +7,12 @@ function togglePassword(inputId, iconoId) {
 
     if (input.type === 'password') {
         input.type = 'text';
-        icono.classList.replace('fa-eye', 'fa-eye-slash');
+        icono.classList.remove('fa-eye');
+        icono.classList.add('fa-eye-slash');
     } else {
         input.type = 'password';
-        icono.classList.replace('fa-eye-slash', 'fa-eye');
+        icono.classList.remove('fa-eye-slash');
+        icono.classList.add('fa-eye');
     }
 }
 
@@ -18,6 +20,7 @@ function realizarCambioContrasena() {
     const passActual = document.getElementById('passActual').value.trim();
     const passNueva = document.getElementById('passNueva').value.trim();
 
+    // Validaciones básicas
     if (!passActual || !passNueva) {
         alert('⚠️ Por favor, completa ambos campos.');
         return;
@@ -33,29 +36,34 @@ function realizarCambioContrasena() {
         return;
     }
 
+    // Traer datos de sesión y base de datos
     const sesion = JSON.parse(localStorage.getItem(SESION_KEY));
     const usuarios = JSON.parse(localStorage.getItem(USUARIOS_KEY)) || [];
 
-    const indiceUsuario = usuarios.findIndex(u => u.email === sesion.email);
+    // CORRECCIÓN: Compatibilidad para buscar por 'correo' o por 'email'
+    const correoUsuarioActivo = sesion.correo || sesion.email;
+    const indiceUsuario = usuarios.findIndex(u => u.correo === correoUsuarioActivo || u.email === correoUsuarioActivo);
 
     if (indiceUsuario === -1) {
-        alert('❌ No se encontró tu cuenta. Vuelve a iniciar sesión.');
+        alert('❌ No se encontró tu cuenta en la base de datos. Vuelve a iniciar sesión.');
         window.location.href = 'login.html';
         return;
     }
 
+    // Verificar que la contraseña actual sea la correcta
     if (usuarios[indiceUsuario].password !== passActual) {
         alert('❌ La contraseña actual no es correcta.');
         document.getElementById('passActual').focus();
         return;
     }
 
-    // Actualizar la contraseña
+    // Actualizar la contraseña en la base de datos
     usuarios[indiceUsuario].password = passNueva;
     localStorage.setItem(USUARIOS_KEY, JSON.stringify(usuarios));
 
     alert('✅ Tu contraseña se actualizó correctamente.');
 
+    // Limpiar campos
     document.getElementById('passActual').value = '';
     document.getElementById('passNueva').value = '';
 }
