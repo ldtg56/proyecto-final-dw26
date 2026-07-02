@@ -1,0 +1,176 @@
+:root {
+    --primary-color: #BF8484; /* El tono rosado/rojo de tus vistas anteriores */
+    --text-dark: #2D2D2D;
+    --text-muted: #6C757D;
+    --bg-light: #F8F9FA;
+}
+
+.wip-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: var(--bg-light);
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.wip-content {
+    max-width: 550px;
+    width: 100%;
+    text-align: center;
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Icono animado */
+.wip-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.wip-icon {
+    width: 64px;
+    height: 64px;
+    color: var(--primary-color);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.badge-wip {
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
+    background: var(--text-dark);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+/* Tipografía */
+.wip-title {
+    font-size: 2rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.wip-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+/* Barra de progreso */
+.progress-container {
+    margin-bottom: 32px;
+    text-align: left;
+}
+
+.progress-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.progress-bar-track {
+    height: 8px;
+    background: #EAEAEA;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+/* Formulario */
+.action-text {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.wip-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.wip-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.wip-input:focus {
+    border-color: var(--primary-color);
+}
+
+.wip-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.wip-button:hover {
+    opacity: 0.9;
+}
+
+/* Footer / Enlace */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+}
+
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .wip-form {
+        flex-direction: column;
+    }
+    .wip-content {
+        padding: 24px;
+    }
+    .wip-title {
+        font-size: 1.6rem;
+    }
+}
