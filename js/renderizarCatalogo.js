@@ -126,12 +126,40 @@ function alternarPagina() {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-
+    const rutaActual = window.location.pathname.toLowerCase();
     const selectOrden = document.getElementById('select-orden');
+    let prefijoId = '10';
     if (selectOrden) {
         selectOrden.addEventListener('change', function() {
             ordenActual = this.value;
             cargarProductosPagina(prefijoActual, 1); 
         });
+    }
+
+    if (rutaActual.includes('combos')) {
+        prefijoId = '20';
+    } else if (rutaActual.includes('ofertas')) {
+        prefijoId = '30';
+    } else if (rutaActual.includes('bocaditos')) {
+        prefijoId = '40';
+    } else if (rutaActual.includes('pedidos')) {
+        prefijoId = '50';
+    }
+
+    const bloqueSabor = document.getElementById('bloque-sabor');
+    const bloqueColeccion = document.getElementById('bloque-coleccion');
+
+    if (bloqueSabor && bloqueColeccion) {
+        if (rutaActual.includes('bocaditos') || rutaActual.includes('combos') || rutaActual.includes('ofertas')) {
+            bloqueSabor.style.display = 'none';
+            bloqueColeccion.style.display = 'none';
+        } else {
+            bloqueSabor.style.display = 'block';
+            bloqueColeccion.style.display = 'block';
+        }
+    }
+
+    if (typeof cargarProductosPagina === 'function') {
+        cargarProductosPagina(prefijoId, 1);
     }
 });

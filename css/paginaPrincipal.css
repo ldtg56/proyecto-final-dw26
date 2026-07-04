@@ -1,4 +1,3 @@
-
 body {
     background-color: #F8F9FA; 
 }
@@ -95,7 +94,7 @@ body {
 }
 
 #lo-mas-nuevo h2 {
-    font-size: 1.35rem !important; /* consistencia de títulos de sección */
+    font-size: 1.35rem !important;
 }
 
 .tarjeta-producto-mockup {
@@ -111,7 +110,7 @@ body {
 
 .contenedor-foto-producto {
     width: 100%;
-    height: 180px; /* proporción exacta de tarjeta de catálogo */
+    height: 180px;
     background-color: #FFFFFF;
     overflow: hidden;
 }
@@ -158,7 +157,6 @@ body {
     object-fit: cover;
 }
 
-/* ajustes generales de la barra de navegación superior */
 .header-dmela .dropdown-menu {
     border-radius: 0;
 }
@@ -178,7 +176,6 @@ body {
 
 @media (max-width: 768px) {
     
-    /*banner principal responsivo */
     #banner-principal .row {
         flex-direction: column !important;
         align-items: center;
@@ -198,7 +195,6 @@ body {
         margin-bottom: -50px;
     }
 
-    /*carrusel en móviles */
     .contenedor-foto-producto {
         height: 180px;
     }
@@ -232,7 +228,6 @@ body {
         margin: 15px 10px 0 10px;
     }
 
-    /* 3. por qué elegirnos apilado en móvil */
     #por-que-elegirnos .row {
         flex-direction: column !important;
     }

@@ -59,7 +59,6 @@
                             </a>
                             <ul class="dropdown-menu shadow border-0 text-center text-md-start">
                                 <li><a class="dropdown-item" href="producto.html">Productos</a></li>
-                                <li><a class="dropdown-item" href="detalleProducto.html">Detalle del Producto</a></li>
                                 <li><a class="dropdown-item" href="combos.html">Combos</a></li>
                                 <li><a class="dropdown-item fw-bold text-danger bg-light"
                                         href="ofertas.html">Ofertas</a></li>
@@ -398,51 +397,8 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/productosData.js"></script>
     <script src="js/renderizarCatalogo.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            cargarProductosPagina('30');
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const archivoActual = window.location.pathname.toLowerCase();
-            let prefijoId = '10'; // Por defecto: Tortas
-
-            if (archivoActual.includes('combos')) {
-                prefijoId = '20';
-            } else if (archivoActual.includes('ofertas')) {
-                prefijoId = '30';
-            } else if (archivoActual.includes('bocaditos')) {
-                prefijoId = '40'; // NUEVO: Detecta la página de bocaditos
-            } else if (archivoActual.includes('pedidos')) {
-                prefijoId = '50'; // NUEVO: Detecta la página de tortas a pedido
-            }
-
-            cargarProductosPagina(prefijoId, 1);
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            const rutaFiltros = window.location.pathname.toLowerCase();
-            const bloqueSabor = document.getElementById('bloque-sabor');
-            const bloqueColeccion = document.getElementById('bloque-coleccion');
-
-            if (bloqueSabor && bloqueColeccion) {
-                if (rutaFiltros.includes('bocaditos') || rutaFiltros.includes('combos') || rutaFiltros.includes('ofertas')) {
-                    bloqueSabor.style.display = 'none';
-                    bloqueColeccion.style.display = 'none';
-                } else {
-                    bloqueSabor.style.display = 'block';
-                    bloqueColeccion.style.display = 'block';
-                }
-            }
-        });
-    </script>
-
     <script src="js/sesion.js"></script>
     <script src="js/main.js"></script>
 
