@@ -1,18 +1,12 @@
-/* ==========================================================================
-   Estilos específicos para la sección Cupones
-   ========================================================================== */
-
-/* Ajuste del título del dashboard (Mockup muestra rojo guinda) */
 #dashboardSaludo {
     color: #8C1616 !important;
 }
 
-/* Badge Vigente (Verde pastel del mockup) */
 .badge-vigente {
     background-color: #d4edda;
     color: #155724;
     padding: 0.4rem 1.2rem;
-    border-radius: 2px; /* Borde menos redondeado según mockup */
+    border-radius: 2px;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -20,7 +14,6 @@
     display: inline-block;
 }
 
-/* Badge Expirado (Por si se requieren cupones inactivos a futuro) */
 .badge-expirado {
     background-color: #f8d7da;
     color: #721c24;
@@ -33,7 +26,22 @@
     display: inline-block;
 }
 
-/* Alineación estricta de la tabla de cupones */
 #tablaCuponesCuerpo td {
     vertical-align: middle;
+}
+
+.badge-vigente {
+    background-color: #e6f4ea !important;
+    color: #137333 !important;
+    border: 1px solid #c4ebd0;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.badge-expirado {
+    background-color: #fce8e6 !important;
+    color: #c5221f !important;
+    border: 1px solid #fad2cf;
+    border-radius: 4px;
+    font-weight: 700;
 }
