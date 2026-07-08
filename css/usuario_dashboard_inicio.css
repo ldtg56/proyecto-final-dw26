@@ -77,7 +77,6 @@ body {
     .iconos-derecha { gap: 0.8rem !important; }
 }
 
-/* Sidebar Dashboard */
 .sidebar-dashboard .list-group-item {
     font-weight: 600;
     color: #333;
@@ -93,14 +92,12 @@ body {
     color: #8C1616;
 }
 
-/* Estado activo del menú (Rojo D'Mela) */
 .sidebar-dashboard .list-group-item.active {
     background-color: #8C1616 !important;
     color: #ffffff !important;
     border-color: #8C1616 !important;
 }
 
-/* Badges de Estado (Pasteles) */
 .badge-estado {
     padding: 0.35rem 0.8rem;
     border-radius: 4px;
@@ -123,7 +120,16 @@ body {
     color: #383d41;
 }
 
-/* Tabla de pedidos */
 .table-bordered th, .table-bordered td {
     border-color: #dee2e6;
+}
+
+.table thead th {
+    background-color: #8C1616 !important;
+    color: #FFFFFF !important;
+    border-bottom: 2px solid #8C1616 !important;
+}
+
+.table thead th:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
