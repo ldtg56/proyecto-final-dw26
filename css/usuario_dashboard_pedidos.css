@@ -10,3 +10,8 @@
 #tablaMisPedidosCuerpo td {
     vertical-align: middle;
 }
+
+.estado-cancelado {
+    background-color: #ffcccc;
+    color: #cc0000;
+}

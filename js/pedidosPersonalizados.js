@@ -1,5 +1,5 @@
 let nombreArchivoElegido = 'Ninguna referencia';
-let imagenBase64Elegida = ''; // <-- Nueva variable para guardar la foto comprimida
+let imagenBase64Elegida = '';
 let precioCotizado = 0.00;
 
 // 1. BASE DE DATOS LOCAL
@@ -109,7 +109,6 @@ function capturarNombreArchivo(input) {
 
     if (input.files && input.files[0]) {
         const archivo = input.files[0];
-
         const ext = archivo.name.split('.').pop().toLowerCase();
         if (ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
             alert("❌ Formato no permitido. Sube un JPG o PNG.");
@@ -131,25 +130,22 @@ function capturarNombreArchivo(input) {
         aviso.innerHTML = `<i class="fa-solid fa-circle-check me-1"></i> Imagen lista: <b>${nombreArchivoElegido}</b>`;
         aviso.classList.remove('d-none');
 
-        // MAGIA: Comprimimos la foto a una miniatura para no reventar la memoria
         const lector = new FileReader();
         lector.onload = function (e) {
             const img = new Image();
             img.onload = function () {
                 const canvas = document.createElement('canvas');
-                const MAX_WIDTH = 250; // Tamaño ligero
+                const MAX_WIDTH = 250;
                 const scaleSize = MAX_WIDTH / img.width;
                 canvas.width = MAX_WIDTH;
                 canvas.height = img.height * scaleSize;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                // Lo guardamos en formato Base64 para que viaje seguro al carrito
                 imagenBase64Elegida = canvas.toDataURL('image/jpeg', 0.8);
             }
             img.src = e.target.result;
         }
         lector.readAsDataURL(archivo);
-
     } else {
         nombreArchivoElegido = 'Ninguna referencia';
         imagenBase64Elegida = '';
@@ -157,7 +153,7 @@ function capturarNombreArchivo(input) {
     }
 }
 
-// 4. PROCESAR PEDIDO Y ENVIAR AL CARRITO
+// 4. PROCESAR PEDIDO Y ENVIAR AL CARRITO (AQUÍ ESTÁ LA MAGIA DEL DESGLOSE)
 function procesarPedidoPersonalizado(event) {
     event.preventDefault();
 
@@ -165,20 +161,26 @@ function procesarPedidoPersonalizado(event) {
     const tematica = document.getElementById('tematicaText').value.trim();
     let mensaje = document.getElementById('mensajeText').value.trim();
 
-    // Eliminamos las variables de fecha y hora que estaban aquí
-
     if (!tematica) {
         alert("⚠️ Por favor ingresa la temática o colores principales.");
         document.getElementById('tematicaText').focus();
         return false;
     }
-
-    // Eliminamos la validación de (!fecha || !hora) que estaba aquí
-
     if (mensaje === "") mensaje = "Sin mensaje";
 
-    // Si el usuario no subió foto, le ponemos el logo de la tienda como relleno
     const imagenFinal = imagenBase64Elegida !== '' ? imagenBase64Elegida : "img/logoD'Mela.jpg";
+
+    const cboTamano = document.getElementById('specTamano');
+    const cboMasa = document.getElementById('specMasa');
+    const cboRelleno = document.getElementById('specRelleno');
+
+    const pTamano = parseFloat(cboTamano.options[cboTamano.selectedIndex].getAttribute('data-precio')) || 0;
+    const pMasa = parseFloat(cboMasa.options[cboMasa.selectedIndex].getAttribute('data-precio')) || 0;
+    const pRelleno = parseFloat(cboRelleno.options[cboRelleno.selectedIndex].getAttribute('data-precio')) || 0;
+
+    const textoTamano = cboTamano.value.split(' (+')[0];
+    const textoMasa = cboMasa.value.split(' (+')[0];
+    const textoRelleno = cboRelleno.value.split(' (+')[0];
 
     const pedido = {
         id: 'pers_' + Date.now(),
@@ -189,13 +191,19 @@ function procesarPedidoPersonalizado(event) {
         favorito: false,
         tipo: 'personalizado',
         detalles: {
-            'Tamaño/Cant.': document.getElementById('specTamano').value,
-            'Masa/Base': document.getElementById('specMasa').value,
-            'Relleno': document.getElementById('specRelleno').value,
+            'Tamaño/Cant.': cboTamano.value,
+            'Masa/Base': cboMasa.value,
+            'Relleno': cboRelleno.value,
             'Temática': tematica,
             'Mensaje': mensaje
-            // Eliminamos la línea de 'Entrega para'
-        }
+        },
+        desglose: [
+            { nombre: `Tamaño: ${textoTamano}`, precio: pTamano },
+            { nombre: `Masa: ${textoMasa}`, precio: pMasa },
+            { nombre: `Relleno: ${textoRelleno}`, precio: pRelleno },
+            { nombre: `Temática: ${tematica}`, precio: 0 },
+            { nombre: `Mensaje: ${mensaje}`, precio: 0 }
+        ]
     };
 
     let carrito = JSON.parse(localStorage.getItem('dmela_carrito_compras')) || [];

@@ -140,8 +140,10 @@
                     <div class="list-group list-group-flush sidebar-dashboard">
                         <a href="usuario_dashboard_inicio.html"
                             class="list-group-item list-group-item-action">Inicio</a>
-                        <a href="usuario_dashboard_pedidos.html" class="list-group-item list-group-item-action active">Mis compras</a>
-                        <a href="usuario_dashboard_cupones.html" class="list-group-item list-group-item-action">Cupones</a>
+                        <a href="usuario_dashboard_pedidos.html"
+                            class="list-group-item list-group-item-action active">Mis compras</a>
+                        <a href="usuario_dashboard_cupones.html"
+                            class="list-group-item list-group-item-action">Cupones</a>
                         <a href="usuario_dashboard_perfil" class="list-group-item list-group-item-action">Mi perfil</a>
                     </div>
                 </div>
@@ -149,7 +151,7 @@
 
             <div class="col-12 col-md-9">
                 <div class="card border-0 shadow-sm rounded-0 p-4 h-100 d-flex flex-column">
-                    <h5 class="mb-4 text-uppercase fw-normal" style="color: #333; letter-spacing: 1px;">MIS PEDIDOS</h5>
+                    <h5 class="mb-4 text-uppercase fw-bold" style="color: #333; letter-spacing: 1px;">MIS PEDIDOS</h5>
 
                     <div class="table-responsive mb-auto">
                         <table class="table table-bordered table-hover align-middle mb-0 text-center"
@@ -159,7 +161,7 @@
                                     <th class="fw-semibold font-weight-normal py-2 border-end border-white">PEDIDO</th>
                                     <th class="fw-semibold font-weight-normal py-2 border-end border-white">FECHA</th>
                                     <th class="fw-semibold font-weight-normal py-2 border-end border-white">ESTADO</th>
-                                    
+                                    <th class="fw-semibold font-weight-normal py-2 border-end border-white">DETALLE</th>
                                     <th class="fw-semibold font-weight-normal py-2 border-end border-white">PUNTOS</th>
                                     <th class="fw-semibold font-weight-normal py-2">TOTAL</th>
                                 </tr>
@@ -170,7 +172,7 @@
                     </div>
 
                     <div class="d-flex justify-content-end align-items-center mt-4 pt-3 border-top">
-                        <span class="fs-5 me-3" style="color: #333;">TOTAL:</span>
+                        <span class="fs-5 me-3" style="color: #333; font-weight: bold;">TOTAL GASTADO:</span>
                         <div class="text-white px-4 py-2"
                             style="background-color: #808080; min-width: 150px; text-align: center; font-size: 1.1rem;"
                             id="granTotalPedidos">
@@ -179,7 +181,27 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="modal fade" id="modalBoleta" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-0 border-2" style="border-color: #8C1616 !important;">
 
+                    <div class="modal-header text-white rounded-0" style="background-color: #8C1616;">
+                        <h5 class="modal-title fw-bold"><i class="fa-solid fa-receipt me-2"></i>Boleta de Pedido</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body p-4" id="cuerpoBoletaModal">
+                    </div>
+
+                    <div class="modal-footer bg-light p-2">
+                        <button type="button" class="btn text-white fw-bold w-100" style="background-color: #8C1616;"
+                            data-bs-dismiss="modal">Cerrar Boleta</button>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </main>
 
