@@ -93,9 +93,25 @@
     max-width: min(260px, 92vw);
 }
 
+#menuUsuarioDropdown {
+    overflow: hidden;
+}
+
+#menuUsuarioDropdown li,
+#menuUsuarioDropdown .dropdown-item,
+#menuUsuarioDropdown .dropdown-header,
+#menuUsuarioDropdown span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+
 @media (max-width: 767px) {
     .iconos-derecha .dropdown-menu {
-        right: -0.5rem; /* pequeño respiro con el borde de la pantalla */
+        right: -0.5rem;
+        /* pequeño respiro con el borde de la pantalla */
     }
 }
 

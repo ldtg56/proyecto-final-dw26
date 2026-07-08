@@ -1,10 +1,53 @@
-const STORAGE_KEY = 'dmela_carrito_compras';
+var STORAGE_KEY = 'dmela_carrito_compras';
 
 document.addEventListener('DOMContentLoaded', () => {
-    actualizarBadgeCarritoHeader();
-    inicializarFiltrosNavegacion();
+    cargarDatosUsuario();
+    cargarPuntosYRango();
+    cargarHistorialPedidos();
+    
+    // Actualizamos la bolita roja del carrito (si existe en la pantalla)
+    if (typeof actualizarBadgeCarritoHeader === 'function') {
+        actualizarBadgeCarritoHeader();
+    }
 });
 
+// ============================
+// 1. CARGAR NOMBRE DEL CLIENTE 
+// ============================
+function cargarDatosUsuario() {
+    const sesion = localStorage.getItem('dmela_sesion');
+    const nombreCheckout = localStorage.getItem('nombreComprador');
+    const saludo = document.getElementById('dashboardSaludo');
+
+    if (!saludo) return; 
+
+    let nombreFinal = "Cliente";
+
+    if (sesion) {
+        try {
+            const datos = JSON.parse(sesion);
+            
+            let textoNombre = datos.nombres || datos.nombre || "Cliente";
+            
+            nombreFinal = textoNombre.trim().split(' ')[0]; 
+
+        } catch (e) {
+            console.error("Error al leer sesión");
+        }
+    } else if (nombreCheckout) {
+        // Si no inició sesión pero hizo una compra
+        nombreFinal = nombreCheckout.trim().split(' ')[0];
+    }
+
+    // Forzamos a que siempre tenga la primera letra en mayúscula (ej: piero -> Piero)
+    nombreFinal = nombreFinal.charAt(0).toUpperCase() + nombreFinal.slice(1).toLowerCase();
+
+    saludo.innerText = `Hola, ${nombreFinal}!`;
+}
+
+// =====================
+// FUNCIONES DE CARRITO 
+// =====================
 function agregarItemCarrito(id, nombre, precio, imagenUrl) {
     let carritoGuardado = localStorage.getItem(STORAGE_KEY);
     let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
@@ -80,38 +123,9 @@ function actualizarBadgeCarritoHeader() {
     }
 }
 
-//================================================================================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    cargarDatosUsuario();
-    cargarPuntosYRango();
-    cargarHistorialPedidos();
-});
-
-// 1. CARGAR NOMBRE DEL CLIENTE 
-function cargarDatosUsuario() {
-    const sesion = localStorage.getItem('dmela_sesion');
-    const nombreCheckout = localStorage.getItem('nombreComprador');
-    const saludo = document.getElementById('dashboardSaludo');
-
-    let nombreMostrar = "Cliente";
-
-    if (sesion) {
-        try {
-            const datos = JSON.parse(sesion);
-            if (datos.nombre) nombreMostrar = datos.nombre.split(' ')[0];
-        } catch (e) {
-            console.error("Error al leer sesión");
-        }
-    } else if (nombreCheckout) {
-        // Si no inició sesión, usa el nombre que puso al finalizar la compra
-        nombreMostrar = nombreCheckout;
-    }
-
-    if (saludo) saludo.innerText = `Hola, ${nombreMostrar}!`;
-}
-
+// =========================================================
 // 2. SISTEMA DE PUNTOS Y RANGOS
+// =========================================================
 function cargarPuntosYRango() {
     let puntos = parseInt(localStorage.getItem('dmela_puntos_totales'));
     if (isNaN(puntos)) puntos = 0;
@@ -137,7 +151,9 @@ function cargarPuntosYRango() {
     if (elemMeta) elemMeta.innerText = meta;
 }
 
-// 3. SISTEMA DE CANJE DE PUNTOS (VERSIÓN SEGURA)
+// =========================================================
+// 3. SISTEMA DE CANJE DE PUNTOS
+// =========================================================
 function canjearPuntos() {
     let puntosActuales = parseInt(localStorage.getItem('dmela_puntos_totales')) || 0;
 
@@ -166,17 +182,10 @@ function canjearPuntos() {
 
     localStorage.setItem('dmela_puntos_totales', puntosRestantes);
 
-    // =========================================================
-    // NUEVO: GENERAR CÓDIGO ÚNICO Y GUARDARLO EN LA BÓVEDA
-    // =========================================================
-    // Genera un sufijo aleatorio de 4 letras/números (Ej: X7B2)
     const sufijoAleatorio = Math.random().toString(36).substring(2, 6).toUpperCase();
     const codigoUnico = `PUNTOS-${valorDescuento}-${sufijoAleatorio}`;
 
-    // Leemos la lista de cupones activos o creamos una nueva
     let cuponesGuardados = JSON.parse(localStorage.getItem('dmela_cupones_activos')) || [];
-
-    // Guardamos el código y su valor en dinero
     cuponesGuardados.push({ codigo: codigoUnico, valor: valorDescuento });
     localStorage.setItem('dmela_cupones_activos', JSON.stringify(cuponesGuardados));
 
@@ -185,14 +194,15 @@ function canjearPuntos() {
     cargarPuntosYRango();
 }
 
+// =========================================================
 // 4. HISTORIAL DE COMPRAS 
+// =========================================================
 function cargarHistorialPedidos() {
     const tbody = document.getElementById('tablaPedidosCuerpo');
     if (!tbody) return;
 
     let historial = JSON.parse(localStorage.getItem('dmela_historial_pedidos')) || [];
 
-    // Adiós a los datos falsos. Ahora mostramos la realidad:
     if (historial.length === 0) {
         tbody.innerHTML = `<tr><td colspan="4" class="py-4 text-muted">Aún no tienes pedidos registrados. ¡Anímate a probar nuestras delicias!</td></tr>`;
         return;
@@ -217,19 +227,17 @@ function cargarHistorialPedidos() {
         `;
         tbody.insertAdjacentHTML('beforeend', fila);
     });
-}                     // <span class="badge-estado ${claseBadge}">${pedido.estado}</span> --debajo de  <td class="py-3">
+}
 
-// 5. SIMULADOR DE ESTADOS (Solo para la presentación)
+// =========================================================
+// 5. SIMULADOR DE ESTADOS (Presentación)
+// =========================================================
 function simularCambioEstado(idPedido) {
     let historial = JSON.parse(localStorage.getItem('dmela_historial_pedidos')) || [];
-
-    // Buscamos el pedido exacto al que le dimos clic
     let index = historial.findIndex(p => p.id === idPedido);
 
     if (index !== -1) {
-        // Lógica cíclica para cambiar el estado
         let estadoActual = historial[index].estado;
-
         if (estadoActual === 'En Proceso') {
             historial[index].estado = 'Entregado';
         } else if (estadoActual === 'Entregado') {
@@ -238,7 +246,6 @@ function simularCambioEstado(idPedido) {
             historial[index].estado = 'En Proceso';
         }
 
-        // Guardamos el cambio y recargamos la tabla para ver el nuevo color
         localStorage.setItem('dmela_historial_pedidos', JSON.stringify(historial));
         cargarHistorialPedidos();
     }
