@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #BF8484; /* El tono rosado/rojo de tus vistas anteriores */
+    --primary-color: #BF8484;
     --text-dark: #2D2D2D;
     --text-muted: #6C757D;
     --bg-light: #F8F9FA;
@@ -66,7 +66,6 @@
     margin-bottom: 32px;
 }
 
-/* Barra de progreso */
 .progress-container {
     margin-bottom: 32px;
     text-align: left;
@@ -94,7 +93,6 @@
     transition: width 1s ease-in-out;
 }
 
-/* Formulario */
 .action-text {
     font-size: 0.95rem;
     color: var(--text-dark);
@@ -136,7 +134,6 @@
     opacity: 0.9;
 }
 
-/* Footer / Enlace */
 .back-link {
     display: inline-flex;
     align-items: center;
@@ -156,13 +153,11 @@
     height: 16px;
 }
 
-/* Animaciones */
 @keyframes pulse {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.05); opacity: 0.8; }
 }
 
-/* Mobile */
 @media (max-width: 576px) {
     .wip-form {
         flex-direction: column;

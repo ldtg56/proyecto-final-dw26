@@ -1,4 +1,3 @@
-// Usamos 'var' para evitar conflictos de declaración con otros scripts
 var STORAGE_KEY = 'dmela_carrito_compras';
 var TARIFA_DELIVERY = 15.00;
 
@@ -129,7 +128,6 @@ function procesarPago(event) {
         if (!requerirSesion()) return;
     }
 
-    // LEER Y ORDENAR CARRITO (Favoritos ❤️ primero)
     const carritoString = localStorage.getItem(STORAGE_KEY);
     let carrito = carritoString ? JSON.parse(carritoString) : [];
     if (carrito.length === 0) {
@@ -269,9 +267,9 @@ function procesarPago(event) {
         nombre: nombreRef,
         fecha: fechaFormat,
         estado: 'En Proceso',
-        total: totalPagarNum, // CORREGIDO: Ya no apunta a totalFinal
+        total: totalPagarNum, 
         descuento: descuentoPendiente,
-        productos: carrito    // CORREGIDO: Usamos la variable consolidada 'carrito'
+        productos: carrito    
     };
 
     let historial = JSON.parse(localStorage.getItem('dmela_historial_pedidos')) || [];

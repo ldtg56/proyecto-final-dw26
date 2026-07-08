@@ -1,8 +1,5 @@
-/* ==========================================================================
-   Estilos Base y Escala de Contención para la página de Historia
-   ========================================================================== */
 body {
-    background-color: #F4F4F4; /* fondo gris casi blanco del mockup */
+    background-color: #F4F4F4; 
 }
 
 .fuente-titulos {
@@ -23,9 +20,6 @@ body {
     text-justify: inter-word;
 }
 
-/* ==========================================================================
-   Sección: Banner Hero
-   ========================================================================== */
 .banner-seccion {
     height: 260px; 
     background-size: cover;
@@ -50,9 +44,6 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
 }
 
-/* ==========================================================================
-   Textos e Imágenes de las secciones de Historia
-   ========================================================================== */
 .titulo-seccion-historia {
     color: #4A4A4A; 
     font-size: 1.5rem;
@@ -66,7 +57,7 @@ body {
 
 .imagen-historia {
     object-fit: cover;
-    height: 280px; /* altura uniforme para todas las fotos descriptivas */
+    height: 280px; 
     border-radius: 2px;
 }
 
@@ -76,21 +67,15 @@ body {
     letter-spacing: 0.3px;
 }
 
-/* ==========================================================================
-   Sección Intermedia: Fondo Rojo Colonial
-   ========================================================================== */
 .fondo-rojo-historia {
     background-color: #A65353;
     width: 100%;
 }
 
 .fondo-rojo-historia .imagen-historia {
-    border: 3px solid rgba(255, 255, 255, 0.15); /* un marco sutil claro para la torta sobre fondo rojo */
+    border: 3px solid rgba(255, 255, 255, 0.15); 
 }
 
-/* ==========================================================================
-   Media Queries: Responsividad para móviles
-   ========================================================================== */
 @media (max-width: 768px) {
     .banner-seccion {
         height: 200px;

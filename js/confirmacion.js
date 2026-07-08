@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let sumaTotal = 0;
     let puntosGanados = 0;
 
-    // 4. Pintar productos (Con Favorito ❤️ y Desglose de Personalizados)
+    // 4. Pintar productos
     if (contenedorLista) {
         if (carritoGuardado.length > 0) {
             contenedorLista.innerHTML = '';
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 sumaTotal += totalProd;
                 puntosGanados += Math.floor(precioProd) * cantProd;
 
-                // Dibujamos la fila completa con el producto y su desglose debajo
                 contenedorLista.innerHTML += `
                     <div class="border-bottom border-light pb-2 mb-2">
                         <div class="d-flex justify-content-between align-items-start">
@@ -76,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalFinal = sumaTotal + costoEnvio - descuentoAplicado;
     if (totalFinal < 0) totalFinal = 0;
 
-    // Mostrar el descuento en pantalla si hubo
     const filaDescConf = document.getElementById('filaDescuentoConfirmacion');
     if (filaDescConf && descuentoAplicado > 0) {
         filaDescConf.classList.remove('d-none');

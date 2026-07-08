@@ -18,12 +18,10 @@ body {
     object-fit: contain;
 }
 
-/* Matar flechas por defecto de Bootstrap */
 .header-dmela .dropdown-toggle::after {
     display: none !important;
 }
 
-/* Textos de navegación */
 .menu-central .nav-link {
     font-size: 1.05rem;
     letter-spacing: 0.6px;
@@ -34,7 +32,6 @@ body {
     color: #BF8484 !important;
 }
 
-/* El triangulito negro ▼ */
 .triangulo-opciones {
     color: #1A1A1A;
     font-size: 0.65rem;
@@ -42,7 +39,6 @@ body {
     transform: translateY(-1px);
 }
 
-/* Submenús */
 .header-dmela .dropdown-menu {
     background-color: #F2F2F2;
     border-radius: 8px;
