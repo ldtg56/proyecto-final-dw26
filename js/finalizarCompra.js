@@ -56,18 +56,17 @@ function renderizarResumenCheckout() {
     btnPagar.style.opacity = '1';
 
     let sumaSubtotal = 0;
-    let sumaPuntos = 0; // NUEVA VARIABLE PARA LOS PUNTOS
+    let sumaPuntos = 0; 
 
     carrito.forEach(prod => {
         const subtotalProd = prod.precio * prod.cantidad;
         sumaSubtotal += subtotalProd;
 
-        // Calculamos los puntos
         const puntosProd = Math.floor(prod.precio) * prod.cantidad;
         sumaPuntos += puntosProd;
 
         // =========================================================
-        // 1. NUEVA LÓGICA DE DETALLES (Dinámica y sin saltos de línea)
+        // 1. LÓGICA DE DETALLES 
         // =========================================================
         let filasDetalle = '';
 
@@ -83,7 +82,7 @@ function renderizarResumenCheckout() {
         }
 
         // =========================================================
-        // 2. NUEVO DISEÑO DE TARJETA (Estructura más compacta)
+        // 2. DISEÑO DE TARJETA 
         // =========================================================
         const tarjetaMini = `
             <div class="d-flex gap-3 align-items-start mb-3 pb-3 border-bottom border-light">
@@ -112,17 +111,14 @@ function renderizarResumenCheckout() {
         contenedor.insertAdjacentHTML('beforeend', tarjetaMini);
     });
 
-    // ... (Lo pegas reemplazando desde la variable esDelivery hasta el final de la función) ...
     const esDelivery = document.getElementById('delivery') && document.getElementById('delivery').checked;
     const costoFinalEnvio = esDelivery ? TARIFA_DELIVERY : 0.00;
 
-    // NUEVO: Leer el descuento guardado y restarlo
     const descuentoPendiente = parseFloat(localStorage.getItem('dmela_descuento_pendiente')) || 0;
 
     let totalPagar = sumaSubtotal + costoFinalEnvio - descuentoPendiente;
-    if (totalPagar < 0) totalPagar = 0; // Evitar cobros negativos
+    if (totalPagar < 0) totalPagar = 0; 
 
-    // Mostrar u ocultar la fila de descuento
     const filaDesc = document.getElementById('filaDescuentoCheckout');
     if (filaDesc) {
         if (descuentoPendiente > 0) {
@@ -146,10 +142,8 @@ function renderizarResumenCheckout() {
 
 
 function procesarPago(event) {
-    // 1. Detenemos la recarga automática del formulario
     if (event) event.preventDefault();
 
-    // 2. LEER CARRITO
     const carritoString = localStorage.getItem('dmela_carrito_compras');
     const carritoGuardado = carritoString ? JSON.parse(carritoString) : [];
 
@@ -184,14 +178,12 @@ function procesarPago(event) {
         const calle = document.getElementById('dirCalle');
         const distrito = document.getElementById('dirDistrito');
 
-        // Validación de Zona Exacta
         if (distrito && !distrito.value) {
             alert("⚠️ Lo sentimos, actualmente solo realizamos repartos en Chiclayo, La Victoria y Santa Victoria. Por favor selecciona tu zona.");
             distrito.focus();
             return;
         }
 
-        // Validación anti direcciones falsas (Debe tener más de 8 letras/números y no ser solo números)
         if (envio && (!envio.value.trim() || envio.value.trim().length < 8 || !/[a-zA-Z]/.test(envio.value))) {
             alert("⚠️ Por favor, ingresa una dirección real y detallada (Mínimo 8 caracteres, incluyendo letras).");
             envio.focus();
@@ -220,7 +212,6 @@ function procesarPago(event) {
         return;
     }
 
-    // Validación estricta de tarjeta
     const esTarjeta = document.getElementById('tarjeta') && document.getElementById('tarjeta').checked;
     if (esTarjeta) {
         const numTarjeta = document.getElementById('tarjetaNum');
@@ -235,7 +226,6 @@ function procesarPago(event) {
             return;
         }
 
-        // NUEVA VALIDACIÓN PARA FECHA Y CVC
         if (!vencTarjeta.value || vencTarjeta.value.length < 5) {
             alert("⚠️ Por favor, ingresa una fecha de vencimiento válida (Ej: 09/30).");
             if (vencTarjeta) vencTarjeta.focus();
@@ -277,23 +267,21 @@ function procesarPago(event) {
         subtotalProductos += prod.precio * prod.cantidad;
     });
 
-    // Forzamos a que si la memoria está vacía, empiece en 0 numérico
     let puntosActuales = parseInt(localStorage.getItem('dmela_puntos_totales'));
     if (isNaN(puntosActuales)) puntosActuales = 0;
 
     localStorage.setItem('dmela_puntos_totales', puntosActuales + puntosGanados);
+
     // ===============================================================
     // 7. GUARDAR HISTORIAL PARA EL DASHBOARD
     // ===============================================================
     let primerProducto = carritoGuardado[0];
     let nombreRef = primerProducto.nombre;
 
-    // NUEVO: Si compró más de 1 unidad de este producto, le agregamos el (xN)
     if (primerProducto.cantidad > 1) {
         nombreRef += ` (x${primerProducto.cantidad})`;
     }
 
-    // Mantenemos la lógica por si hay otros productos diferentes en el carrito
     if (carritoGuardado.length > 1) {
         nombreRef += ` (+${carritoGuardado.length - 1} más)`;
     }
@@ -323,16 +311,15 @@ function procesarPago(event) {
     // 8. VACIAR CARRITO, PASAR DATOS A LA BOLETA Y QUEMAR CUPÓN
     // ===============================================================
     localStorage.setItem('carritoBoleta', carritoString);
-    localStorage.setItem('descuentoBoleta', descuentoPendiente); // Pasamos el descuento a la confirmación
+    localStorage.setItem('descuentoBoleta', descuentoPendiente);
 
     localStorage.removeItem('dmela_carrito_compras');
-    localStorage.removeItem('dmela_descuento_pendiente'); // Limpiamos la memoria temporal
+    localStorage.removeItem('dmela_descuento_pendiente'); 
 
-    //QUEMAR EL CUPÓN USADO PARA QUE NO SE REPITA
     const cuponUsado = localStorage.getItem('dmela_cupon_en_uso');
     if (cuponUsado) {
         let cuponesActivos = JSON.parse(localStorage.getItem('dmela_cupones_activos')) || [];
-        // Filtramos la lista para dejar todos menos el que acabamos de usar
+
         cuponesActivos = cuponesActivos.filter(c => c.codigo !== cuponUsado);
         localStorage.setItem('dmela_cupones_activos', JSON.stringify(cuponesActivos));
         localStorage.removeItem('dmela_cupon_en_uso'); // Limpiamos la bandera
@@ -347,14 +334,28 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarResumenCheckout();
 
     // ===============================================================
-    // DETECTOR DINÁMICO Y FORMATO DE TARJETAS
+    // 1. RESTRICCIÓN DE FECHA DE ENTREGA 
+    // ===============================================================
+    const inputFecha = document.getElementById('fechaEntrega');
+    if (inputFecha) {
+        const hoy = new Date();
+        const dd = String(hoy.getDate()).padStart(2, '0');
+        const mm = String(hoy.getMonth() + 1).padStart(2, '0'); 
+        const yyyy = hoy.getFullYear();
+        
+        inputFecha.min = `${yyyy}-${mm}-${dd}`;
+        
+        inputFecha.max = `${yyyy + 1}-12-31`; 
+    }
+
+    // ===============================================================
+    // 2. DETECTOR DINÁMICO Y FORMATO DE TARJETAS
     // ===============================================================
     const inputTarjeta = document.getElementById('tarjetaNum');
     const iconoTarjeta = document.getElementById('iconoTarjeta');
     const inputVenc = document.getElementById('tarjetaVenc');
     const inputCVC = document.getElementById('tarjetaCVC');
 
-    // 1. Formato para Número de Tarjeta y Cambio de Logo
     if (inputTarjeta && iconoTarjeta) {
         inputTarjeta.addEventListener('input', function (e) {
             let valorPuro = e.target.value.replace(/\D/g, ''); // Solo números
@@ -377,20 +378,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Formato automático para Fecha de Vencimiento (MM/AA)
     if (inputVenc) {
         inputVenc.addEventListener('input', function (e) {
-            let valor = e.target.value.replace(/\D/g, ''); // Borra letras al instante
+            let valor = e.target.value.replace(/\D/g, ''); 
 
             if (valor.length > 2) {
-                // Si ya escribió más de 2 números, pone la barrita automáticamente
                 valor = valor.substring(0, 2) + '/' + valor.substring(2, 4);
             }
             e.target.value = valor;
         });
     }
 
-    // 3. Formato estricto para CVC (Solo números)
     if (inputCVC) {
         inputCVC.addEventListener('input', function (e) {
             e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
