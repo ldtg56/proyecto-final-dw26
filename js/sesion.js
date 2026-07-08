@@ -38,4 +38,35 @@ function actualizarHeaderSegunSesion() {
     `;
 }
 
+function requerirSesion() {
+    const sesion = localStorage.getItem('dmela_sesion');
+    let usuarioAutenticado = false;
+
+    if (sesion) {
+        try {
+            const datos = JSON.parse(sesion);
+            if (datos.logueado) {
+                usuarioAutenticado = true;
+                
+                const inputNombre = document.getElementById('contactoNombre');
+                const inputEmail = document.getElementById('contactoEmail');
+                
+                if (inputNombre && datos.nombre) inputNombre.value = datos.nombre;
+                if (inputEmail && datos.email) inputEmail.value = datos.email; 
+            }
+        } catch(e) {
+            console.error("Error al leer la sesión", e);
+            localStorage.removeItem('dmela_sesion');
+        }
+    }
+
+    if (!usuarioAutenticado) {
+        alert("¡Hola! Para finalizar tu compra, primero debes iniciar sesión.");
+        window.location.href = 'login.html';
+        return false; // Avisamos que falló la validación
+    }
+    
+    return true; // Avisamos que todo está en orden
+}
+
 document.addEventListener('DOMContentLoaded', actualizarHeaderSegunSesion);
