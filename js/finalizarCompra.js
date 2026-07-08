@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof requerirSesion === 'function') {
+        const autenticado = requerirSesion();
+        
+        // Si no está logueado, ocultamos la página y detenemos todo
+        if (!autenticado) {
+            const mainContent = document.querySelector('main');
+            if(mainContent) mainContent.style.display = 'none';
+            return; 
+        }
+    }
+
+    // Inicializamos tu carrito si el usuario sí está logueado
+    if (typeof renderizarResumenCheckout === 'function') {
+        renderizarResumenCheckout();
+    }
+});
 const STORAGE_KEY = 'dmela_carrito_compras';
 const TARIFA_DELIVERY = 15.00;
 
