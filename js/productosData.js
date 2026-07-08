@@ -326,7 +326,7 @@ const catalogoDela = {
         nombre: 'Torta Temática Infantil (Plim Plim)', 
         precio: 'S/ 65.00', 
         img: 'img/pedido3.webp',
-        masa: 'Vainilla o Chocolate',
+        masa: 'Chocolate',
         peso: '1 kg',
         tiempo: '72 horas',
         estilo: 'Temático / Personalizado'
@@ -335,7 +335,7 @@ const catalogoDela = {
         nombre: 'Torta Clásica de Fresas y Crema', 
         precio: 'S/ 50.00', 
         img: 'img/pedido2.webp',
-        masa: 'Bizcochuelo húmedo',
+        masa: 'Bizcochuelo húmedo vainilla',
         peso: '1 kg',
         tiempo: '48 horas',
         estilo: 'Clásico Tradicional'

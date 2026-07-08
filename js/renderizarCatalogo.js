@@ -22,11 +22,11 @@ function cargarProductosPagina(prefijoId, paginaNum) {
             if (filtroSaborActual) {
                 if (filtroSaborActual === 'choco' && !textoBusqueda.includes('chocolate')) pasaFiltro = false;
                 if (filtroSaborActual === 'vainilla' && !textoBusqueda.includes('vainilla')) pasaFiltro = false;
-                if (filtroSaborActual === 'fresa' && !textoBusqueda.includes('fresa') && !textoBusqueda.includes('frutos rojos')) pasaFiltro = false;
+                if (filtroSaborActual === 'fresa' && !textoBusqueda.includes('fresa') && !textoBusqueda.includes('cerezas') && !textoBusqueda.includes('frutos rojos')) pasaFiltro = false;
             }
 
             if (pasaFiltro && filtroColActual) {
-                if (filtroColActual === 'valentin' && !textoBusqueda.includes('amor') && !textoBusqueda.includes('valentín') && !textoBusqueda.includes('romántic')) pasaFiltro = false;
+                if (filtroColActual === 'valentin' && !textoBusqueda.includes('berries') && !textoBusqueda.includes('naked') && !textoBusqueda.includes('bosque')) pasaFiltro = false;
                 if (filtroColActual === 'cumple' && !textoBusqueda.includes('birthday') && !textoBusqueda.includes('cumple') && !textoBusqueda.includes('infantil')) pasaFiltro = false; 
             }
 
