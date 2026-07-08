@@ -110,8 +110,8 @@ function capturarNombreArchivo(input) {
     if (input.files && input.files[0]) {
         const archivo = input.files[0];
         const ext = archivo.name.split('.').pop().toLowerCase();
-        if (ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
-            alert("❌ Formato no permitido. Sube un JPG o PNG.");
+        if (ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png' && ext !== 'webp') {
+            alert("❌ Formato no permitido. Sube un JPG, PNG o WEBP.");
             input.value = '';
             imagenBase64Elegida = '';
             aviso.classList.add('d-none');
@@ -168,7 +168,7 @@ function procesarPedidoPersonalizado(event) {
     }
     if (mensaje === "") mensaje = "Sin mensaje";
 
-    const imagenFinal = imagenBase64Elegida !== '' ? imagenBase64Elegida : "img/logoD'Mela.jpg";
+    const imagenFinal = imagenBase64Elegida !== '' ? imagenBase64Elegida : "img/logoD'Mela.webp";
 
     const cboTamano = document.getElementById('specTamano');
     const cboMasa = document.getElementById('specMasa');

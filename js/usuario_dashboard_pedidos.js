@@ -145,7 +145,7 @@ function abrirBoleta(idPedido) {
 
         cuerpoModal.innerHTML = `
             <div class="text-center mb-4">
-                <img src="img/logoD'Mela - copia.jpg" alt="D'Mela" style="max-height: 60px;" class="mb-2">
+                <img src="img/logoD'Mela - copia.webp" alt="D'Mela" style="max-height: 60px;" class="mb-2">
                 <h6 class="fw-bold mb-0 text-dark">Recibo Electrónico</h6>
                 <p class="text-muted small mb-0">Orden ${pedido.id}</p>
             </div>
