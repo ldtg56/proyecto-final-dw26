@@ -9,7 +9,7 @@ const catalogoDela = {
         estilo: 'Edición Especial'
     },
     '102': { 
-        nombre: 'Torta Premium Durazno & manjar', 
+        nombre: 'Torta Premium Durazno & Manjar', 
         precio: 'S/ 49.00', 
         img: 'img/Tor2.webp',
         masa: 'Vainilla con chispas',
@@ -27,7 +27,7 @@ const catalogoDela = {
         estilo: 'Clásico Intenso'
     },
     '104': { 
-        nombre: 'Torta Helada Artesanal de Fresa & Bizcochuelo', 
+        nombre: 'Torta Helada Artesanal de Durazno & Bizcochuelo', 
         precio: 'S/ 35.00', 
         img: 'img/Tor4.webp',
         masa: 'Bizcochuelo y Gelatina',
@@ -45,7 +45,7 @@ const catalogoDela = {
         estilo: 'Frutal / Fresca'
     },
     '106': { 
-        nombre: 'Torta Vintage de Vainilla & Cerezas', 
+        nombre: 'Torta Vintage de Vainilla (Con dedicatoria)', 
         precio: 'S/ 39.00', 
         img: 'img/Tor6.webp',
         masa: 'Vainilla clásica',
@@ -129,12 +129,12 @@ const catalogoDela = {
         img: 'img/Comb4.webp'
     },
     '205': { 
-        nombre: 'Pack Trufas', 
+        nombre: 'Pack San Valentín con Trufas', 
         precio: 'S/ 12.00', 
         img: 'img/Comb5.webp'
     },
     '206': { 
-        nombre: 'Pack Galletas', 
+        nombre: 'Pack Queques Navideños', 
         precio: 'S/ 15.00', 
         img: 'img/Comb6.webp'
     },
@@ -183,28 +183,28 @@ const catalogoDela = {
         img: 'img/Ofer2.webp'
     },
     '303': { 
-        nombre: 'Torta Temática Premium (Edición Flores)', 
+        nombre: 'Box Premium de Bombones', 
         precio: 'S/ 25.00', 
         precioAntiguo: 'S/ 42.00',
         descuento: '-40%',
         img: 'img/Ofer3.webp'
     },
     '304': { 
-        nombre: 'Box de Trufas Selección Dulce', 
+        nombre: 'Torta Temática Premium (Edición fresas)', 
         precio: 'S/ 30.00', 
         precioAntiguo: 'S/ 40.00',
         descuento: '-25%',
         img: 'img/Ofer4.webp'
     },
     '305': { 
-        nombre: 'Caja de Macarrones Gala Romántica', 
-        precio: 'S/ 12.00', 
-        precioAntiguo: 'S/ 15.00',
+        nombre: 'Desayuno ejecutivo + Porción de torta (A elección)', 
+        precio: 'S/ 36.00', 
+        precioAntiguo: 'S/ 45.00',
         descuento: '-20%',
         img: 'img/Ofer5.webp'
     },
     '306': { 
-        nombre: 'Torta Amor Eterno (Edición Especial)', 
+        nombre: 'Trufas Seleccionadas', 
         precio: 'S/ 15.00', 
         precioAntiguo: 'S/ 20.00',
         descuento: '-25%',
@@ -253,22 +253,22 @@ const catalogoDela = {
         img: 'img/Ofer12.webp'
     },
     '401': { 
-        nombre: 'Ciento de Alfajores Fritos', 
+        nombre: 'Medio Ciento de Alfajores Fritos', 
         precio: 'S/ 45.00', 
         img: 'img/bocaditos.webp'
     },
     '402': { 
-        nombre: 'Ciento de Alfajorcitos de Maicena', 
+        nombre: 'Medio Ciento de Alfajorcitos de Maicena', 
         precio: 'S/ 40.00', 
         img: 'img/bocaditos2.webp'
     },
     '403': { 
-        nombre: 'Ciento de Bolitas de Coco', 
+        nombre: 'Medio Ciento de Bolitas de Coco', 
         precio: 'S/ 35.00', 
         img: 'img/bocaditos5.webp'
     },
     '404': { 
-        nombre: 'Ciento de Trufas Rellenas de Manjar', 
+        nombre: 'Medio Ciento de Trufas Rellenas de Manjar', 
         precio: 'S/ 50.00', 
         img: 'img/bocaditos3.webp'
     },
@@ -278,7 +278,7 @@ const catalogoDela = {
         img: 'img/bocaditos7.webp'
     },
     '406': { 
-        nombre: 'Ciento de Frutitas de Mazapán', 
+        nombre: 'Medio Ciento de Frutitas de Mazapán', 
         precio: 'S/ 60.00', 
         img: 'img/bocaditos9.webp'
     },
@@ -288,12 +288,12 @@ const catalogoDela = {
         img: 'img/bocaditos6.webp'
     },
     '408': { 
-        nombre: 'Ciento de Guargüeros Clásicos', 
+        nombre: 'Medio Ciento de Guargüeros Clásicos', 
         precio: 'S/ 55.00', 
         img: 'img/bocaditos10.webp'
     },
     '409': { 
-        nombre: 'Ciento de Mini Churros Rellenos', 
+        nombre: 'Medio Ciento de Mini Churros Rellenos', 
         precio: 'S/ 40.00', 
         img: 'img/bocaditos12.webp'
     },
@@ -308,7 +308,7 @@ const catalogoDela = {
         img: 'img/bocaditos8.webp'
     },
     '4093': { 
-        nombre: 'Ciento de Cuadritos de Brownie', 
+        nombre: 'Medio Ciento de Cuadritos de Brownie', 
         precio: 'S/ 45.00', 
         img: 'img/bocaditos4.webp'
     },
@@ -326,7 +326,7 @@ const catalogoDela = {
         nombre: 'Torta Temática Infantil (Plim Plim)', 
         precio: 'S/ 65.00', 
         img: 'img/pedido3.webp',
-        masa: 'Vainilla o Chocolate',
+        masa: 'Chocolate',
         peso: '1 kg',
         tiempo: '72 horas',
         estilo: 'Temático / Personalizado'
@@ -335,7 +335,7 @@ const catalogoDela = {
         nombre: 'Torta Clásica de Fresas y Crema', 
         precio: 'S/ 50.00', 
         img: 'img/pedido2.webp',
-        masa: 'Bizcochuelo húmedo',
+        masa: 'Bizcochuelo húmedo vainilla',
         peso: '1 kg',
         tiempo: '48 horas',
         estilo: 'Clásico Tradicional'
@@ -395,7 +395,7 @@ const catalogoDela = {
         estilo: 'Postre Tradicional'
     },
     '5091': { 
-        nombre: 'Torta Tres Leches Clásica', 
+        nombre: 'Torta Especial de Alfajor', 
         precio: 'S/ 50.00', 
         img: 'img/pedido11.webp',
         masa: 'Bizcochuelo bañado',

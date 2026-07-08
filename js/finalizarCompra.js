@@ -1,6 +1,22 @@
-// Usamos 'var' para evitar conflictos de declaración con otros scripts
 var STORAGE_KEY = 'dmela_carrito_compras';
 var TARIFA_DELIVERY = 15.00;
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof requerirSesion === 'function') {
+        const autenticado = requerirSesion();
+        
+        if (!autenticado) {
+            const mainContent = document.querySelector('main');
+            if(mainContent) mainContent.style.display = 'none';
+            return; 
+        }
+    }
+
+    if (typeof renderizarResumenCheckout === 'function') {
+        renderizarResumenCheckout();
+    }
+});
+const STORAGE_KEY = 'dmela_carrito_compras';
+const TARIFA_DELIVERY = 15.00;
 
 function alternarPago() {
     const esTarjeta = document.getElementById('tarjeta').checked;
@@ -129,7 +145,7 @@ function procesarPago(event) {
         if (!requerirSesion()) return;
     }
 
-    // LEER Y ORDENAR CARRITO (Favoritos ❤️ primero)
+    // LEER Y ORDENAR CARRITO 
     const carritoString = localStorage.getItem(STORAGE_KEY);
     let carrito = carritoString ? JSON.parse(carritoString) : [];
     if (carrito.length === 0) {
@@ -269,9 +285,9 @@ function procesarPago(event) {
         nombre: nombreRef,
         fecha: fechaFormat,
         estado: 'En Proceso',
-        total: totalPagarNum, // CORREGIDO: Ya no apunta a totalFinal
+        total: totalPagarNum,
         descuento: descuentoPendiente,
-        productos: carrito    // CORREGIDO: Usamos la variable consolidada 'carrito'
+        productos: carrito    
     };
 
     let historial = JSON.parse(localStorage.getItem('dmela_historial_pedidos')) || [];
