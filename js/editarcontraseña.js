@@ -20,7 +20,6 @@ function realizarCambioContrasena() {
     const passActual = document.getElementById('passActual').value.trim();
     const passNueva = document.getElementById('passNueva').value.trim();
 
-    // Validaciones básicas
     if (!passActual || !passNueva) {
         alert('⚠️ Por favor, completa ambos campos.');
         return;
@@ -36,11 +35,9 @@ function realizarCambioContrasena() {
         return;
     }
 
-    // Traer datos de sesión y base de datos
     const sesion = JSON.parse(localStorage.getItem(SESION_KEY));
     const usuarios = JSON.parse(localStorage.getItem(USUARIOS_KEY)) || [];
 
-    // CORRECCIÓN: Compatibilidad para buscar por 'correo' o por 'email'
     const correoUsuarioActivo = sesion.correo || sesion.email;
     const indiceUsuario = usuarios.findIndex(u => u.correo === correoUsuarioActivo || u.email === correoUsuarioActivo);
 

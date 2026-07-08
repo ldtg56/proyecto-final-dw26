@@ -63,10 +63,10 @@ function requerirSesion() {
     if (!usuarioAutenticado) {
         alert("¡Hola! Para finalizar tu compra, primero debes iniciar sesión.");
         window.location.href = 'login.html';
-        return false; // Avisamos que falló la validación
+        return false; 
     }
     
-    return true; // Avisamos que todo está en orden
+    return true;
 }
 
 document.addEventListener('DOMContentLoaded', actualizarHeaderSegunSesion);

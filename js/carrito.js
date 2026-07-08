@@ -47,7 +47,7 @@ function renderizarPantalla() {
 
     let sumaSubtotal = 0;
     let conteoUnidades = 0;
-    let sumaPuntos = 0; // NUEVA VARIABLE PARA LOS PUNTOS
+    let sumaPuntos = 0; 
 
     carrito.forEach((prod) => {
         const subtotalProd = prod.precio * prod.cantidad;
@@ -198,10 +198,8 @@ function aplicarCupon() {
     const input = document.getElementById('inputCupon');
     const codigo = input.value.trim().toUpperCase();
 
-    // NUEVO: Leer la bóveda de cupones válidos generados en el dashboard
     let cuponesActivos = JSON.parse(localStorage.getItem('dmela_cupones_activos')) || [];
 
-    // Buscar si el código que escribió el usuario existe en nuestra bóveda
     let cuponEncontrado = cuponesActivos.find(c => c.codigo === codigo);
 
     if (codigo === 'DMELA10') {
@@ -217,18 +215,15 @@ function aplicarCupon() {
         alert('¡Cupón FESTEJO20 aplicado con éxito!');
 
     } else if (cuponEncontrado) {
-        // NUEVA LÓGICA: Si el código existe en la bóveda, aplicamos su valor
         descuentoPorcentaje = 0;
         descuentoFijo = cuponEncontrado.valor;
         cuponNombreActivo = `Cupón de Canje (-S/ ${descuentoFijo.toFixed(2)})`;
 
-        // Guardamos una bandera para saber qué código quemar luego de pagar
         localStorage.setItem('dmela_cupon_en_uso', codigo);
 
         alert(`¡Cupón de puntos verificado! Tienes un descuento de S/ ${descuentoFijo.toFixed(2)}`);
 
     } else if (codigo.startsWith('PUNTOS-')) {
-        // Si empieza con PUNTOS pero no está en la bóveda, es falso o ya se usó
         alert('Este código de puntos no existe, ya fue usado o está mal escrito.');
         return;
     } else {
@@ -243,7 +238,6 @@ function actualizarTextosResumen(unidades, subtotal, puntosTotales = 0) {
     document.getElementById('resumenCantidadText').innerText = `${unidades} ${unidades === 1 ? 'Producto' : 'Productos'}`;
     document.getElementById('resumenSubtotalText').innerText = `S/ ${subtotal.toFixed(2)}`;
 
-    // Lógica de descuentos restaurada
     let montoDescuentoCalculado = (subtotal * descuentoPorcentaje) + descuentoFijo;
     if (montoDescuentoCalculado > subtotal) montoDescuentoCalculado = subtotal; // Evitar totales negativos
 
@@ -276,7 +270,6 @@ function actualizarTextosResumen(unidades, subtotal, puntosTotales = 0) {
 document.addEventListener('DOMContentLoaded', () => {
     renderizarPantalla();
 
-    // Reparación de fuerza bruta para el carrusel de Bootstrap
     const elemCarrusel = document.getElementById('carruselExtras');
     if (elemCarrusel && typeof bootstrap !== 'undefined') {
         new bootstrap.Carousel(elemCarrusel, {
@@ -296,7 +289,6 @@ function validarCheckout(event) {
         return false;
     }
 
-    // Extraemos y guardamos los puntos
     const textoPuntos = document.getElementById('resumenPuntosText').innerText;
     const puntosPendientes = parseInt(textoPuntos.replace(/[^0-9]/g, '')) || 0;
     localStorage.setItem('dmela_puntos_pendientes', puntosPendientes);
@@ -308,7 +300,6 @@ function validarCheckout(event) {
     const filaDescuento = document.getElementById('filaDescuento');
     let descuentoTotal = 0;
 
-    // Si el texto de descuento existe y no está oculto, lo capturamos
     if (textoDescuento && filaDescuento && !filaDescuento.classList.contains('d-none')) {
         descuentoTotal = parseFloat(textoDescuento.innerText.replace(/[^0-9.]/g, '')) || 0;
     }

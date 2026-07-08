@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarPuntosYRango();
     cargarHistorialPedidos();
     
-    // Actualizamos la bolita roja del carrito (si existe en la pantalla)
     if (typeof actualizarBadgeCarritoHeader === 'function') {
         actualizarBadgeCarritoHeader();
     }
@@ -35,11 +34,9 @@ function cargarDatosUsuario() {
             console.error("Error al leer sesión");
         }
     } else if (nombreCheckout) {
-        // Si no inició sesión pero hizo una compra
         nombreFinal = nombreCheckout.trim().split(' ')[0];
     }
 
-    // Forzamos a que siempre tenga la primera letra en mayúscula (ej: piero -> Piero)
     nombreFinal = nombreFinal.charAt(0).toUpperCase() + nombreFinal.slice(1).toLowerCase();
 
     saludo.innerText = `Hola, ${nombreFinal}!`;

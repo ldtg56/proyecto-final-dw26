@@ -29,11 +29,6 @@
     }
 }
 
-/* ======================================================== */
-/* ANIMACIONES PROFESIONALES DE CARRITO                     */
-/* ======================================================== */
-
-/* 1. Rebote de atención para el ícono del Header */
 @keyframes reboteAlerta {
     0%   { transform: scale(1); }
     30%  { transform: scale(1.35) rotate(-10deg); color: #BF8484; }
@@ -46,7 +41,6 @@
     animation: reboteAlerta 0.45s ease-in-out;
 }
 
-/* 2. Aparición suave de las tarjetas al abrir el carrito */
 @keyframes entradaSuave {
     from {
         opacity: 0;
@@ -62,14 +56,12 @@
     animation: entradaSuave 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* 3. Efecto de desvanecimiento al eliminar un producto */
 .tarjeta-saliendo {
     opacity: 0 !important;
     transform: scale(0.85) translateX(40px) !important;
     transition: all 0.28s ease-in !important;
 }
 
-/* 4. Respiración sutil en el ícono del carrito vacío */
 @keyframes flotarIdle {
     0%, 100% { transform: translateY(0); }
     50%      { transform: translateY(-8px); }
@@ -80,11 +72,6 @@
     display: inline-block;
 }
 
-/* ======================================================== */
-/* ANIMACIONES DEL HEADER DE PROGRESO (CARRITO / PAGO)      */
-/* ======================================================== */
-
-/* Logo con hover suave y efecto de brillo */
 .logo-pasos {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
 }
@@ -93,40 +80,34 @@
     filter: brightness(1.1);
 }
 
-/* Base para los pasos de texto y círculos */
 .paso-animado {
-    opacity: 0; /* Oculto al inicio */
+    opacity: 0;
     animation: fadeSlideUp 0.6s ease forwards;
 }
 
-/* Base para la línea que los conecta */
 .linea-progreso {
     opacity: 0;
-    transform: scaleX(0); /* Encogida al inicio */
+    transform: scaleX(0);
     transform-origin: left center;
     animation: drawLine 0.6s ease forwards;
 }
 
-/* Retrasos milimétricos (delay) para crear el efecto Cascada (1 -> linea -> 2 -> linea -> 3) */
 .paso-1  { animation-delay: 0.1s; }
 .linea-1 { animation-delay: 0.3s; }
 .paso-2  { animation-delay: 0.5s; }
 .linea-2 { animation-delay: 0.7s; }
 .paso-3  { animation-delay: 0.9s; }
 
-/* Animación de aparición hacia arriba */
 @keyframes fadeSlideUp {
     from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Animación de "dibujado" de la línea */
 @keyframes drawLine {
     from { opacity: 0; transform: scaleX(0); }
-    to   { opacity: 0.6; transform: scaleX(1); } /* Opacidad 0.6 para que no brille más que las letras */
+    to   { opacity: 0.6; transform: scaleX(1); } 
 }
 
-/* EFECTO PREMIUM: Latido o resplandor constante en el paso actual */
 .circulo-activo {
     box-shadow: 0 0 0 0 rgba(242, 242, 242, 0.6);
     animation: latidoPaso 2s infinite;
@@ -138,7 +119,6 @@
     100% { box-shadow: 0 0 0 0 rgba(242, 242, 242, 0); }
 }
 
-/* Hover interactivo para que los pasos inactivos reaccionen si les pasas el mouse */
 .nav-pasos .opacity-75 {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }

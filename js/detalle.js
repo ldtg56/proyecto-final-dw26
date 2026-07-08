@@ -71,12 +71,11 @@ function cargarTambienOfrecemos() {
 
     const idActual = productoActual.id;
 
-    // Tomamos las claves del catálogo, quitamos el producto actual, y cogemos las primeras 5
     const idsFiltrados = Object.keys(catalogoDela)
         .filter(id => id !== idActual)
         .slice(0, 5);
 
-    contenedor.innerHTML = ''; // Limpiar por si acaso
+    contenedor.innerHTML = ''; 
 
     idsFiltrados.forEach(id => {
         const prod = catalogoDela[id];
@@ -90,7 +89,6 @@ function cargarTambienOfrecemos() {
             </div>
         `;
 
-        // Click en la tarjeta (imagen o nombre) navega al detalle de ESE producto
         col.querySelector('img').addEventListener('click', () => irADetalleProducto(id));
         col.querySelector('p').addEventListener('click', () => irADetalleProducto(id));
 

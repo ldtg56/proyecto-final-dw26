@@ -1,4 +1,3 @@
-// Mostrar/Ocultar contraseña de manera dinámica
 function togglePassword(inputId, iconId) {
     const input = document.getElementById(inputId);
     const icono = document.getElementById(iconId);
@@ -14,7 +13,6 @@ function togglePassword(inputId, iconId) {
     }
 }
 
-// Validaciones dinámicas según el tipo de documento
 function actualizarReglasDocumento() {
     const tipoDoc = document.getElementById('regTipoDoc').value;
     const inputDoc = document.getElementById('regNumDoc');
@@ -39,11 +37,9 @@ function actualizarReglasDocumento() {
     }
 }
 
-// Lógica de registro enfocada SOLO en dmela_sesion
 function registrarUsuario(event) {
     event.preventDefault(); // Evita que la página se recargue
 
-    // Capturamos los datos del formulario
     const nombres = document.getElementById('regNombres').value;
     const apellidos = document.getElementById('regApellidos').value;
     const tipoDoc = document.getElementById('regTipoDoc').value;
@@ -54,7 +50,6 @@ function registrarUsuario(event) {
     const pass1 = document.getElementById('regPassword').value;
     const pass2 = document.getElementById('regConfirmPassword').value;
 
-    // Validación de contraseñas
     if (pass1 !== pass2) {
         alert("Las contraseñas no coinciden. Por favor, verifica.");
         return;
@@ -65,7 +60,6 @@ function registrarUsuario(event) {
         return;
     }
 
-    // Construimos EXACTAMENTE la estructura de dmela_sesion que proporcionaste
     const sesionUnica = {
         logueado: true,
         nombre: `${nombres} ${apellidos}`,
@@ -78,11 +72,8 @@ function registrarUsuario(event) {
         correo: correo
     };
 
-    // Guardamos y sobrescribimos directamente dmela_sesion
     localStorage.setItem('dmela_sesion', JSON.stringify(sesionUnica));
 
-    // (Opcional) Si tu vista de login requiere validar contra algo, puedes guardarlo 
-    // también en dmela_usuarios, de lo contrario esto es suficiente para el dashboard.
     let usuariosBD = JSON.parse(localStorage.getItem('dmela_usuarios')) || [];
     const nuevoUsuarioParaBD = { ...sesionUnica, password: pass1, email: correo };
     usuariosBD.push(nuevoUsuarioParaBD);
@@ -90,6 +81,5 @@ function registrarUsuario(event) {
 
     alert("¡Cuenta creada con éxito! Bienvenido a D'Mela.");
     
-    // Redirigir al dashboard (donde las otras vistas ya leen dmela_sesion)
     window.location.href = "usuario_dashboard_inicio.html";
 }
