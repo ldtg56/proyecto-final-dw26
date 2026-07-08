@@ -1,22 +1,6 @@
+// Usamos 'var' para evitar conflictos de declaración con otros scripts
 var STORAGE_KEY = 'dmela_carrito_compras';
 var TARIFA_DELIVERY = 15.00;
-document.addEventListener('DOMContentLoaded', () => {
-    if (typeof requerirSesion === 'function') {
-        const autenticado = requerirSesion();
-        
-        if (!autenticado) {
-            const mainContent = document.querySelector('main');
-            if(mainContent) mainContent.style.display = 'none';
-            return; 
-        }
-    }
-
-    if (typeof renderizarResumenCheckout === 'function') {
-        renderizarResumenCheckout();
-    }
-});
-const STORAGE_KEY = 'dmela_carrito_compras';
-const TARIFA_DELIVERY = 15.00;
 
 function alternarPago() {
     const esTarjeta = document.getElementById('tarjeta').checked;
@@ -44,7 +28,7 @@ function renderizarResumenCheckout() {
     const contenedor = document.getElementById('contenedorResumenCheckout');
     const btnPagar = document.getElementById('btnPagarFinal');
     contenedor.innerHTML = '';
-    
+
     if (carrito.length === 0) {
         contenedor.innerHTML = `
             <div class="text-center py-4">
@@ -72,13 +56,13 @@ function renderizarResumenCheckout() {
 
     let sumaSubtotal = 0;
     let sumaPuntos = 0;
-    
+
     carrito.forEach(prod => {
         const subtotalProd = prod.precio * prod.cantidad;
         sumaSubtotal += subtotalProd;
         const puntosProd = Math.floor(prod.precio) * prod.cantidad;
         sumaPuntos += puntosProd;
-        
+
         let filasDetalle = '';
         if (prod.detalles && Object.keys(prod.detalles).length > 0) {
             filasDetalle = Object.entries(prod.detalles)
@@ -132,7 +116,7 @@ function renderizarResumenCheckout() {
     if (document.getElementById('checkoutEtiquetaEnvio')) document.getElementById('checkoutEtiquetaEnvio').innerText = esDelivery ? 'Costo de envío (Delivery)' : 'Recojo en tienda';
     if (document.getElementById('checkoutCostoEnvioText')) document.getElementById('checkoutCostoEnvioText').innerText = esDelivery ? `S/ ${costoFinalEnvio.toFixed(2)}` : 'Gratis';
     if (document.getElementById('checkoutTotalFinalText')) document.getElementById('checkoutTotalFinalText').innerText = `S/ ${totalPagar.toFixed(2)}`;
-    
+
     const elemPuntos = document.getElementById('checkoutPuntosText');
     if (elemPuntos) elemPuntos.innerText = `+ ${sumaPuntos} pts`;
     localStorage.setItem('dmela_puntos_pendientes', sumaPuntos);
@@ -145,7 +129,7 @@ function procesarPago(event) {
         if (!requerirSesion()) return;
     }
 
-    // LEER Y ORDENAR CARRITO 
+    // LEER Y ORDENAR CARRITO (Favoritos ❤️ primero)
     const carritoString = localStorage.getItem(STORAGE_KEY);
     let carrito = carritoString ? JSON.parse(carritoString) : [];
     if (carrito.length === 0) {
@@ -159,7 +143,7 @@ function procesarPago(event) {
     // ===============================================================
     const inputNombre = document.getElementById('contactoNombre');
     const inputCorreo = document.getElementById('contactoEmail');
-    
+
     if (inputNombre && !inputNombre.value.trim()) {
         alert("⚠️ Por favor, ingresa tu Nombre o Apodo.");
         inputNombre.focus();
@@ -285,9 +269,9 @@ function procesarPago(event) {
         nombre: nombreRef,
         fecha: fechaFormat,
         estado: 'En Proceso',
-        total: totalPagarNum,
+        total: totalPagarNum, // CORREGIDO: Ya no apunta a totalFinal
         descuento: descuentoPendiente,
-        productos: carrito    
+        productos: carrito    // CORREGIDO: Usamos la variable consolidada 'carrito'
     };
 
     let historial = JSON.parse(localStorage.getItem('dmela_historial_pedidos')) || [];
@@ -336,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (inputNombre && datosSesion.nombre) inputNombre.value = datosSesion.nombre;
             if (inputCorreo && datosSesion.correo) inputCorreo.value = datosSesion.correo;
             if (inputTelefono && datosSesion.telefono) inputTelefono.value = datosSesion.telefono;
-        } catch(e) { console.error("Error al leer datos de sesión"); }
+        } catch (e) { console.error("Error al leer datos de sesión"); }
     }
 
     // 3. Renderizar vista de checkout (CORREGIDO: Llamamos a tu función real)
