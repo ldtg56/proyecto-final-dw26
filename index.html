@@ -137,6 +137,23 @@
         </nav>
     </header>
 
+    <div class="modal fade" id="modalAnuncioCTA" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 bg-transparent position-relative">
+
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3"
+                    data-bs-dismiss="modal" aria-label="Cerrar"
+                    style="filter: drop-shadow(0 0 5px rgba(0,0,0,0.8)); opacity: 1;">
+                </button>
+
+                <a href="ofertas.html" class="d-block text-center rounded overflow-hidden shadow-lg">
+                    <img src="img/cta-dmela (2).webp" alt="¡Oferta Especial!" class="img-fluid w-100 object-fit-cover">
+                </a>
+
+            </div>
+        </div>
+    </div>
+
     <main id="contenido-principal" class="fuente-textos">
 
         <section id="banner-principal" class="pt-4 pb-5">
@@ -144,7 +161,7 @@
 
                 <a href="index.html">
                     <div class="contenedor-logo-principal p-0">
-                        <img src="img/D'Mela.png" alt="D'Mela Dulcería & Cafetería" class="img-fluid"
+                        <img src="img/D'Mela.webp" alt="D'Mela Dulcería & Cafetería" class="img-fluid"
                             style="max-width: 600px; width: 100%;">
                     </div>
                 </a>
@@ -582,6 +599,19 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/sesion.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Este script ejecuta el cta
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inicializa el modal usando la API de Bootstrap
+            var myModal = new bootstrap.Modal(document.getElementById('modalAnuncioCTA'), {
+                keyboard: true, // Permite cerrar con la tecla ESC
+                backdrop: 'true'
+            });
+
+            // Muestra el modal
+            myModal.show();
+        });
+    </script>
 </body>
 
 </html>
