@@ -65,7 +65,7 @@ function cargarProductosPagina(prefijoId, paginaNum) {
             bloquePrecioHTML = `
                 <div class="mb-3">
                     <span class="text-muted text-decoration-line-through small me-2">${producto.precioAntiguo}</span>
-                    <span class="text-dark fw-bold fs-5">${producto.precio}</span>
+                    <span class="fw-bold fs-5" style="color: #d32f2f;">${producto.precio}</span>
                 </div>
             `;
         }
@@ -91,15 +91,19 @@ function cargarProductosPagina(prefijoId, paginaNum) {
                     
                     ${bloqueImagenHTML}
                     
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <p class="fw-bold mb-2 small">${producto.nombre}</p>
+                    <div class="card-body d-flex flex-column">
+                        <p class="fw-bold mb-2 small" style="min-height: 40px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                            ${producto.nombre}
+                        </p>
                         
-                        ${bloquePrecioHTML}
-                        
-                        <button class="btn btn-guinda w-100 mt-auto" 
-                            onclick="agregarItemCarrito('${producto.id}', '${producto.nombre}', ${precioNumerico}, '${producto.img}')">
-                            Añadir al carrito
-                        </button>
+                        <div class="mt-auto w-100">
+                            ${bloquePrecioHTML}
+                            
+                            <button class="btn btn-guinda w-100" 
+                                onclick="agregarItemCarrito('${producto.id}', '${producto.nombre}', ${precioNumerico}, '${producto.img}')">
+                                Añadir al carrito
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
