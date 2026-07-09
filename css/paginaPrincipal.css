@@ -161,6 +161,19 @@ body {
     border-radius: 0;
 }
 
+.info-producto-mockup p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 42px; /* Espacio rígido para evitar saltos */
+}
+
+/* Fija una altura base para la fila del carrusel */
+#carrusel-productos-nuevos .carousel-inner {
+    min-height: 295px; 
+}
 
 @media (max-width: 991px) {
     .menu-central {
