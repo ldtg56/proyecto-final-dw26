@@ -34,7 +34,6 @@ function actualizarHeaderSegunSesion() {
         <li><a class="dropdown-item" href="login.html">Iniciar Sesión</a></li>
         <li><a class="dropdown-item" href="crearCuenta.html">Crear Cuenta</a></li>
         <li><a class="dropdown-item" href="editarcontraseña.html">Editar Contraseña</a></li>
-        <li><a class="dropdown-item" href="recuperarcontraseña.html">Recuperar Contraseña</a></li>
     `;
 }
 
