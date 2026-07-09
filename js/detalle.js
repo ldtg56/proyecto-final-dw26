@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+
 function actualizarPrecio(tamano) {
     const prod = productoActual; 
     if (!prod) return;
