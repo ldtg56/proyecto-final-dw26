@@ -138,4 +138,3 @@ function inicializarFiltrosNavegacion() {
     configurarFiltroExclusivo(['sabor-choco', 'sabor-vainilla', 'sabor-fresa'], 'sabor');
     configurarFiltroExclusivo(['col-valentin', 'col-cumple'], 'coleccion');
 }
-
